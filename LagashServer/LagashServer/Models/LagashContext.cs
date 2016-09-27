@@ -6,17 +6,15 @@ using System.Linq;
 using System.Web;
 
 namespace LagashServer.Models
-{
-    public class SchoolContext : DbContext
+{   
+    public class LagashContext : DbContext
     {
 
-        public SchoolContext() : base("SchoolContext")
+        public LagashContext() : base("LagashContext")
         {
         }
 
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Enrollment> Enrollments { get; set; }
-        public DbSet<Course> Courses { get; set; }
+        public DbSet<User> users{ get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
