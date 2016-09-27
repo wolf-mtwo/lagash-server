@@ -14,21 +14,21 @@ Header **x-access-token:||token||**
 
 ## public
 
-POST **/p1/users** __**OBJECT**__
+POST **/p1/users** __OBJECT__
 
-POST **/p1/login** __**OBJECT**__
+POST **/p1/login** __OBJECT__
 
 ## private
 
-POST **/p1/logout** __**OBJECT**__
+POST **/p1/logout** __OBJECT__
 
-GET **/v1/users** __**ARRAY**__
+GET **/v1/users** __ARRAY__
 
-GET **/v1/users/:id** __**OBJECT**__
+GET **/v1/users/:id** __OBJECT__
 
-DELETE **/v1/users/:id** __**OBJECT**__
+DELETE **/v1/users/:id** __OBJECT__
 
-PUT **/v1/users/:id** __**OBJECT**__
+PUT **/v1/users/:id** __OBJECT__
 
 ## especial
 
