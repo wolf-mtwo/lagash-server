@@ -14,24 +14,25 @@ Header **x-access-token:||token||**
 
 ## public
 
-POST **{{base_url}}/p1/users** // object
-POST **{{base_url}}/p1/login** // object
+POST **/p1/users** __**OBJECT**__
+
+POST **/p1/login** __**OBJECT**__
 
 ## private
 
-POST **{{base_url}}/p1/logout** // object
-GET **{{base_url}}/users** // array
-GET **{{base_url}}/users** // array
-GET **{{base_url}}/users/:id** // object
-DELETE **{{base_url}}/users/:id** // object
-PUT **{{base_url}}/users/:id** __**object**__
-GET **{{base_url}}/rest/session/login**
-GET **{{base_url}}/rest/session/login**
+POST **/p1/logout** __**OBJECT**__
 
+GET **/v1/users** __**ARRAY**__
+
+GET **/v1/users/:id** __**OBJECT**__
+
+DELETE **/v1/users/:id** __**OBJECT**__
+
+PUT **/v1/users/:id** __**OBJECT**__
 
 ## especial
 
 **Content-Type: multipart/form-data**
 
-POST **{{base_url}}/p1/files** *excel*
+POST **/p1/files** *excel*
 Form ['file_name']
