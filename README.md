@@ -18,7 +18,6 @@ POST **/p1/login** _OBJECT_
 
 ## private
 
-
 POST **/v1/logout** _OBJECT_
 
 GET **/v1/users** _ARRAY_
