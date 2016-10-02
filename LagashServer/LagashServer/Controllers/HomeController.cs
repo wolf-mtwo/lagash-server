@@ -10,16 +10,9 @@ namespace LagashServer.Controllers
 {
     public class HomeController : ApiController
     {
-        private SchoolContext db = new SchoolContext();
-
         // GET api/<controller>
         public IEnumerable<string> Get()
         {
-            //return new string[] { "value1", "value2" };
-            db.Students.Add(new Student { FirstMidName = "Yan", LastName = "Anand", EnrollmentDate = DateTime.Parse("2003-09-01") });
-            
-            List<Student> list = db.Students.ToList();
-            db.SaveChanges();
             return new string[] { "value1", "value2" };
         }
 
