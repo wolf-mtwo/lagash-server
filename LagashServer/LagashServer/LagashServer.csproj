@@ -183,7 +183,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\LagashContext.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +197,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wargos.Core.EntityFramework\Wargos.Core.EntityFramework.csproj">
+      <Project>{37f165fc-3188-4775-b7b9-31e4189f787b}</Project>
+      <Name>Wargos.Core.EntityFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wargos.Core.Interfaces\Wargos.Core.Interfaces.csproj">
+      <Project>{bbf34197-cdde-4d95-a0e8-16a41fc661b0}</Project>
+      <Name>Wargos.Core.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wargos.Lagash.Entities\Wargos.Lagash.Entities.csproj">
+      <Project>{8bd76098-ba78-4497-88f9-779375052723}</Project>
+      <Name>Wargos.Lagash.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wargos.Lagash.Interfaces\Wargos.Lagash.Interfaces.csproj">
+      <Project>{95870a5b-88c3-4cec-864d-b3f0def71912}</Project>
+      <Name>Wargos.Lagash.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wargos.Lagash.Services\Wargos.Lagash.Services.csproj">
+      <Project>{23311e5a-90da-47b1-a91d-dc7b35416499}</Project>
+      <Name>Wargos.Lagash.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

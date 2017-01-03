@@ -1,4 +1,3 @@
-E:\c#\lagash-server\LagashServer\Wargos.Core.EntityFramework\obj\Debug\Wargos.Core.EntityFramework.csprojResolveAssemblyReference.cache
 E:\c#\lagash-server\LagashServer\Wargos.Core.EntityFramework\bin\Debug\Wargos.Core.EntityFramework.dll.config
 E:\c#\lagash-server\LagashServer\Wargos.Core.EntityFramework\bin\Debug\Wargos.Core.EntityFramework.dll
 E:\c#\lagash-server\LagashServer\Wargos.Core.EntityFramework\bin\Debug\Wargos.Core.EntityFramework.pdb
@@ -8,5 +7,6 @@ E:\c#\lagash-server\LagashServer\Wargos.Core.EntityFramework\bin\Debug\Wargos.Co
 E:\c#\lagash-server\LagashServer\Wargos.Core.EntityFramework\bin\Debug\Wargos.Core.Interfaces.pdb
 E:\c#\lagash-server\LagashServer\Wargos.Core.EntityFramework\bin\Debug\EntityFramework.xml
 E:\c#\lagash-server\LagashServer\Wargos.Core.EntityFramework\bin\Debug\EntityFramework.SqlServer.xml
+E:\c#\lagash-server\LagashServer\Wargos.Core.EntityFramework\obj\Debug\Wargos.Core.EntityFramework.csprojResolveAssemblyReference.cache
 E:\c#\lagash-server\LagashServer\Wargos.Core.EntityFramework\obj\Debug\Wargos.Core.EntityFramework.dll
 E:\c#\lagash-server\LagashServer\Wargos.Core.EntityFramework\obj\Debug\Wargos.Core.EntityFramework.pdb

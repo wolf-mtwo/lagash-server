@@ -9,25 +9,33 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using LagashServer.Models;
+using Wargos.Lagash.Services;
+using Wargos.Lagash.Entities;
+using Wargos.Lagash.Interfaces;
 
 namespace LagashServer.Controllers
 {
     public class UsersController : ApiController
     {
+        private IUserService service = new UserService();
+
         // POST: api/Users
-        //[ResponseType(typeof(User))]
-        //public IHttpActionResult PostUser(User user)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return BadRequest(ModelState);
-        //    }
+        [ResponseType(typeof(User))]
+        public IHttpActionResult PostUser(User user)
+        {
+            /*if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }*/
 
-        //    db.users.Add(user);
-        //    db.SaveChanges();
+            service.Create(user);
 
-        //    return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
-        //}
+            /*db.users.Add(user);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);*/
+            return null;
+        }
 
         /*
         private LagashContext db = new LagashContext();

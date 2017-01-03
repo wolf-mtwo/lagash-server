@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace LagashServer.Models
+namespace Wargos.Lagash.Entities
 {
     public class User
     {
