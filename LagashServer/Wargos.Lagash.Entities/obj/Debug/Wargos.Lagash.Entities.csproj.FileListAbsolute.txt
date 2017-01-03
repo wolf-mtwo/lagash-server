@@ -1,0 +1,5 @@
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Entities\bin\Debug\Wargos.Lagash.Entities.dll
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Entities\bin\Debug\Wargos.Lagash.Entities.pdb
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Entities\obj\Debug\Wargos.Lagash.Entities.dll
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Entities\obj\Debug\Wargos.Lagash.Entities.pdb
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Entities\obj\Debug\Wargos.Lagash.Entities.csprojResolveAssemblyReference.cache

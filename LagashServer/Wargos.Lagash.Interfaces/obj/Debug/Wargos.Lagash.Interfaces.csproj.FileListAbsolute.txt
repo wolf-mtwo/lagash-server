@@ -1,0 +1,9 @@
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Interfaces\bin\Debug\Wargos.Lagash.Interfaces.dll
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Interfaces\bin\Debug\Wargos.Lagash.Interfaces.pdb
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Interfaces\obj\Debug\Wargos.Lagash.Interfaces.csprojResolveAssemblyReference.cache
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Interfaces\obj\Debug\Wargos.Lagash.Interfaces.dll
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Interfaces\obj\Debug\Wargos.Lagash.Interfaces.pdb
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Interfaces\bin\Debug\Wargos.Core.Interfaces.dll
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Interfaces\bin\Debug\Wargos.Lagash.Entities.dll
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Interfaces\bin\Debug\Wargos.Core.Interfaces.pdb
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Interfaces\bin\Debug\Wargos.Lagash.Entities.pdb

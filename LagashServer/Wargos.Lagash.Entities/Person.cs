@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Wargos.Lagash.Entities
 {
-    public class Class1
+    public partial class Person
     {
+        public int PersonId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

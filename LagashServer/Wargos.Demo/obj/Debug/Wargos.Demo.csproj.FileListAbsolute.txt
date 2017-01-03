@@ -1,5 +1,4 @@
 E:\c#\lagash-server\LagashServer\Wargos.Demo\bin\Debug\Wargos.Demo.dll
 E:\c#\lagash-server\LagashServer\Wargos.Demo\bin\Debug\Wargos.Demo.pdb
-E:\c#\lagash-server\LagashServer\Wargos.Demo\obj\Debug\Wargos.Demo.csprojResolveAssemblyReference.cache
 E:\c#\lagash-server\LagashServer\Wargos.Demo\obj\Debug\Wargos.Demo.dll
 E:\c#\lagash-server\LagashServer\Wargos.Demo\obj\Debug\Wargos.Demo.pdb

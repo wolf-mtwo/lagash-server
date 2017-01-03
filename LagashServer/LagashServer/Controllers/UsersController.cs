@@ -14,6 +14,22 @@ namespace LagashServer.Controllers
 {
     public class UsersController : ApiController
     {
+        // POST: api/Users
+        //[ResponseType(typeof(User))]
+        //public IHttpActionResult PostUser(User user)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    db.users.Add(user);
+        //    db.SaveChanges();
+
+        //    return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
+        //}
+
+        /*
         private LagashContext db = new LagashContext();
 
         // GET: api/Users
@@ -113,6 +129,6 @@ namespace LagashServer.Controllers
         private bool UserExists(int id)
         {
             return db.users.Count(e => e.Id == id) > 0;
-        }
+        }*/
     }
 }
