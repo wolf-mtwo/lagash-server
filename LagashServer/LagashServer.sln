@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LagashServer", "LagashServer\LagashServer.csproj", "{46FC04EF-8160-444B-86DF-CC52F89D8D24}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C3B0B6D6-F7EA-45B8-9062-9E0BE1030A4E} = {C3B0B6D6-F7EA-45B8-9062-9E0BE1030A4E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wargos.Demo", "Wargos.Demo\Wargos.Demo.csproj", "{C3B0B6D6-F7EA-45B8-9062-9E0BE1030A4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{46FC04EF-8160-444B-86DF-CC52F89D8D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46FC04EF-8160-444B-86DF-CC52F89D8D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46FC04EF-8160-444B-86DF-CC52F89D8D24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3B0B6D6-F7EA-45B8-9062-9E0BE1030A4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3B0B6D6-F7EA-45B8-9062-9E0BE1030A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3B0B6D6-F7EA-45B8-9062-9E0BE1030A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3B0B6D6-F7EA-45B8-9062-9E0BE1030A4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
