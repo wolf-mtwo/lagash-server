@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using LagashServer.Models;
 using Wargos.Lagash.Services;
 using Wargos.Lagash.Entities;
 using Wargos.Lagash.Interfaces;
