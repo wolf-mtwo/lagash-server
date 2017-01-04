@@ -15,17 +15,22 @@ namespace LagashServer.helper
         public LagashContext() : base("LagashContext")
         {
             // Database.SetInitializer(new LagashInitializer());
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LagashContext, Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<LagashContext, Configuration>());
         }
 
-        public DbSet<User> users { get; set; }
-        public DbSet<Client> Clients { get; set; }
-        public DbSet<RefreshToken> RefreshTokens { get; set; }
+        //public DbSet<User> users { get; set; }
+        //public DbSet<Client> Clients { get; set; }
+        //public DbSet<RefreshToken> RefreshTokens { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        //}
+
+        //public static LagashContext Create()
+        //{
+        //    return new LagashContext();
+        //}
     }
 
     //public class LagashContext : DbContext

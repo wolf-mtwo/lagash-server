@@ -12,13 +12,13 @@ namespace LagashServer.helper
     {
         protected override void Seed(LagashContext context)
         {
-            IList<User> defaultUsers = new List<User>();
-            defaultUsers.Add(new User() { name = "Wargos", cel = "70156988", email = "wolf@wolf.com", password = "bf4397d8b4dc061e1b6d191a352e9134" });
+            //IList<User> defaultUsers = new List<User>();
+            //defaultUsers.Add(new User() { name = "Wargos", cel = "70156988", email = "wolf@wolf.com", password = "bf4397d8b4dc061e1b6d191a352e9134" });
 
-            foreach (User user in defaultUsers)
-                context.users.Add(user);
+            //foreach (User user in defaultUsers)
+            //    context.users.Add(user);
 
-            base.Seed(context);
+            //base.Seed(context);
         }
     }
 }
