@@ -12,6 +12,8 @@ namespace LagashServer.helper
     {
         public LagashContext() : base("LagashContext")
         {
+            // Database.SetInitializer(new LagashInitializer());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LagashContext, Configuration>());
         }
 
         public DbSet<User> users { get; set; }
@@ -21,5 +23,4 @@ namespace LagashServer.helper
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
     }
-
 }

@@ -24,5 +24,8 @@ namespace Wargos.Lagash.Entities
 
         [Required]
         public string email { get; set; }
+
+        [Required]
+        public string role { get; set; }
     }
 }
