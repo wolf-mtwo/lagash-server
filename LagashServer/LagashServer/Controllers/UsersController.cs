@@ -19,39 +19,32 @@ namespace LagashServer.Controllers
     {
         private IUserService service = new UserService(new LagashContext());
 
-        // POST: api/Users
+        // GET: api/users
+        public IQueryable<User> Getusers()
+        {
+            return service.GetAll1();
+        }
+
+        // POST: api/users
         [ResponseType(typeof(User))]
         public IHttpActionResult PostUser(User user)
         {
-            /*if (!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            }*/
+            }
 
             service.Create(user);
             service.Commit();
 
-            /*db.users.Add(user);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);*/
-            return null;
+            return CreatedAtRoute("DefaultApi", new { id = user._id }, user);
         }
 
-        /*
-        private LagashContext db = new LagashContext();
-
-        // GET: api/Users
-        public IQueryable<User> Getusers()
-        {
-            return db.users;
-        }
-
-        // GET: api/Users/5
+        // GET: api/users/5
         [ResponseType(typeof(User))]
         public IHttpActionResult GetUser(int id)
         {
-            User user = db.users.Find(id);
+            User user = service.FindById(id);
             if (user == null)
             {
                 return NotFound();
@@ -60,7 +53,22 @@ namespace LagashServer.Controllers
             return Ok(user);
         }
 
-        // PUT: api/Users/5
+        // DELETE: api/users/5
+        [ResponseType(typeof(User))]
+        public IHttpActionResult DeleteUser(int id)
+        {
+            User user = service.FindById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            service.Delete(user);
+            service.Commit();
+
+            return Ok(user);
+        }
+
+        // PUT: api/users/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutUser(int id, User user)
         {
@@ -69,20 +77,20 @@ namespace LagashServer.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != user.Id)
+            if (id != user._id)
             {
                 return BadRequest();
             }
 
-            db.Entry(user).State = EntityState.Modified;
+            service.Update(user);
 
             try
             {
-                db.SaveChanges();
+                service.Commit();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!UserExists(id))
+                if (!service.userExists(id))
                 {
                     return NotFound();
                 }
@@ -92,52 +100,7 @@ namespace LagashServer.Controllers
                 }
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/Users
-        [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.users.Add(user);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = user.Id }, user);
-        }
-
-        // DELETE: api/Users/5
-        [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
-        {
-            User user = db.users.Find(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            db.users.Remove(user);
-            db.SaveChanges();
-
             return Ok(user);
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool UserExists(int id)
-        {
-            return db.users.Count(e => e.Id == id) > 0;
-        }*/
     }
 }

@@ -12,9 +12,17 @@ namespace Wargos.Lagash.Entities
         [Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int _id { get; set; }
+
+        [Required]
         public string name { get; set; }
+
+        [Required]
         public string password { get; set; }
+
+        [Required]
         public string cel { get; set; }
+
+        [Required]
         public string email { get; set; }
     }
 }

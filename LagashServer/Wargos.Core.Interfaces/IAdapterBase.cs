@@ -11,7 +11,9 @@ namespace Wargos.Core.Interfaces
     {
         IEnumerable<T> Query(Expression<Func<T, bool>> predicate);
         T FindOne(Expression<Func<T, bool>> predicate);
+        T FindById(int id);
         IEnumerable<T> GetAll();
+        IQueryable<T> GetAll1();
         IEnumerable<T> GetAllOrderBy(Func<T, object> keySelector);
         IEnumerable<T> GetAllOrderByDescending(Func<T, object> keySelector);
         void Create(T entity);

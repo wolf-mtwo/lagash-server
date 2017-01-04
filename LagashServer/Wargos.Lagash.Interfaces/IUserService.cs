@@ -10,5 +10,6 @@ namespace Wargos.Lagash.Interfaces
 {
     public interface IUserService : IAdapterBase<User>
     {
+        bool userExists(int id);
     }
 }

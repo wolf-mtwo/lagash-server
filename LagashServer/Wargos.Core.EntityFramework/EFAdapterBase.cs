@@ -11,64 +11,73 @@ namespace Wargos.Core.EntityFramework
 {
     public class EFAdapterBase<T> : IAdapterBase<T> where T : class
     {
-        protected readonly DbContext Context;
+        protected readonly DbContext context;
 
-        protected EFAdapterBase(DbContext Context)
+        protected EFAdapterBase(DbContext context)
         {
-            //Context = new DbContext("LagashContext");
-            this.Context = Context;
+            this.context = context;
         }
 
         public IEnumerable<T> Query(Expression<Func<T, bool>> predicate)
         {
-            return Context.Set<T>().Where(predicate).ToList();
+            return context.Set<T>().Where(predicate).ToList();
+        }
+
+        public T FindById(int id)
+        {
+            return context.Set<T>().Find(id);
         }
 
         public T FindOne(Expression<Func<T, bool>> predicate)
         {
-            return Context.Set<T>().Where(predicate).FirstOrDefault();
+            return context.Set<T>().Where(predicate).FirstOrDefault();
         }
 
         public IEnumerable<T> GetAll()
         {
-            return Context.Set<T>().ToList();
+            return context.Set<T>().ToList();
+        }
+
+        public IQueryable<T> GetAll1()
+        {
+            return context.Set<T>();
         }
 
         public IEnumerable<T> GetAllOrderBy(Func<T, object> keySelector)
         {
-            return Context.Set<T>().OrderBy(keySelector).ToList();
+            return context.Set<T>().OrderBy(keySelector).ToList();
         }
 
         public IEnumerable<T> GetAllOrderByDescending(Func<T, object> keySelector)
         {
-            return Context.Set<T>().OrderByDescending(keySelector).ToList();
+            return context.Set<T>().OrderByDescending(keySelector).ToList();
         }
 
         public void Commit()
         {
-            Context.SaveChanges();
+            context.SaveChanges();
         }
 
         public void Create(T entity)
         {
-            Context.Set<T>().Add(entity);
+            context.Set<T>().Add(entity);
         }
 
         public void Update(T entity)
         {
-            Context.Entry(entity).State = EntityState.Modified;
+            context.Entry(entity).State = EntityState.Modified;
         }
 
         public void Delete(T entity)
         {
-            Context.Set<T>().Remove(entity);
+            context.Set<T>().Remove(entity);
         }
 
         public void Dispose()
         {
-            if (Context != null)
+            if (context != null)
             {
-                Context.Dispose();
+                context.Dispose();
             }
             GC.SuppressFinalize(this);
         }
