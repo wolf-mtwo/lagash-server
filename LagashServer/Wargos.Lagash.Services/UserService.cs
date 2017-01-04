@@ -16,6 +16,11 @@ namespace Wargos.Lagash.Services
         {
         }
 
+        public void login(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool userExists(int id)
         {
             return context.Set<User>().Count(e => e._id == id) > 0;

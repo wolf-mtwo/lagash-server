@@ -35,4 +35,6 @@ namespace Wargos.Lagash.Entities
         [StringLength(20)]
         public string role { get; set; }
     }
+
+   
 }
