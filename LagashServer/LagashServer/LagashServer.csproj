@@ -184,7 +184,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="helper\LagashContext .cs" />
-    <Compile Include="helper\LagashInitializer.cs" />
+    <Compile Include="Migrations\LagashInitializer.cs" />
     <Compile Include="Models\Information.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

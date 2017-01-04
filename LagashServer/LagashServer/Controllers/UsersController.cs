@@ -33,7 +33,6 @@ namespace LagashServer.Controllers
             {
                 return BadRequest(ModelState);
             }
-
             service.Create(user);
             service.Commit();
 
