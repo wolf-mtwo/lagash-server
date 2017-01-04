@@ -182,7 +182,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="helper\Configuration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="helper\LagashContext .cs" />
     <Compile Include="helper\LagashInitializer.cs" />
     <Compile Include="Models\Information.cs" />

@@ -5,6 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Wargos.Lagash.Entities;
+using LagashServer.Migrations;
 
 namespace LagashServer.helper
 {
@@ -13,7 +14,7 @@ namespace LagashServer.helper
         public LagashContext() : base("LagashContext")
         {
             // Database.SetInitializer(new LagashInitializer());
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LagashContext, Configuration>());
+            // Database.SetInitializer(new MigrateDatabaseToLatestVersion<LagashContext, Configuration>());
         }
 
         public DbSet<User> users { get; set; }

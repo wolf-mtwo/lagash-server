@@ -14,7 +14,7 @@ namespace LagashServer
         protected void Application_Start()
         {
             // remove this code line for production environment
-            //Database.SetInitializer<LagashContext>(null);
+            Database.SetInitializer<LagashContext>(null);
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
     }
