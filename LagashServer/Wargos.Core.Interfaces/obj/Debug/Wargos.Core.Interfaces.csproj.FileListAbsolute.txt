@@ -1,4 +1,0 @@
-E:\c#\lagash-server\LagashServer\Wargos.Core.Interfaces\bin\Debug\Wargos.Core.Interfaces.dll
-E:\c#\lagash-server\LagashServer\Wargos.Core.Interfaces\bin\Debug\Wargos.Core.Interfaces.pdb
-E:\c#\lagash-server\LagashServer\Wargos.Core.Interfaces\obj\Debug\Wargos.Core.Interfaces.dll
-E:\c#\lagash-server\LagashServer\Wargos.Core.Interfaces\obj\Debug\Wargos.Core.Interfaces.pdb
