@@ -11,12 +11,13 @@ using System.Web.Http.Description;
 using Wargos.Lagash.Services;
 using Wargos.Lagash.Entities;
 using Wargos.Lagash.Interfaces;
+using LagashServer.helper;
 
 namespace LagashServer.Controllers
 {
     public class UsersController : ApiController
     {
-        private IUserService service = new UserService();
+        private IUserService service = new UserService(new LagashContext());
 
         // POST: api/Users
         [ResponseType(typeof(User))]
@@ -28,6 +29,7 @@ namespace LagashServer.Controllers
             }*/
 
             service.Create(user);
+            service.Commit();
 
             /*db.users.Add(user);
             db.SaveChanges();

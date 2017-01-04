@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,7 @@ namespace Wargos.Lagash.Services
 {
     public class UserService : EFAdapterBase<User>, IUserService
     {
-        public UserService()
+        public UserService(DbContext Context) : base(Context)
         {
         }
     }

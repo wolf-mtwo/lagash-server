@@ -13,9 +13,10 @@ namespace Wargos.Core.EntityFramework
     {
         protected readonly DbContext Context;
 
-        protected EFAdapterBase()
+        protected EFAdapterBase(DbContext Context)
         {
-            Context = new DbContext("LagashContext");
+            //Context = new DbContext("LagashContext");
+            this.Context = Context;
         }
 
         public IEnumerable<T> Query(Expression<Func<T, bool>> predicate)

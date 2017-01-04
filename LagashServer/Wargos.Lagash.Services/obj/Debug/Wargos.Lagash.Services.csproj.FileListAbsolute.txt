@@ -13,3 +13,6 @@ E:\c#\lagash-server\LagashServer\Wargos.Lagash.Services\bin\Debug\EntityFramewor
 E:\c#\lagash-server\LagashServer\Wargos.Lagash.Services\obj\Debug\Wargos.Lagash.Services.csprojResolveAssemblyReference.cache
 E:\c#\lagash-server\LagashServer\Wargos.Lagash.Services\obj\Debug\Wargos.Lagash.Services.dll
 E:\c#\lagash-server\LagashServer\Wargos.Lagash.Services\obj\Debug\Wargos.Lagash.Services.pdb
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Services\bin\Debug\Wargos.Lagash.Services.dll.config
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Services\bin\Debug\EntityFramework.SqlServer.dll
+E:\c#\lagash-server\LagashServer\Wargos.Lagash.Services\bin\Debug\EntityFramework.SqlServer.xml
