@@ -15,8 +15,7 @@ namespace LagashServer.helper
         }
 
         public DbSet<User> users { get; set; }
-
-
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

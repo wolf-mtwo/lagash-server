@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LagashServer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,10 +10,10 @@ namespace LagashServer.Controllers
 {
     public class HomeController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        [Route("")]
+        public Information Get()
         {
-            return new string[] { "value1", "value2" };
+            return new Information("0.0.0");
         }
 
         // GET api/<controller>/5
