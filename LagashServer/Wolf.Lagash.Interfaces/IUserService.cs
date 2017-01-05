@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wargos.Core.Interfaces;
-using Wargos.Lagash.Entities;
+using Wolf.Core.Interfaces;
+using Wolf.Lagash.Entities;
 
-namespace Wargos.Lagash.Interfaces
+namespace Wolf.Lagash.Interfaces
 {
     public interface IUserService : IAdapterBase<User>
     {

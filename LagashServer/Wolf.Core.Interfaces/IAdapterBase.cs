@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wargos.Core.Interfaces
+namespace Wolf.Core.Interfaces
 {
     public interface IAdapterBase<T>
     {

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BBF34197-CDDE-4D95-A0E8-16A41FC661B0}</ProjectGuid>
+    <ProjectGuid>{95870A5B-88C3-4CEC-864D-B3F0DEF71912}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Wargos.Core.Interfaces</RootNamespace>
-    <AssemblyName>Wargos.Core.Interfaces</AssemblyName>
+    <RootNamespace>Wolf.Lagash.Interfaces</RootNamespace>
+    <AssemblyName>Wolf.Lagash.Interfaces</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,8 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IAdapterBase.cs" />
+    <Compile Include="IUserService.cs" />
+    <Compile Include="IPersonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wolf.Core.Interfaces\Wolf.Core.Interfaces.csproj">
+      <Project>{bbf34197-cdde-4d95-a0e8-16a41fc661b0}</Project>
+      <Name>Wolf.Core.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Wolf.Lagash.Entities\Wolf.Lagash.Entities.csproj">
+      <Project>{8bd76098-ba78-4497-88f9-779375052723}</Project>
+      <Name>Wolf.Lagash.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

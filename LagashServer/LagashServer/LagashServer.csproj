@@ -228,7 +228,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -237,9 +236,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="helper\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="helper\Startup.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -263,25 +259,25 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Wargos.Core.EntityFramework\Wargos.Core.EntityFramework.csproj">
+    <ProjectReference Include="..\Wolf.Core.EntityFramework\Wolf.Core.EntityFramework.csproj">
       <Project>{37f165fc-3188-4775-b7b9-31e4189f787b}</Project>
-      <Name>Wargos.Core.EntityFramework</Name>
+      <Name>Wolf.Core.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wargos.Core.Interfaces\Wargos.Core.Interfaces.csproj">
+    <ProjectReference Include="..\Wolf.Core.Interfaces\Wolf.Core.Interfaces.csproj">
       <Project>{bbf34197-cdde-4d95-a0e8-16a41fc661b0}</Project>
-      <Name>Wargos.Core.Interfaces</Name>
+      <Name>Wolf.Core.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wargos.Lagash.Entities\Wargos.Lagash.Entities.csproj">
+    <ProjectReference Include="..\Wolf.Lagash.Entities\Wolf.Lagash.Entities.csproj">
       <Project>{8bd76098-ba78-4497-88f9-779375052723}</Project>
-      <Name>Wargos.Lagash.Entities</Name>
+      <Name>Wolf.Lagash.Entities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wargos.Lagash.Interfaces\Wargos.Lagash.Interfaces.csproj">
+    <ProjectReference Include="..\Wolf.Lagash.Interfaces\Wolf.Lagash.Interfaces.csproj">
       <Project>{95870a5b-88c3-4cec-864d-b3f0def71912}</Project>
-      <Name>Wargos.Lagash.Interfaces</Name>
+      <Name>Wolf.Lagash.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Wargos.Lagash.Services\Wargos.Lagash.Services.csproj">
+    <ProjectReference Include="..\Wolf.Lagash.Services\Wolf.Lagash.Services.csproj">
       <Project>{23311e5a-90da-47b1-a91d-dc7b35416499}</Project>
-      <Name>Wargos.Lagash.Services</Name>
+      <Name>Wolf.Lagash.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

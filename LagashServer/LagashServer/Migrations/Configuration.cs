@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
-using Wargos.Lagash.Entities;
+using Wolf.Lagash.Entities;
 
 namespace LagashServer.Migrations
 {

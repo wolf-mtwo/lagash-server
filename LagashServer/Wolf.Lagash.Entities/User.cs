@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Wargos.Lagash.Entities
+namespace Wolf.Lagash.Entities
 {
     public class User
     {

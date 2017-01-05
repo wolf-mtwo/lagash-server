@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Wargos.Lagash.Entities;
+using Wolf.Lagash.Entities;
 using LagashServer.Migrations;
 using Microsoft.AspNet.Identity.EntityFramework;
 

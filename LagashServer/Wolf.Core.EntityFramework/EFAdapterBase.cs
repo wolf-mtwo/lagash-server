@@ -5,9 +5,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Wargos.Core.Interfaces;
+using Wolf.Core.Interfaces;
 
-namespace Wargos.Core.EntityFramework
+namespace Wolf.Core.EntityFramework
 {
     public class EFAdapterBase<T> : IAdapterBase<T> where T : class
     {

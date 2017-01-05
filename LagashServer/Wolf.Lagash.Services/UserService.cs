@@ -4,11 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Wargos.Core.EntityFramework;
-using Wargos.Lagash.Entities;
-using Wargos.Lagash.Interfaces;
+using Wolf.Core.EntityFramework;
+using Wolf.Lagash.Entities;
+using Wolf.Lagash.Interfaces;
 
-namespace Wargos.Lagash.Services
+namespace Wolf.Lagash.Services
 {
     public class UserService : EFAdapterBase<User>, IUserService
     {
