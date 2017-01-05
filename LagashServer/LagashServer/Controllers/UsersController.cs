@@ -8,9 +8,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Wargos.Lagash.Services;
-using Wargos.Lagash.Entities;
-using Wargos.Lagash.Interfaces;
+using Wolf.Lagash.Services;
+using Wolf.Lagash.Entities;
+using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 
 namespace LagashServer.Controllers
