@@ -8,12 +8,11 @@ using System.Web.Http;
 
 namespace LagashServer.Controllers
 {
-    public class HomeController : ApiController
+    public class MasterController : ApiController
     {
-        [Route("")]
-        public Information Get()
+        MasterController()
         {
-            return new Information("0.0.0");
+
         }
     }
 }

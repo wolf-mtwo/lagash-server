@@ -3,6 +3,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -16,11 +17,12 @@ namespace LagashServer.helper
         {
             HttpConfiguration config = new HttpConfiguration();
 
-            ConfigureOAuth(app);
+            //ConfigureOAuth(app);
             
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
+            Database.SetInitializer<LagashContext>(null);
         }
 
         public void ConfigureOAuth(IAppBuilder app)

@@ -10,42 +10,25 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LagashServer.helper
 {
-    public class LagashContext : IdentityDbContext<IdentityUser>
+    //public class LagashContext : IdentityDbContext<IdentityUser>
+    public class LagashContext : DbContext
     {
         public LagashContext() : base("LagashContext")
         {
-            // Database.SetInitializer(new LagashInitializer());
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<LagashContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LagashContext, MigrationsConfiguration>());
         }
 
-        //public DbSet<User> users { get; set; }
-        //public DbSet<Client> Clients { get; set; }
-        //public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<User> users { get; set; }
+        public DbSet<Client> Clients { get; set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
         //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         //}
 
-        //public static LagashContext Create()
-        //{
-        //    return new LagashContext();
-        //}
+        public static LagashContext Create()
+        {
+            return new LagashContext();
+        }
     }
-
-    //public class LagashContext : DbContext
-    //{
-    //    public LagashContext() : base("LagashContext")
-    //    {
-    //        // Database.SetInitializer(new LagashInitializer());
-    //        Database.SetInitializer(new MigrateDatabaseToLatestVersion<LagashContext, Configuration>());
-    //    }
-
-    //    public DbSet<User> users { get; set; }
-
-    //    protected override void OnModelCreating(DbModelBuilder modelBuilder)
-    //    {
-    //        modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-    //    }
-    //}
 }
