@@ -16,9 +16,18 @@ namespace Wolf.Lagash.Services
         {
         }
 
-        public void login(string username, string password)
+        public User login(string email, string password)
         {
-            throw new NotImplementedException();
+            if (email == null)
+            {
+                throw new Exception("email is undefined");
+            }
+
+            if (password == null)
+            {
+                throw new Exception("password is undefined");
+            }
+            return FindOne(o => o.email == email && o.password == password);
         }
 
         public bool userExists(int id)

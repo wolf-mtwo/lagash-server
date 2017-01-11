@@ -36,5 +36,23 @@ namespace Wolf.Lagash.Entities
         public string role { get; set; }
     }
 
-   
+    public class Session : User
+    {
+        
+        public string token { get; set; }
+    }
+
+    public class Login
+    {
+
+        [Required]
+        [StringLength(50)]
+        public string password { get; set; }
+
+        [Required]
+        [Index(IsUnique = true)]
+        [StringLength(100)]
+        public string email { get; set; }
+    }
+
 }

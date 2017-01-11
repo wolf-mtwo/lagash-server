@@ -11,7 +11,7 @@ namespace Wolf.Lagash.Interfaces
     public interface IUserService : IAdapterBase<User>
     {
         bool userExists(int id);
-        void login(string username, string password);
+        User login(string email, string password);
         User FindByEmail(String email);
         void CreateUser(User item);
     }
