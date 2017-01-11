@@ -38,11 +38,6 @@ namespace Wolf.Core.EntityFramework
             return context.Set<T>().ToList();
         }
 
-        public IQueryable<T> GetAll1()
-        {
-            return context.Set<T>();
-        }
-
         public IEnumerable<T> GetAllOrderBy(Func<T, object> keySelector)
         {
             return context.Set<T>().OrderBy(keySelector).ToList();

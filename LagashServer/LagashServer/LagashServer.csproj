@@ -232,15 +232,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="helper\InternarServerActionResult.cs" />
     <Compile Include="helper\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="helper\Startup.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\MigrationsConfiguration.cs" />
     <Compile Include="helper\LagashContext .cs" />
-    <Compile Include="Migrations\LagashInitializer.cs" />
     <Compile Include="Models\Information.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -25,5 +25,26 @@ namespace Wolf.Lagash.Services
         {
             return context.Set<User>().Count(e => e._id == id) > 0;
         }
+
+        public User FindByEmail(String email)
+        {
+            if (email == null)
+            {
+                throw new Exception("email is undefined");
+            }
+            return FindOne(o => o.email == email);
+        }
+
+        public void CreateUser(User item)
+        {
+            User user = FindByEmail(item.email);
+            if (user == null)
+            {
+                Create(item);
+            } else
+            {
+                throw new Exception("Ya existe un usuario con el mismo email");
+            }
+        }
     }
 }

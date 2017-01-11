@@ -20,23 +20,31 @@ namespace LagashServer.Controllers
         private IUserService service = new UserService(new LagashContext());
 
         // GET: api/users
-        public IQueryable<User> Getusers()
+        public IEnumerable<User> Getusers()
         {
-            return service.GetAll1();
+            return service.GetAll();
         }
 
         // POST: api/users
         [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User user)
+        public IHttpActionResult PostUser(User item)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            service.Create(user);
-            service.Commit();
+            
+            try
+            {
+                service.CreateUser(item);
+                service.Commit();
+            }
+            catch (Exception e)
+            {
+                return new InternarServerActionResult(e.Message);
+            }
 
-            return CreatedAtRoute("DefaultApi", new { id = user._id }, user);
+            return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
         }
 
         // GET: api/users/5

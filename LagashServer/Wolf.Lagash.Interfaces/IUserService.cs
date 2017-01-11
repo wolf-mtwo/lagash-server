@@ -12,5 +12,7 @@ namespace Wolf.Lagash.Interfaces
     {
         bool userExists(int id);
         void login(string username, string password);
+        User FindByEmail(String email);
+        void CreateUser(User item);
     }
 }

@@ -38,7 +38,6 @@ namespace LagashServer.helper
             identity.AddClaim(new Claim("role", "user"));
 
             context.Validated(identity);
-
         }
     }
 }
