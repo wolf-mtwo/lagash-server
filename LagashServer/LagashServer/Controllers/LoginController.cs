@@ -23,7 +23,7 @@ namespace LagashServer.Controllers
         //}
 
         // POST: api/login
-        [Route("p1/login")]
+        //[Route("p1/login")]
         [ResponseType(typeof(User))]
         public IHttpActionResult Post(Login login)
         {
