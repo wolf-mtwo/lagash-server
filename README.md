@@ -18,17 +18,17 @@ POST **/p1/login** _OBJECT_
 
 ## private
 
-POST **/v1/logout** _OBJECT_
+POST **/p1/logout** _OBJECT_
 
-GET **/v1/users** _ARRAY_
+GET **/p1/users** _ARRAY_
 
-POST **/v1/users** _OBJECT_
+POST **/p1/users** _OBJECT_
 
-GET **/v1/users/:user_id** _OBJECT_
+GET **/p1/users/:user_id** _OBJECT_
 
-DELETE **/v1/users/:user_id** _OBJECT_
+DELETE **/p1/users/:user_id** _OBJECT_
 
-PUT **/v1/users/:user_id** _OBJECT_
+PUT **/p1/users/:user_id** _OBJECT_
 
 GET **/v1/catalog/page/:page/limit/:limit** _ARRAY_ _REVERSE_
 

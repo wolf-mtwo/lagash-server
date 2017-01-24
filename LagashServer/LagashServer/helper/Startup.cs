@@ -23,7 +23,7 @@ namespace LagashServer.helper
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
             
-            Database.SetInitializer<LagashContext>(null);
+            
         }
 
         public void ConfigureOAuth(IAppBuilder app)

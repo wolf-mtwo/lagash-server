@@ -16,9 +16,21 @@ namespace LagashServer
             // Web API routes
             config.MapHttpAttributeRoutes();
 
+            //config.Routes.MapHttpRoute(
+            //     name: "userApi",
+            //     routeTemplate: "p1/{action}",
+            //     defaults: new { controller = "Users" }
+            // );
+
+            config.Routes.MapHttpRoute(
+                 name: "UserApi",
+                 routeTemplate: "p1/{controller}/{id}",
+                 defaults: new { controller = "Users", id = RouteParameter.Optional }
+             );
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "v1/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
 

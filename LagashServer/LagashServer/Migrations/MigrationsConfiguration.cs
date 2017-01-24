@@ -13,6 +13,7 @@ namespace LagashServer.Migrations
         public MigrationsConfiguration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(LagashContext context)

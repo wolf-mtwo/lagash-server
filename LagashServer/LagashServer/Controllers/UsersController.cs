@@ -15,11 +15,12 @@ using LagashServer.helper;
 
 namespace LagashServer.Controllers
 {
+    //[RoutePrefix("p2/users")]
     public class UsersController : ApiController
     {
         private IUserService service = new UserService(new LagashContext());
 
-        // GET: api/users
+        // GET: p2/users
         public IEnumerable<User> Getusers()
         {
             return service.GetAll();

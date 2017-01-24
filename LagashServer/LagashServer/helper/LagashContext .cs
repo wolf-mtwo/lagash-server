@@ -15,16 +15,19 @@ namespace LagashServer.helper
     {
         public LagashContext() : base("LagashContext")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<LagashContext, MigrationsConfiguration>());
+            //Database.SetInitializer<LagashContext>(null);
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<LagashContext, MigrationsConfiguration>());
         }
 
         public DbSet<User> users { get; set; }
         public DbSet<Client> Clients { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        //}
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<LagashContext>(null);
+            //base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
 
         public static LagashContext Create()
         {

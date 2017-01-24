@@ -34,24 +34,27 @@ namespace Wolf.Lagash.Entities
         [Required]
         [StringLength(20)]
         public string role { get; set; }
+
+        //[Required]
+        //[StringLength(20)]
+        //public string role2 { get; set; }
+
+        [NotMapped]
+        //[ScaffoldColumn(false)] TODO: Does not work
+        public Token token { get; set; }
     }
 
-    public class Session : User
+    public class Token
     {
-        
-        public string token { get; set; }
+        public string session_id { get; set; }
     }
 
     public class Login
     {
-
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "El password no puede ser vacio")]
         public string password { get; set; }
 
-        [Required]
-        [Index(IsUnique = true)]
-        [StringLength(100)]
+        [Required(ErrorMessage = "El email no puede ser vacio")]
         public string email { get; set; }
     }
 

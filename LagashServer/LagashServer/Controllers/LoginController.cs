@@ -12,32 +12,40 @@ using Wolf.Lagash.Services;
 
 namespace LagashServer.Controllers
 {
+    //[RoutePrefix("Public")]
     public class LoginController : ApiController
     {
         private IUserService service = new UserService(new LagashContext());
 
-        public IHttpActionResult GetLogin()
-        {
-            return null;
-        }
+        //public IHttpActionResult GetLogin()
+        //{
+        //    return null;
+        //}
 
         // POST: api/login
-        [ResponseType(typeof(Session))]
+        [Route("p1/login")]
+        [ResponseType(typeof(User))]
         public IHttpActionResult Post(Login login)
-        {   
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             User user = service.login(login.email, login.password);
             if (user != null)
             {
-                Session session = new Session();
-                session.name = user.name;
+                //user session = new Session();
+                //session.name = user.name;
                 var payload = new Dictionary<string, object>()
                 {
-                    { "claim1", 0 },
-                    { "claim2", "claim2-value" }
+                    { "_id", user._id },
+                    { "email", user.email }
                 };
                 var secretKey = "lagash-server";
-                session.token = JWT.JsonWebToken.Encode(payload, secretKey, JWT.JwtHashAlgorithm.HS256);
-                return Ok(session);
+                user.token = new Token() {
+                    session_id = JWT.JsonWebToken.Encode(payload, secretKey, JWT.JwtHashAlgorithm.HS256)
+                };
+                return Ok(user);
             } else
             {
                 // change error status code
