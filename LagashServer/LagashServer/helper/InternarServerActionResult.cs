@@ -14,11 +14,11 @@ using System.Web.Http.Results;
 
 namespace LagashServer.helper
 {
-    public class InternarServerActionResult : IHttpActionResult
+    public class LagashActionResult : IHttpActionResult
     {
         public string message;
 
-        public InternarServerActionResult(string message)
+        public LagashActionResult(string message)
         {
             this.message = message;
         }
@@ -26,7 +26,7 @@ namespace LagashServer.helper
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
             var response = new HttpResponseMessage(HttpStatusCode.InternalServerError);
-            response.Content = new ObjectContent<InternarServerActionResult>(this, new JsonMediaTypeFormatter());
+            response.Content = new ObjectContent<LagashActionResult>(this, new JsonMediaTypeFormatter());
             return Task.FromResult(response);
         }
     }

@@ -49,7 +49,7 @@ namespace LagashServer.Controllers
             } else
             {
                 // change error status code
-                return new InternarServerActionResult("Invalid user account");
+                return new LagashActionResult("Invalid user account");
             }
         }
     }

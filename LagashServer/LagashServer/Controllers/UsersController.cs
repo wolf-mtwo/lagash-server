@@ -42,7 +42,7 @@ namespace LagashServer.Controllers
             }
             catch (Exception e)
             {
-                return new InternarServerActionResult(e.Message);
+                return new LagashActionResult(e.Message);
             }
 
             return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
@@ -87,7 +87,7 @@ namespace LagashServer.Controllers
 
             if (id != user._id)
             {
-                return BadRequest();
+                return new LagashActionResult("should provide a valid _id");
             }
 
             service.Update(user);

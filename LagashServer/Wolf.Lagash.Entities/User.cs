@@ -11,6 +11,7 @@ namespace Wolf.Lagash.Entities
     {
         [Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[Required(ErrorMessage = "_id is undefined")]
         public int _id { get; set; }
 
         [Required]
