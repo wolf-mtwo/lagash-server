@@ -10,9 +10,9 @@ using Wolf.Lagash.Interfaces;
 
 namespace Wolf.Lagash.Services
 {
-    public class UserService : EFAdapterBase<User>, IUserService
+    public class UsersService : EFAdapterBase<User>, IUsersService
     {
-        public UserService(DbContext Context) : base(Context)
+        public UsersService(DbContext Context) : base(Context)
         {
         }
 

@@ -18,7 +18,7 @@ namespace LagashServer.Controllers
     //[RoutePrefix("p2/users")]
     public class UsersController : ApiController
     {
-        private IUserService service = new UserService(new LagashContext());
+        private IUsersService service = new UsersService(new LagashContext());
 
         // GET: p2/users
         public IEnumerable<User> Getusers()

@@ -15,7 +15,7 @@ namespace LagashServer.Controllers
     //[RoutePrefix("Public")]
     public class LoginController : ApiController
     {
-        private IUserService service = new UserService(new LagashContext());
+        private IUsersService service = new UsersService(new LagashContext());
 
         //public IHttpActionResult GetLogin()
         //{

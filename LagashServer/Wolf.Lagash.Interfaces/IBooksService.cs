@@ -8,11 +8,7 @@ using Wolf.Lagash.Entities;
 
 namespace Wolf.Lagash.Interfaces
 {
-    public interface IUserService : IAdapterBase<User>
+    public interface IBooksService : IAdapterBase<Books>
     {
-        bool userExists(int id);
-        User login(string email, string password);
-        User FindByEmail(String email);
-        void CreateUser(User item);
     }
 }
