@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Wolf.Lagash.Entities
 {
-    public class Books
+    public class Book
     {
         [Key]
         public int _id { get; set; }
@@ -38,6 +38,23 @@ namespace Wolf.Lagash.Entities
 
         [Required]
         public string description { get; set; }
+
         // autors
+        // specimen
+
+        // optative
+        public string valumen { get; set; }
+        public string tome { get; set; }
+        public string pages { get; set; }
+        public string editorial { get; set; }
+        public string country { get; set; }
+        public string city { get; set; }
+        //public string ISBN { get; set; }
+        public string brings { get; set; }
+        public string year { get; set; }
+        public string type { get; set; }
+        public string illustration { get; set; }
+        public string size { get; set; }
+        public string index { get; set; }
     }
 }

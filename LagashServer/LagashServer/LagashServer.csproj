@@ -245,6 +245,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="helper\InternarServerActionResult.cs" />
     <Compile Include="helper\SimpleAuthorizationServerProvider.cs" />
