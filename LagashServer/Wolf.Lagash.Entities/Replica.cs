@@ -14,7 +14,13 @@ namespace Wolf.Lagash.Entities
         public string _id { get; set; }
 
         [Required]
-        [StringLength(15)]
+        [StringLength(36)]
+        public string book_id { get; set; }
+
+        [Required]
+        public int index { get; set; }
+
+        [Required]
         public BookStates state { get; set; }
     }
 }

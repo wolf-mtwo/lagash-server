@@ -8,9 +8,9 @@ namespace Wolf.Lagash.Entities
 {
     public enum BookStates
     {
-        ENABLED,
-        DISABLED,
-        BOOKED,
-        BORROWED
+        ENABLED = 1,
+        DISABLED = 2,
+        BOOKED = 3,
+        BORROWED = 4
     }
 }
