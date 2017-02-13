@@ -12,6 +12,7 @@ namespace Wolf.Core.Interfaces
         IEnumerable<T> Query(Expression<Func<T, bool>> predicate);
         T FindOne(Expression<Func<T, bool>> predicate);
         T FindById(int id);
+        T FindById(String id);
         IEnumerable<T> GetAll();
         IEnumerable<T> GetAllOrderBy(Func<T, object> keySelector);
         IEnumerable<T> GetAllOrderByDescending(Func<T, object> keySelector);

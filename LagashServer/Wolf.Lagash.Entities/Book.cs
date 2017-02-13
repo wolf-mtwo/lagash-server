@@ -10,8 +10,14 @@ namespace Wolf.Lagash.Entities
 {
     public class Book
     {
+        //[Key]
+        //public int _id { get; set; }
+
         [Key]
-        public int _id { get; set; }
+        //[Required]
+        [StringLength(36)]
+        //public string uuid { get; set; }
+        public string _id { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -20,10 +26,6 @@ namespace Wolf.Lagash.Entities
         [Required]
         [StringLength(50)]
         public string code { get; set; }
-        
-        [Required]
-        [StringLength(36)]
-        public string uuid { get; set; }
 
         [Required]
         [StringLength(250)]

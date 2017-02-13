@@ -14,7 +14,8 @@ namespace LagashServer.helper
     {
         public DbSet<User> users { get; set; }
         public DbSet<Book> books { get; set; }
-        
+        public DbSet<Replica> replicas { get; set; }
+
         public LagashContext() : base("LagashContext")
         {
         }

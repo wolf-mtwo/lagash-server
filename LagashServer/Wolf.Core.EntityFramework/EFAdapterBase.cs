@@ -28,6 +28,11 @@ namespace Wolf.Core.EntityFramework
             return context.Set<T>().Find(id);
         }
 
+        public T FindById(string id)
+        {
+            return context.Set<T>().Find(id);
+        }
+
         public T FindOne(Expression<Func<T, bool>> predicate)
         {
             return context.Set<T>().Where(predicate).FirstOrDefault();
