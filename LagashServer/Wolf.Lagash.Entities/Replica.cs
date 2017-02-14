@@ -18,6 +18,9 @@ namespace Wolf.Lagash.Entities
         public string book_id { get; set; }
 
         [Required]
+        public bool enabled { get; set; }
+
+        [Required]
         public int index { get; set; }
 
         [Required]
