@@ -16,12 +16,18 @@ namespace LagashServer.helper
     {
         public void Configuration(IAppBuilder app)
         {
-            HttpConfiguration config = new HttpConfiguration();
+            Database.SetInitializer<LagashContext>(new DropCreateDatabaseIfModelChanges<LagashContext>());
 
-            //ConfigureOAuth(app);
+            HttpConfiguration config = new HttpConfiguration();
+            
             WebApiConfig.Register(config);
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
+
+            /*Database.SetInitializer<LagashContext>(new RecreateDatabaseIfModelChanges<LagashContext>());
+            Database.SetInitializer<LagashContext>(new RecreateDatabaseIfModelChanges<LagashContext>());
+            Database.SetInitializer<LagashContext>(new DropCreateDatabaseIfModelChanges<LagashContext>());*/
+            
         }
 
         public void ConfigureOAuth(IAppBuilder app)

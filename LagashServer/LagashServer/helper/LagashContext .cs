@@ -5,7 +5,7 @@ using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Wolf.Lagash.Entities;
-using LagashServer.Migrations;
+//using LagashServer.Migrations;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LagashServer.helper
@@ -20,11 +20,11 @@ namespace LagashServer.helper
         {
         }
         
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Database.SetInitializer<LagashContext>(null);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
+        }*/
 
         public static LagashContext Create()
         {

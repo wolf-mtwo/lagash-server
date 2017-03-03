@@ -14,6 +14,14 @@ namespace Wolf.Lagash.Entities
         public string _id { get; set; }
 
         [Required]
+        [StringLength(50)]
+        public string code { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string inventory { get; set; }
+
+        [Required]
         [StringLength(36)]
         public string book_id { get; set; }
 
