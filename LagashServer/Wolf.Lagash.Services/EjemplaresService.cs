@@ -10,15 +10,15 @@ using Wolf.Lagash.Interfaces;
 
 namespace Wolf.Lagash.Services
 {
-    public class ReplicasService : EFAdapterBase<Replica>, IReplicasService
+    public class EjemplaresService : EFAdapterBase<Ejemplar>, IEjemplaresService
     {
-        public ReplicasService(DbContext Context) : base(Context)
+        public EjemplaresService(DbContext Context) : base(Context)
         {
         }
 
         public bool exists(String id)
         {
-            return context.Set<Replica>().Count(e => e._id == id) > 0;
+            return context.Set<Ejemplar>().Count(e => e._id == id) > 0;
         }
     }
 }

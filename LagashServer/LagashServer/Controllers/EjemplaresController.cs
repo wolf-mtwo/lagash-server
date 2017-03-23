@@ -15,17 +15,17 @@ using LagashServer.helper;
 
 namespace LagashServer.Controllers
 {
-    public class ReplicasController : ApiController
+    public class EjemplaresController : ApiController
     {
-        private IReplicasService service = new ReplicasService(new LagashContext());
+        private IEjemplaresService service = new EjemplaresService(new LagashContext());
 
-        public IEnumerable<Replica> Get()
+        public IEnumerable<Ejemplar> Get()
         {
             return service.GetAll();
         }
 
-        [ResponseType(typeof(Replica))]
-        public IHttpActionResult Post(Replica item)
+        [ResponseType(typeof(Ejemplar))]
+        public IHttpActionResult Post(Ejemplar item)
         {
             if (!ModelState.IsValid)
             {
@@ -48,7 +48,7 @@ namespace LagashServer.Controllers
         [ResponseType(typeof(Book))]
         public IHttpActionResult Get(String id)
         {
-            Replica item = service.FindById(id);
+            Ejemplar item = service.FindById(id);
             if (item == null)
             {
                 return NotFound();
@@ -60,7 +60,7 @@ namespace LagashServer.Controllers
         [ResponseType(typeof(Book))]
         public IHttpActionResult Delete(String id)
         {
-            Replica item = service.FindById(id);
+            Ejemplar item = service.FindById(id);
             if (item == null)
             {
                 return NotFound();
@@ -72,7 +72,7 @@ namespace LagashServer.Controllers
         }
 
         [ResponseType(typeof(void))]
-        public IHttpActionResult Put(String id, Replica item)
+        public IHttpActionResult Put(String id, Ejemplar item)
         {
             if (!ModelState.IsValid)
             {

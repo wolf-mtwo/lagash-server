@@ -13,10 +13,10 @@ namespace LagashServer.Controllers.books
 {
     public class BReplicaController : ApiController
     {
-        private IReplicasService service = new ReplicasService(new LagashContext());
+        private IEjemplaresService service = new EjemplaresService(new LagashContext());
 
         [Route("v2/books/{id}/replicas")]
-        public IEnumerable<Replica> Get(string id)
+        public IEnumerable<Ejemplar> Get(string id)
         {
             return service.Query(o => o.book_id == id);
         }

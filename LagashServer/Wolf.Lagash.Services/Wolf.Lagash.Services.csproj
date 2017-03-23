@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ReplicasService.cs" />
+    <Compile Include="EjemplaresService.cs" />
     <Compile Include="BooksService.cs" />
     <Compile Include="UsersService.cs" />
     <Compile Include="PersonService.cs" />
