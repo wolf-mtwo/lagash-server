@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="IEjemplaresService.cs" />
     <Compile Include="IBooksService.cs" />
+    <Compile Include="ILibrariesService.cs" />
     <Compile Include="IUsersService.cs" />
     <Compile Include="IPersonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

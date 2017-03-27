@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="EjemplaresService.cs" />
     <Compile Include="BooksService.cs" />
+    <Compile Include="LibrariesService.cs" />
     <Compile Include="UsersService.cs" />
     <Compile Include="PersonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
