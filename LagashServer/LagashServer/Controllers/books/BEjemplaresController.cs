@@ -11,11 +11,11 @@ using Wolf.Lagash.Services;
 
 namespace LagashServer.Controllers.books
 {
-    public class BReplicaController : ApiController
+    public class BEjemplaresController : ApiController
     {
         private IEjemplaresService service = new EjemplaresService(new LagashContext());
 
-        [Route("v2/books/{id}/replicas")]
+        [Route("v2/books/{id}/ejemplares")]
         public IEnumerable<Ejemplar> Get(string id)
         {
             return service.Query(o => o.book_id == id);

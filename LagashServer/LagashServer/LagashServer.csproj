@@ -241,12 +241,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\books\BReplicaController.cs" />
+    <Compile Include="Controllers\books\BEjemplaresController.cs" />
     <Compile Include="Controllers\EjemplaresController.cs" />
-    <Compile Include="Controllers\MasterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="helper\InternarServerActionResult.cs" />

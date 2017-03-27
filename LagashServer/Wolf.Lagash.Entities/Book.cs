@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Wolf.Lagash.Entities
 {
-    public class Book
+    public class Book : Base
     {
         //[Key]
         //public int _id { get; set; }
@@ -18,8 +18,7 @@ namespace Wolf.Lagash.Entities
         [StringLength(36)]
         //public string uuid { get; set; }
         public string _id { get; set; }
-
-
+        
         [Required]
         [StringLength(250)]
         public string title { get; set; }

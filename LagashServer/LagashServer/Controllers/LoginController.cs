@@ -12,18 +12,11 @@ using Wolf.Lagash.Services;
 
 namespace LagashServer.Controllers
 {
-    //[RoutePrefix("Public")]
+    [RoutePrefix("p1/login")]
     public class LoginController : ApiController
     {
         private IUsersService service = new UsersService(new LagashContext());
-
-        //public IHttpActionResult GetLogin()
-        //{
-        //    return null;
-        //}
-
-        // POST: api/login
-        //[Route("p1/login")]
+        
         [ResponseType(typeof(User))]
         public IHttpActionResult Post(Login login)
         {

@@ -15,26 +15,27 @@ using LagashServer.helper;
 
 namespace LagashServer.Controllers
 {
-    //[RoutePrefix("p2/users")]
+    [RoutePrefix("p1/users")]
     public class UsersController : ApiController
     {
         private IUsersService service = new UsersService(new LagashContext());
 
-        // GET: p2/users
-        public IEnumerable<User> Getusers()
+        // GET: p1/users
+        [Route("")]
+        public IEnumerable<User> Get()
         {
             return service.GetAll();
         }
 
         // POST: api/users
         [ResponseType(typeof(User))]
-        public IHttpActionResult PostUser(User item)
+        public IHttpActionResult Post(User item)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            
+
             try
             {
                 service.CreateUser(item);
@@ -50,7 +51,7 @@ namespace LagashServer.Controllers
 
         // GET: api/users/5
         [ResponseType(typeof(User))]
-        public IHttpActionResult GetUser(int id)
+        public IHttpActionResult Get(int id)
         {
             User user = service.FindById(id);
             if (user == null)
@@ -63,7 +64,7 @@ namespace LagashServer.Controllers
 
         // DELETE: api/users/5
         [ResponseType(typeof(User))]
-        public IHttpActionResult DeleteUser(int id)
+        public IHttpActionResult Delete(int id)
         {
             User user = service.FindById(id);
             if (user == null)
@@ -78,7 +79,7 @@ namespace LagashServer.Controllers
 
         // PUT: api/users/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutUser(int id, User user)
+        public IHttpActionResult Put(int id, User user)
         {
             if (!ModelState.IsValid)
             {

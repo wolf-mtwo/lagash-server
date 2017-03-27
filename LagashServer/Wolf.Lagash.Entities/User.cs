@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Wolf.Lagash.Entities
 {
-    public class User
+    public class User : Base
     {
         [Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]

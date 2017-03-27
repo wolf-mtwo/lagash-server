@@ -15,6 +15,7 @@ using LagashServer.helper;
 
 namespace LagashServer.Controllers
 {
+    //[RoutePrefix("v1/books")]
     public class BooksController : ApiController
     {
         private IBooksService service = new BooksService(new LagashContext());
@@ -31,7 +32,7 @@ namespace LagashServer.Controllers
             {
                 return BadRequest(ModelState);
             }
-            
+
             try
             {
                 service.Create(item);
