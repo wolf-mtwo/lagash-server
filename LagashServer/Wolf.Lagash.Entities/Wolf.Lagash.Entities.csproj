@@ -59,7 +59,7 @@
     <Compile Include="Ejemplar.cs" />
     <Compile Include="BookStates.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="UsersMap.cs" />
+    <Compile Include="map\UserMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

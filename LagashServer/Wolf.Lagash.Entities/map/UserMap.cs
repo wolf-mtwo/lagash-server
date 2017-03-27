@@ -5,15 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wolf.Lagash.Entities
+namespace Wolf.Lagash.Entities.map
 {
-    public class Library : Base
+    public class UserMap : Base
     {
         [Key]
         public int _id { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string name { get; set; }
+        public int user_id { get; set; }
+
+        [Required]
+        public int library_id { get; set; }
     }
 }

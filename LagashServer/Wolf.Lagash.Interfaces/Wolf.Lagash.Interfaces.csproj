@@ -45,6 +45,7 @@
     <Compile Include="ILibrariesService.cs" />
     <Compile Include="IUsersService.cs" />
     <Compile Include="IPersonService.cs" />
+    <Compile Include="map\IUsersMapService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
