@@ -8,29 +8,23 @@ using System.Threading.Tasks;
 
 namespace Wolf.Lagash.Entities
 {
-    public class Ejemplar
+    public class Tesis : Base
     {
         [Key]
         [StringLength(36)]
         public string _id { get; set; }
-
-        [Required]
-        [Index(IsUnique = true)]
-        [StringLength(50)]
-        public string code { get; set; }
-
-        [Required]
-        [Index(IsUnique = true)]
-        [StringLength(100)]
-        public string inventory { get; set; }
-
-        [Required]
-        [StringLength(36)]
-        public string book_id { get; set; }
         
         [Required]
-        public int index { get; set; }
+        [StringLength(250)]
+        public string title { get; set; }
         
+        [Required]
+        [StringLength(250)]
+        public string description { get; set; }
+        
+        [StringLength(1000)]
+        public string index { get; set; }
+
         [Required]
         public bool enabled { get; set; }
 
