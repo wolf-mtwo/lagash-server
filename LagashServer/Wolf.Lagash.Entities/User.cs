@@ -10,8 +10,6 @@ namespace Wolf.Lagash.Entities
     public class User : Base
     {
         [Key]
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //[Required(ErrorMessage = "_id is undefined")]
         public int _id { get; set; }
 
         [Required]
@@ -29,19 +27,9 @@ namespace Wolf.Lagash.Entities
         [Required]
         [Index(IsUnique = true)]
         [StringLength(100)]
-        //[Required(ErrorMessage = "Title cannot be empty")]
         public string email { get; set; }
 
-        [Required]
-        [StringLength(20)]
-        public string role { get; set; }
-
-        //[Required]
-        //[StringLength(20)]
-        //public string role2 { get; set; }
-
         [NotMapped]
-        //[ScaffoldColumn(false)] TODO: Does not work
         public Token token { get; set; }
     }
 

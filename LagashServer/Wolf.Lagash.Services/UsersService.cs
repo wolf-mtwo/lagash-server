@@ -18,13 +18,11 @@ namespace Wolf.Lagash.Services
 
         public User login(string email, string password)
         {
-            if (email == null)
-            {
+            if (email == null) {
                 throw new Exception("email is undefined");
             }
 
-            if (password == null)
-            {
+            if (password == null) {
                 throw new Exception("password is undefined");
             }
             return FindOne(o => o.email == email && o.password == password);
@@ -37,8 +35,7 @@ namespace Wolf.Lagash.Services
 
         public User FindByEmail(String email)
         {
-            if (email == null)
-            {
+            if (email == null) {
                 throw new Exception("email is undefined");
             }
             return FindOne(o => o.email == email);
@@ -47,11 +44,9 @@ namespace Wolf.Lagash.Services
         public void CreateUser(User item)
         {
             User user = FindByEmail(item.email);
-            if (user == null)
-            {
+            if (user == null) {
                 Create(item);
-            } else
-            {
+            } else {
                 throw new Exception("Ya existe un usuario con el mismo email");
             }
         }

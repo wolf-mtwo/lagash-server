@@ -14,8 +14,7 @@ namespace Wolf.Lagash.Entities
         {
             created = DateTime.Now;
         }
-        //[Required, DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity), DataMember]
+
         [Required]
         public DateTime created { get; set; }
     }

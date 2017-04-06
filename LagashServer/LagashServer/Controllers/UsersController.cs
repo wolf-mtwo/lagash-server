@@ -26,66 +26,58 @@ namespace LagashServer.Controllers
             return service.GetAll();
         }
 
+        [Route("")]
         [ResponseType(typeof(User))]
         public IHttpActionResult Post(User item)
         {
-            if (!ModelState.IsValid)
-            {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-
-            try
-            {
+            try {
                 service.CreateUser(item);
                 service.Commit();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
 
             return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
         }
 
+        [Route("{id}")]
         [ResponseType(typeof(User))]
         public IHttpActionResult Get(int id)
         {
             User user = service.FindById(id);
-            if (user == null)
-            {
+            if (user == null) {
                 return NotFound();
             }
-
             return Ok(user);
         }
 
+        [Route("{id}")]
         [ResponseType(typeof(User))]
         public IHttpActionResult Delete(int id)
         {
             User user = service.FindById(id);
-            if (user == null)
-            {
+            if (user == null) {
                 return NotFound();
             }
             service.Delete(user);
             service.Commit();
-
             return Ok(user);
         }
 
+        [Route("{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, User user)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-
             if (id != user._id) {
                 return new LagashActionResult("should provide a valid _id");
             }
-
             service.Update(user);
-
             try {
                 service.Commit();
             } catch (DbUpdateConcurrencyException) {
@@ -95,7 +87,6 @@ namespace LagashServer.Controllers
                     throw;
                 }
             }
-
             return Ok(user);
         }
     }

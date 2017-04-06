@@ -20,28 +20,21 @@ namespace LagashServer.Controllers
         [ResponseType(typeof(User))]
         public IHttpActionResult Post(Login login)
         {
-            if (!ModelState.IsValid)
-            {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
             User user = service.login(login.email, login.password);
-            if (user != null)
-            {
-                //user session = new Session();
-                //session.name = user.name;
-                var payload = new Dictionary<string, object>()
-                {
-                    { "_id", user._id },
-                    { "email", user.email }
+            if (user != null) {
+                var payload = new Dictionary<string, object>() {
+                    {"_id", user._id},
+                    {"email", user.email}
                 };
                 var secretKey = "lagash-server";
                 user.token = new Token() {
                     session_id = JWT.JsonWebToken.Encode(payload, secretKey, JWT.JwtHashAlgorithm.HS256)
                 };
                 return Ok(user);
-            } else
-            {
-                // change error status code
+            } else {
                 return new LagashActionResult("Invalid user account");
             }
         }

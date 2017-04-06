@@ -13,18 +13,13 @@ namespace LagashServer.helper
     public class LagashContext : DbContext
     {
         public DbSet<User> users { get; set; }
+        public DbSet<Library> libraries { get; set; }
         public DbSet<Book> books { get; set; }
-        public DbSet<Ejemplar> replicas { get; set; }
+        public DbSet<Ejemplar> ejemplares { get; set; }
 
         public LagashContext() : base("LagashContext")
         {
         }
-        
-        /*protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            //Database.SetInitializer<LagashContext>(null);
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }*/
 
         public static LagashContext Create()
         {
