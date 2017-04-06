@@ -30,17 +30,17 @@ namespace LagashServer.Controllers
         [ResponseType(typeof(User))]
         public IHttpActionResult Post(User item)
         {
+            User user = null;
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
             try {
-                service.CreateUser(item);
+                user = service.CreateUser(item);
                 service.Commit();
             } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
-
-            return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
+            return Ok(user);
         }
 
         [Route("{id}")]

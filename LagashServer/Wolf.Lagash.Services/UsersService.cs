@@ -21,7 +21,6 @@ namespace Wolf.Lagash.Services
             if (email == null) {
                 throw new Exception("email is undefined");
             }
-
             if (password == null) {
                 throw new Exception("password is undefined");
             }
@@ -41,14 +40,13 @@ namespace Wolf.Lagash.Services
             return FindOne(o => o.email == email);
         }
 
-        public void CreateUser(User item)
+        public User CreateUser(User item)
         {
             User user = FindByEmail(item.email);
-            if (user == null) {
-                Create(item);
-            } else {
-                throw new Exception("Ya existe un usuario con el mismo email");
+            if (user != null) {
+                throw new Exception("ya existe un usuario con el mismo email");
             }
+            return Create(item);
         }
     }
 }

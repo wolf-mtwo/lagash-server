@@ -58,9 +58,9 @@ namespace Wolf.Core.EntityFramework
             context.SaveChanges();
         }
 
-        public void Create(T entity)
+        public T Create(T entity)
         {
-            context.Set<T>().Add(entity);
+            return context.Set<T>().Add(entity);
         }
 
         public void Update(T entity)
@@ -68,9 +68,9 @@ namespace Wolf.Core.EntityFramework
             context.Entry(entity).State = EntityState.Modified;
         }
 
-        public void Delete(T entity)
+        public T Delete(T entity)
         {
-            context.Set<T>().Remove(entity);
+            return context.Set<T>().Remove(entity);
         }
 
         public void Dispose()
