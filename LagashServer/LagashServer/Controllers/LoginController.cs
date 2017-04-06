@@ -16,7 +16,8 @@ namespace LagashServer.Controllers
     public class LoginController : ApiController
     {
         private IUsersService service = new UsersService(new LagashContext());
-        
+
+        [Route("")]
         [ResponseType(typeof(User))]
         public IHttpActionResult Post(Login login)
         {
