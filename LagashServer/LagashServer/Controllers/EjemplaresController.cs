@@ -27,18 +27,14 @@ namespace LagashServer.Controllers
         [ResponseType(typeof(Ejemplar))]
         public IHttpActionResult Post(Ejemplar item)
         {
-            if (!ModelState.IsValid)
-            {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
             
-            try
-            {
+            try {
                 service.Create(item);
                 service.Commit();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
 
@@ -49,8 +45,7 @@ namespace LagashServer.Controllers
         public IHttpActionResult Get(String id)
         {
             Ejemplar item = service.FindById(id);
-            if (item == null)
-            {
+            if (item == null) {
                 return NotFound();
             }
 
@@ -61,8 +56,7 @@ namespace LagashServer.Controllers
         public IHttpActionResult Delete(String id)
         {
             Ejemplar item = service.FindById(id);
-            if (item == null)
-            {
+            if (item == null) {
                 return NotFound();
             }
             service.Delete(item);
@@ -74,30 +68,20 @@ namespace LagashServer.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(String id, Ejemplar item)
         {
-            if (!ModelState.IsValid)
-            {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-
-            if (id != item._id)
-            {
+            if (id != item._id) {
                 return new LagashActionResult("should provide a valid _id");
             }
-
             service.Update(item);
 
-            try
-            {
+            try {
                 service.Commit();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!service.exists(id))
-                {
+            } catch (DbUpdateConcurrencyException) {
+                if (!service.exists(id)) {
                     return NotFound();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }

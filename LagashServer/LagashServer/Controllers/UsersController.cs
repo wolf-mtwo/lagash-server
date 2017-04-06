@@ -20,14 +20,12 @@ namespace LagashServer.Controllers
     {
         private IUsersService service = new UsersService(new LagashContext());
 
-        // GET: p1/users
         [Route("")]
         public IEnumerable<User> Get()
         {
             return service.GetAll();
         }
 
-        // POST: api/users
         [ResponseType(typeof(User))]
         public IHttpActionResult Post(User item)
         {
@@ -49,7 +47,6 @@ namespace LagashServer.Controllers
             return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
         }
 
-        // GET: api/users/5
         [ResponseType(typeof(User))]
         public IHttpActionResult Get(int id)
         {
@@ -62,7 +59,6 @@ namespace LagashServer.Controllers
             return Ok(user);
         }
 
-        // DELETE: api/users/5
         [ResponseType(typeof(User))]
         public IHttpActionResult Delete(int id)
         {
@@ -77,34 +73,25 @@ namespace LagashServer.Controllers
             return Ok(user);
         }
 
-        // PUT: api/users/5
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(int id, User user)
         {
-            if (!ModelState.IsValid)
-            {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
 
-            if (id != user._id)
-            {
+            if (id != user._id) {
                 return new LagashActionResult("should provide a valid _id");
             }
 
             service.Update(user);
 
-            try
-            {
+            try {
                 service.Commit();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!service.userExists(id))
-                {
+            } catch (DbUpdateConcurrencyException) {
+                if (!service.userExists(id)) {
                     return NotFound();
-                }
-                else
-                {
+                } else {
                     throw;
                 }
             }
