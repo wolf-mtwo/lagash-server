@@ -14,14 +14,6 @@ namespace LagashServer
             // Web API configuration and services
 
             // Web API routes
-            
-
-            //config.Routes.MapHttpRoute(
-            //     name: "AuthApi",
-            //     routeTemplate: "p1/{controller}/{id}",
-            //     defaults: new { controller = "Login", id = RouteParameter.Optional }
-            // );
-
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "v1/{controller}/{id}",
@@ -29,7 +21,6 @@ namespace LagashServer
             );
 
             config.MapHttpAttributeRoutes();
-
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }
