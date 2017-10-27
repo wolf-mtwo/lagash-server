@@ -8,7 +8,7 @@ using Wolf.Lagash.Entities.map;
 
 namespace Wolf.Lagash.Interfaces.map
 {
-    public interface IUsersMapService : IAdapterBase<UserMap>
+    public interface IAuthorMapService : IAdapterBase<AuthorMap>
     {
         bool exists(int id);
     }

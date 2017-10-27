@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="author\IAuthorService.cs" />
+    <Compile Include="author\IAuthorMapService.cs" />
     <Compile Include="IEjemplaresService.cs" />
     <Compile Include="IBooksService.cs" />
     <Compile Include="ILibrariesService.cs" />

@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wolf.Core.Interfaces;
-using Wolf.Lagash.Entities.map;
+using Wolf.Lagash.Entities;
 
-namespace Wolf.Lagash.Interfaces.map
+namespace Wolf.Lagash.Interfaces
 {
-    public interface IUsersMapService : IAdapterBase<UserMap>
+    public interface IAuthorService : IAdapterBase<Author>
     {
-        bool exists(int id);
+        bool exists(String id);
     }
 }

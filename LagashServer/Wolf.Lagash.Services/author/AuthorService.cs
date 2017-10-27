@@ -6,21 +6,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Wolf.Core.EntityFramework;
 using Wolf.Lagash.Entities;
-using Wolf.Lagash.Entities.map;
 using Wolf.Lagash.Interfaces;
-using Wolf.Lagash.Interfaces.map;
 
 namespace Wolf.Lagash.Services
 {
-    public class UsersMapService : EFAdapterBase<UserMap>, IUsersMapService
+    public class AuthorService : EFAdapterBase<Author>, IAuthorService
     {
-        public UsersMapService(DbContext Context) : base(Context)
+        public AuthorService(DbContext Context) : base(Context)
         {
         }
 
-        public bool exists(int id)
+        public bool exists(String id)
         {
-            return context.Set<UserMap>().Count(e => e._id == id) > 0;
+            return context.Set<Author>().Count(e => e._id == id) > 0;
         }
     }
 }
