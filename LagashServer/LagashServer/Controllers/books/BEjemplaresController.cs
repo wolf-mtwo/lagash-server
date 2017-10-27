@@ -20,5 +20,22 @@ namespace LagashServer.Controllers.books
         {
             return service.Query(o => o.book_id == id);
         }
+
+        [Route("v2/books/{id}/ejemplares")]
+        public IHttpActionResult Post(Ejemplar item)
+        {
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
+            
+            try {
+                service.Create(item);
+                service.Commit();
+            } catch (Exception e) {
+                return new LagashActionResult(e.Message);
+            }
+
+            return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
+        }
     }
 }
