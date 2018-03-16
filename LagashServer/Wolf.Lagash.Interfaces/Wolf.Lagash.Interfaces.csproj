@@ -42,9 +42,9 @@
   <ItemGroup>
     <Compile Include="author\IAuthorService.cs" />
     <Compile Include="author\IAuthorMapService.cs" />
+    <Compile Include="ICatalogsService.cs" />
     <Compile Include="IEjemplaresService.cs" />
     <Compile Include="IBooksService.cs" />
-    <Compile Include="ILibrariesService.cs" />
     <Compile Include="IUsersService.cs" />
     <Compile Include="IPersonService.cs" />
     <Compile Include="map\IUsersMapService.cs" />

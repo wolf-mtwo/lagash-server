@@ -56,7 +56,7 @@
     <Compile Include="Book.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Daily.cs" />
-    <Compile Include="Library.cs" />
+    <Compile Include="Catalog.cs" />
     <Compile Include="News.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

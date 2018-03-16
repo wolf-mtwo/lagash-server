@@ -8,7 +8,7 @@ using Wolf.Lagash.Entities;
 
 namespace Wolf.Lagash.Interfaces
 {
-    public interface ILibrariesService : IAdapterBase<Library>
+    public interface ICatalogsService : IAdapterBase<Catalog>
     {
         bool exists(int id);
     }

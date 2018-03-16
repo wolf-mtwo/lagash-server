@@ -15,17 +15,17 @@ using LagashServer.helper;
 
 namespace LagashServer.Controllers
 {
-    public class LibrariesController : ApiController
+    public class CatalogsController : ApiController
     {
-        private ILibrariesService service = new LibrariesService(new LagashContext());
+        private ICatalogsService service = new CatalogsService(new LagashContext());
 
-        public IEnumerable<Library> Get()
+        public IEnumerable<Catalog> Get()
         {
             return service.GetAll();
         }
 
-        [ResponseType(typeof(Library))]
-        public IHttpActionResult Post(Library item)
+        [ResponseType(typeof(Catalog))]
+        public IHttpActionResult Post(Catalog item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
@@ -41,10 +41,10 @@ namespace LagashServer.Controllers
             return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
         }
 
-        [ResponseType(typeof(Library))]
+        [ResponseType(typeof(Catalog))]
         public IHttpActionResult Get(int id)
         {
-            Library item = service.FindById(id);
+            Catalog item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -52,10 +52,10 @@ namespace LagashServer.Controllers
             return Ok(item);
         }
 
-        [ResponseType(typeof(Library))]
+        [ResponseType(typeof(Catalog))]
         public IHttpActionResult Delete(int id)
         {
-            Library item = service.FindById(id);
+            Catalog item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -66,7 +66,7 @@ namespace LagashServer.Controllers
         }
 
         [ResponseType(typeof(void))]
-        public IHttpActionResult Put(int id, Library item)
+        public IHttpActionResult Put(int id, Catalog item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);

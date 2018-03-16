@@ -15,7 +15,7 @@ using LagashServer.helper;
 
 namespace LagashServer.Controllers
 {
-    [RoutePrefix("p1/users")]
+    [RoutePrefix("v1/users")]
     public class UsersController : ApiController
     {
         private IUsersService service = new UsersService(new LagashContext());
