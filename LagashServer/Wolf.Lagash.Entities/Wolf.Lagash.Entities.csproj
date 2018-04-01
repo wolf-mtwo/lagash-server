@@ -52,6 +52,9 @@
     <Compile Include="author\AuthorMap.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="author\Author.cs" />
+    <Compile Include="magazine\Magazine.cs" />
+    <Compile Include="magazine\MagazineCatalog.cs" />
+    <Compile Include="magazine\MagazineEjemplar.cs" />
     <Compile Include="thesis\ThesisEjemplar.cs" />
     <Compile Include="thesis\ThesisCatalog.cs" />
     <Compile Include="thesis\Thesis.cs" />

@@ -47,6 +47,9 @@
     <Compile Include="books\IBookService.cs" />
     <Compile Include="IUsersService.cs" />
     <Compile Include="IPersonService.cs" />
+    <Compile Include="magazine\IMagazineCatalogService.cs" />
+    <Compile Include="magazine\IMagazineEjemplarService.cs" />
+    <Compile Include="magazine\IMagazineService.cs" />
     <Compile Include="map\IUsersMapService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="thesis\IThesisCatalogService.cs" />

@@ -51,6 +51,9 @@
   <ItemGroup>
     <Compile Include="author\AuthorService.cs" />
     <Compile Include="author\AuthorMapService.cs" />
+    <Compile Include="magazine\MagazineCatalogService.cs" />
+    <Compile Include="magazine\MagazineEjemplarService.cs" />
+    <Compile Include="magazine\MagazineService.cs" />
     <Compile Include="thesis\ThesisCatalogService.cs" />
     <Compile Include="thesis\ThesisEjemplarService.cs" />
     <Compile Include="thesis\ThesisService.cs" />
