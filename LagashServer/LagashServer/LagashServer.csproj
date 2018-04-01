@@ -242,6 +242,9 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\v1\books\BookCatalogsController.cs" />
+    <Compile Include="Controllers\v1\thesis\ThesisCatalogsController.cs" />
+    <Compile Include="Controllers\v1\thesis\ThesisEjemplaresController.cs" />
+    <Compile Include="Controllers\v1\thesis\ThesisController.cs" />
     <Compile Include="Controllers\v2\books\BookEjemplaresController.cs" />
     <Compile Include="Controllers\v1\books\BookEjemplaresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
