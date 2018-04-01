@@ -13,28 +13,26 @@ namespace LagashServer.Controllers.books
 {
     public class BEjemplaresController : ApiController
     {
-        private IEjemplaresService service = new EjemplaresService(new LagashContext());
+        private IBookEjemplaresService service = new BookEjemplaresService(new LagashContext());
 
         [Route("v2/books/{id}/ejemplares")]
-        public IEnumerable<Ejemplar> Get(string id)
+        public IEnumerable<BookEjemplar> Get(string id)
         {
             return service.Query(o => o.book_id == id);
         }
 
         [Route("v2/books/{id}/ejemplares")]
-        public IHttpActionResult Post(Ejemplar item)
+        public IHttpActionResult Post(BookEjemplar item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-            
             try {
                 service.Create(item);
                 service.Commit();
             } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
-
             return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
         }
     }

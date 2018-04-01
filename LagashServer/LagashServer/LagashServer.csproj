@@ -245,6 +245,7 @@
     <Compile Include="Controllers\books\BEjemplaresController.cs" />
     <Compile Include="Controllers\EjemplaresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\UsersController.cs" />

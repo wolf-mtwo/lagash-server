@@ -11,7 +11,6 @@ namespace Wolf.Lagash.Entities
     public class Author : Base
     {
         [Key]
-        //[Required]
         [StringLength(36)]
         public string _id { get; set; }
 

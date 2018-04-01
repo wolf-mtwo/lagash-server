@@ -12,61 +12,58 @@ using Wolf.Lagash.Services;
 using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
+using Wolf.Lagash.Entities.books;
 
 namespace LagashServer.Controllers
 {
     public class EjemplaresController : ApiController
     {
-        private IEjemplaresService service = new EjemplaresService(new LagashContext());
+        private IBookEjemplaresService service = new BookEjemplaresService(new LagashContext());
 
-        public IEnumerable<Ejemplar> Get()
+        public IEnumerable<BookEjemplar> Get()
         {
             return service.GetAll();
         }
 
-        [ResponseType(typeof(Ejemplar))]
-        public IHttpActionResult Post(Ejemplar item)
+        [ResponseType(typeof(BookEjemplar))]
+        public IHttpActionResult Post(BookEjemplar item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-            
             try {
                 service.Create(item);
                 service.Commit();
             } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
-
             return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
         }
 
         [ResponseType(typeof(Book))]
         public IHttpActionResult Get(String id)
         {
-            Ejemplar item = service.FindById(id);
+            BookEjemplar item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
-
             return Ok(item);
         }
 
         [ResponseType(typeof(Book))]
         public IHttpActionResult Delete(String id)
         {
-            Ejemplar item = service.FindById(id);
+            BookEjemplar item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
             service.Delete(item);
             service.Commit();
-
             return Ok(item);
         }
 
         [ResponseType(typeof(void))]
-        public IHttpActionResult Put(String id, Ejemplar item)
+        public IHttpActionResult Put(String id, BookEjemplar item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
@@ -75,7 +72,6 @@ namespace LagashServer.Controllers
                 return new LagashActionResult("should provide a valid _id");
             }
             service.Update(item);
-
             try {
                 service.Commit();
             } catch (DbUpdateConcurrencyException) {
@@ -85,7 +81,6 @@ namespace LagashServer.Controllers
                     throw;
                 }
             }
-
             return Ok(item);
         }
     }

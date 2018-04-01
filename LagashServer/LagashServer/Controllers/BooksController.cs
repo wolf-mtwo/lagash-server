@@ -12,10 +12,11 @@ using Wolf.Lagash.Services;
 using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
+using Wolf.Lagash.Entities.books;
 
 namespace LagashServer.Controllers
 {
-    //[RoutePrefix("v1/books")]
+    [RoutePrefix("v1/books")]
     public class BooksController : ApiController
     {
         private IBooksService service = new BooksService(new LagashContext());

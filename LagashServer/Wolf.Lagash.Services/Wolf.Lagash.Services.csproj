@@ -52,7 +52,7 @@
     <Compile Include="author\AuthorService.cs" />
     <Compile Include="author\AuthorMapService.cs" />
     <Compile Include="CatalogsService.cs" />
-    <Compile Include="EjemplaresService.cs" />
+    <Compile Include="BookEjemplaresService.cs" />
     <Compile Include="BooksService.cs" />
     <Compile Include="map\UsersMapService.cs" />
     <Compile Include="UsersService.cs" />
