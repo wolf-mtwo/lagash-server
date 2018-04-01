@@ -8,8 +8,8 @@ using Wolf.Lagash.Entities;
 
 namespace Wolf.Lagash.Interfaces
 {
-    public interface ICatalogsService : IAdapterBase<BookCatalog>
+    public interface IBookEjemplarService : IAdapterBase<BookEjemplar>
     {
-        bool exists(int id);
+        bool exists(String id);
     }
 }

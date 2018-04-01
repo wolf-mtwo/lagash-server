@@ -9,11 +9,11 @@ using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using Wolf.Lagash.Services;
 
-namespace LagashServer.Controllers.books
+namespace LagashServer.Controllers.v2.books
 {
-    public class BEjemplaresController : ApiController
+    public class BookEjemplaresController : ApiController
     {
-        private IBookEjemplaresService service = new BookEjemplaresService(new LagashContext());
+        private IBookEjemplarService service = new BookEjemplarService(new LagashContext());
 
         [Route("v2/books/{id}/ejemplares")]
         public IEnumerable<BookEjemplar> Get(string id)
