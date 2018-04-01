@@ -51,9 +51,12 @@
   <ItemGroup>
     <Compile Include="author\AuthorService.cs" />
     <Compile Include="author\AuthorMapService.cs" />
-    <Compile Include="CatalogsService.cs" />
-    <Compile Include="BookEjemplaresService.cs" />
-    <Compile Include="BooksService.cs" />
+    <Compile Include="thesis\ThesisCatalogService.cs" />
+    <Compile Include="thesis\ThesisEjemplaresService.cs" />
+    <Compile Include="thesis\ThesisService.cs" />
+    <Compile Include="books\BookCatalogService.cs" />
+    <Compile Include="books\BookEjemplaresService.cs" />
+    <Compile Include="books\BookService.cs" />
     <Compile Include="map\UsersMapService.cs" />
     <Compile Include="UsersService.cs" />
     <Compile Include="PersonService.cs" />

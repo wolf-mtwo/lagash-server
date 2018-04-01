@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Wolf.Lagash.Entities
 {
-    public class Tesis : Base
+    public class Thesis : Base
     {
         [Key]
         [StringLength(36)]
@@ -29,6 +29,8 @@ namespace Wolf.Lagash.Entities
         public bool enabled { get; set; }
 
         [Required]
-        public BookStates state { get; set; }
+        public string state { get; set; }
+
+        public string state_catalog_id { get; set; }
     }
 }

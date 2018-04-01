@@ -42,13 +42,16 @@
   <ItemGroup>
     <Compile Include="author\IAuthorService.cs" />
     <Compile Include="author\IAuthorMapService.cs" />
-    <Compile Include="ICatalogsService.cs" />
-    <Compile Include="IBookEjemplaresService.cs" />
-    <Compile Include="IBooksService.cs" />
+    <Compile Include="books\IBookCatalogsService.cs" />
+    <Compile Include="books\IBookEjemplaresService.cs" />
+    <Compile Include="books\IBookService.cs" />
     <Compile Include="IUsersService.cs" />
     <Compile Include="IPersonService.cs" />
     <Compile Include="map\IUsersMapService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="thesis\IThesisCatalogsService.cs" />
+    <Compile Include="thesis\IThesisEjemplaresService.cs" />
+    <Compile Include="thesis\IThesisService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wolf.Core.Interfaces\Wolf.Core.Interfaces.csproj">

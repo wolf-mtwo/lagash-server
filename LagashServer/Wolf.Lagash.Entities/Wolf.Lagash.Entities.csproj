@@ -52,7 +52,9 @@
     <Compile Include="author\AuthorMap.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="author\Author.cs" />
-    <Compile Include="Tesis.cs" />
+    <Compile Include="thesis\ThesisEjemplar.cs" />
+    <Compile Include="thesis\ThesisCatalog.cs" />
+    <Compile Include="thesis\Thesis.cs" />
     <Compile Include="books\Book.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Daily.cs" />

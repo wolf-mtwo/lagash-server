@@ -34,6 +34,7 @@ namespace Wolf.Lagash.Entities.books
         [StringLength(250)]
         public string description { get; set; }
 
+        public string state_catalog_id { get; set; }
         // autors
         // specimen
 
