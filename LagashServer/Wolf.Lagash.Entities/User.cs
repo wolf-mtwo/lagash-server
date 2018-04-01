@@ -10,7 +10,8 @@ namespace Wolf.Lagash.Entities
     public class User : Base
     {
         [Key]
-        public int _id { get; set; }
+        [StringLength(36)]
+        public string _id { get; set; }
 
         [Required]
         [StringLength(100)]

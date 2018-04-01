@@ -16,6 +16,7 @@ using Wolf.Lagash.Entities.books;
 
 namespace LagashServer.Controllers.v1.books
 {
+    [RoutePrefix("v1/ejemplares")]
     public class BookEjemplaresController : ApiController
     {
         private IBookEjemplarService service = new BookEjemplarService(new LagashContext());
@@ -40,6 +41,7 @@ namespace LagashServer.Controllers.v1.books
             return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
         }
 
+        [Route("{id}")]
         [ResponseType(typeof(Book))]
         public IHttpActionResult Get(String id)
         {

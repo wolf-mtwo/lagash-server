@@ -11,17 +11,18 @@ using Wolf.Lagash.Services;
 
 namespace LagashServer.Controllers.v2.books
 {
-    public class BookEjemplaresController : ApiController
+    [RoutePrefix("v2/books")]
+    public class V2BookEjemplaresController : ApiController
     {
         private IBookEjemplarService service = new BookEjemplarService(new LagashContext());
 
-        [Route("v2/books/{id}/ejemplares")]
+        [Route("{id}/ejemplares")]
         public IEnumerable<BookEjemplar> Get(string id)
         {
             return service.Query(o => o.book_id == id);
         }
 
-        [Route("v2/books/{id}/ejemplares")]
+        [Route("{id}/ejemplares")]
         public IHttpActionResult Post(BookEjemplar item)
         {
             if (!ModelState.IsValid) {
@@ -33,7 +34,7 @@ namespace LagashServer.Controllers.v2.books
             } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
-            return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
+            return Ok(item);
         }
     }
 }

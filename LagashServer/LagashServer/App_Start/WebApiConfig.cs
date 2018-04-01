@@ -14,11 +14,11 @@ namespace LagashServer
             // Web API configuration and services
 
             // Web API routes
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "v1/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "v1/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
 
             config.MapHttpAttributeRoutes();
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();

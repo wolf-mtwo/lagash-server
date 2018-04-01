@@ -14,9 +14,9 @@ namespace LagashServer.helper
     public class LagashContext : DbContext
     {
         public DbSet<User> users { get; set; }
-        public DbSet<BookCatalog> catalogs { get; set; }
+        public DbSet<BookCatalog> book_catalog { get; set; }
         public DbSet<Book> books { get; set; }
-        public DbSet<BookEjemplar> ejemplares { get; set; }
+        public DbSet<BookEjemplar> book_ejemplar { get; set; }
 
         public LagashContext() : base("LagashContext")
         {

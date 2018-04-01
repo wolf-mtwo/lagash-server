@@ -21,28 +21,29 @@ namespace LagashServer.Controllers.v1.books
     {
         private IThesisService service = new ThesisService(new LagashContext());
 
+        [Route("")]
         public IEnumerable<Thesis> Get()
         {
             return service.GetAll();
         }
 
+        [Route("")]
         [ResponseType(typeof(Thesis))]
         public IHttpActionResult Post(Thesis item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-
             try {
                 service.Create(item);
                 service.Commit();
             } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
-
             return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
         }
 
+        [Route("{id}")]
         [ResponseType(typeof(Thesis))]
         public IHttpActionResult Get(String id)
         {
@@ -50,10 +51,10 @@ namespace LagashServer.Controllers.v1.books
             if (item == null) {
                 return NotFound();
             }
-
             return Ok(item);
         }
 
+        [Route("{id}")]
         [ResponseType(typeof(Thesis))]
         public IHttpActionResult Delete(String id)
         {
@@ -63,23 +64,20 @@ namespace LagashServer.Controllers.v1.books
             }
             service.Delete(item);
             service.Commit();
-
             return Ok(item);
         }
 
+        [Route("{id}")]
         [ResponseType(typeof(void))]
         public IHttpActionResult Put(String id, Thesis item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-
             if (id != item._id) {
                 return new LagashActionResult("should provide a valid _id");
             }
-
             service.Update(item);
-
             try {
                 service.Commit();
             } catch (DbUpdateConcurrencyException) {
@@ -89,7 +87,6 @@ namespace LagashServer.Controllers.v1.books
                     throw;
                 }
             }
-
             return Ok(item);
         }
     }

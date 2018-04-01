@@ -30,7 +30,6 @@ namespace LagashServer.Controllers.v1.books
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-
             try {
                 service.Create(item);
                 service.Commit();
@@ -48,7 +47,6 @@ namespace LagashServer.Controllers.v1.books
             if (item == null) {
                 return NotFound();
             }
-
             return Ok(item);
         }
 
@@ -61,7 +59,6 @@ namespace LagashServer.Controllers.v1.books
             }
             service.Delete(item);
             service.Commit();
-
             return Ok(item);
         }
 
@@ -75,7 +72,6 @@ namespace LagashServer.Controllers.v1.books
                 return new LagashActionResult("should provide a valid _id");
             }
             service.Update(item);
-
             try {
                 service.Commit();
             } catch (DbUpdateConcurrencyException) {
@@ -85,7 +81,6 @@ namespace LagashServer.Controllers.v1.books
                     throw;
                 }
             }
-
             return Ok(item);
         }
     }

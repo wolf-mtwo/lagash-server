@@ -21,40 +21,38 @@ namespace LagashServer.Controllers.v1.books
     {
         private IBookService service = new BookService(new LagashContext());
 
+        [Route("")]
         public IEnumerable<Book> Get()
         {
             return service.GetAll();
         }
 
-        [ResponseType(typeof(Book))]
+        [Route("")]
         public IHttpActionResult Post(Book item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-
             try {
                 service.Create(item);
                 service.Commit();
             } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
-
-            return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
+            return Ok(item);
         }
 
-        [ResponseType(typeof(Book))]
+        [Route("{id}")]
         public IHttpActionResult Get(String id)
         {
             Book item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
-
             return Ok(item);
         }
 
-        [ResponseType(typeof(Book))]
+        [Route("{id}")]
         public IHttpActionResult Delete(String id)
         {
             Book item = service.FindById(id);
@@ -63,23 +61,19 @@ namespace LagashServer.Controllers.v1.books
             }
             service.Delete(item);
             service.Commit();
-
             return Ok(item);
         }
 
-        [ResponseType(typeof(void))]
+        [Route("{id}")]
         public IHttpActionResult Put(String id, Book item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-
             if (id != item._id) {
                 return new LagashActionResult("should provide a valid _id");
             }
-
             service.Update(item);
-
             try {
                 service.Commit();
             } catch (DbUpdateConcurrencyException) {
@@ -89,7 +83,6 @@ namespace LagashServer.Controllers.v1.books
                     throw;
                 }
             }
-
             return Ok(item);
         }
     }
