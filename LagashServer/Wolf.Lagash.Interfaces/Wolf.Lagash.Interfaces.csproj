@@ -42,15 +42,15 @@
   <ItemGroup>
     <Compile Include="author\IAuthorService.cs" />
     <Compile Include="author\IAuthorMapService.cs" />
-    <Compile Include="books\IBookCatalogsService.cs" />
-    <Compile Include="books\IBookEjemplaresService.cs" />
+    <Compile Include="books\IBookCatalogService.cs" />
+    <Compile Include="books\IBookEjemplarService.cs" />
     <Compile Include="books\IBookService.cs" />
     <Compile Include="IUsersService.cs" />
     <Compile Include="IPersonService.cs" />
     <Compile Include="map\IUsersMapService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="thesis\IThesisCatalogsService.cs" />
-    <Compile Include="thesis\IThesisEjemplaresService.cs" />
+    <Compile Include="thesis\IThesisCatalogService.cs" />
+    <Compile Include="thesis\IThesisEjemplarService.cs" />
     <Compile Include="thesis\IThesisService.cs" />
   </ItemGroup>
   <ItemGroup>

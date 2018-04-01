@@ -52,10 +52,10 @@
     <Compile Include="author\AuthorService.cs" />
     <Compile Include="author\AuthorMapService.cs" />
     <Compile Include="thesis\ThesisCatalogService.cs" />
-    <Compile Include="thesis\ThesisEjemplaresService.cs" />
+    <Compile Include="thesis\ThesisEjemplarService.cs" />
     <Compile Include="thesis\ThesisService.cs" />
     <Compile Include="books\BookCatalogService.cs" />
-    <Compile Include="books\BookEjemplaresService.cs" />
+    <Compile Include="books\BookEjemplarService.cs" />
     <Compile Include="books\BookService.cs" />
     <Compile Include="map\UsersMapService.cs" />
     <Compile Include="UsersService.cs" />

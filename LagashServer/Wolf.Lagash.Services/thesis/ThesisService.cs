@@ -11,7 +11,7 @@ using Wolf.Lagash.Interfaces;
 
 namespace Wolf.Lagash.Services
 {
-    public class ThesisService : EFAdapterBase<Book>, IBooksService
+    public class ThesisService : EFAdapterBase<Thesis>, IThesisService
     {
         public ThesisService(DbContext Context) : base(Context)
         {
@@ -19,7 +19,7 @@ namespace Wolf.Lagash.Services
 
         public bool exists(String id)
         {
-            return context.Set<Book>().Count(e => e._id == id) > 0;
+            return context.Set<Thesis>().Count(e => e._id == id) > 0;
         }
     }
 }

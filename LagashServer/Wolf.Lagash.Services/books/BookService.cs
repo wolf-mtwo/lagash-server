@@ -11,9 +11,9 @@ using Wolf.Lagash.Interfaces;
 
 namespace Wolf.Lagash.Services
 {
-    public class BooksService : EFAdapterBase<Book>, IBooksService
+    public class BookService : EFAdapterBase<Book>, IBookService
     {
-        public BooksService(DbContext Context) : base(Context)
+        public BookService(DbContext Context) : base(Context)
         {
         }
 

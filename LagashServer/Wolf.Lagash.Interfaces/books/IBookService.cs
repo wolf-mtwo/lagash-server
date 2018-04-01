@@ -9,7 +9,7 @@ using Wolf.Lagash.Entities.books;
 
 namespace Wolf.Lagash.Interfaces
 {
-    public interface IBooksService : IAdapterBase<Book>
+    public interface IBookService : IAdapterBase<Book>
     {
         bool exists(String id);
     }

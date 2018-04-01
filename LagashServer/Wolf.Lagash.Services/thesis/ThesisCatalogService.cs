@@ -10,9 +10,9 @@ using Wolf.Lagash.Interfaces;
 
 namespace Wolf.Lagash.Services
 {
-    public class ThesisCatalogService : EFAdapterBase<BookCatalog>, ICatalogsService
+    public class ThesisCatalogService : EFAdapterBase<ThesisCatalog>, IThesisCatalogService
     {
-        public CatalogsService(DbContext Context) : base(Context)
+        public ThesisCatalogService(DbContext Context) : base(Context)
         {
         }
 
