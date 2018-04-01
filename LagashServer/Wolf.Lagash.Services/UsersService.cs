@@ -27,7 +27,7 @@ namespace Wolf.Lagash.Services
             return FindOne(o => o.email == email && o.password == password);
         }
 
-        public bool userExists(int id)
+        public bool userExists(string id)
         {
             return context.Set<User>().Count(e => e._id == id) > 0;
         }

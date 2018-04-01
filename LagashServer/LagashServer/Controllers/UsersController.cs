@@ -45,7 +45,7 @@ namespace LagashServer.Controllers
 
         [Route("{id}")]
         [ResponseType(typeof(User))]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(string id)
         {
             User user = service.FindById(id);
             if (user == null) {
@@ -56,7 +56,7 @@ namespace LagashServer.Controllers
 
         [Route("{id}")]
         [ResponseType(typeof(User))]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult Delete(string id)
         {
             User user = service.FindById(id);
             if (user == null) {
@@ -69,7 +69,7 @@ namespace LagashServer.Controllers
 
         [Route("{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult Put(int id, User user)
+        public IHttpActionResult Put(string id, User user)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
