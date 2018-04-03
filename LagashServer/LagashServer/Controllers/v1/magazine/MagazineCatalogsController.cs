@@ -61,7 +61,6 @@ namespace LagashServer.Controllers.v1.books
             }
             service.Delete(item);
             service.Commit();
-
             return Ok(item);
         }
 
