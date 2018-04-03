@@ -85,5 +85,11 @@ namespace LagashServer.Controllers.v1.books
             }
             return Ok(item);
         }
+
+        [Route("page/{page}/limit/{limit}")]
+        public IEnumerable<Book> Get(int page, int limit)
+        {
+            return service.GetPage(page, limit, o => o.created);
+        }
     }
 }

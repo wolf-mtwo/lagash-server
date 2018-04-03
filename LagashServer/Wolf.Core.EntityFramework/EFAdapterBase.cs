@@ -81,5 +81,12 @@ namespace Wolf.Core.EntityFramework
             }
             GC.SuppressFinalize(this);
         }
+
+        public IEnumerable<T> GetPage(int page, int limit, Func<T, object> keySelector)
+        {
+            page--;
+            IEnumerable<T> enumerable = context.Set<T>().OrderByDescending(keySelector);
+            return enumerable.Skip(page * limit).Take(limit);
+        }
     }
 }

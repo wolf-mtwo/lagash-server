@@ -19,13 +19,10 @@ namespace UnitTestProject
                 title = "book's title",
                 enabled = true
             };
-            try
-            {
+            try {
                 service.Create(item);
                 service.Commit();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 Assert.Fail("hubo un problema al crear el libro", e.Message);
             }
         }
@@ -39,13 +36,10 @@ namespace UnitTestProject
                 title = "thesis's title",
                 enabled = true
             };
-            try
-            {
+            try {
                 service.Create(item);
                 service.Commit();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 Assert.Fail("hubo un problema al crear la tesis", e.Message);
             }
         }
@@ -59,13 +53,10 @@ namespace UnitTestProject
                 title = "magazine's title",
                 enabled = true
             };
-            try
-            {
+            try {
                 service.Create(item);
                 service.Commit();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 Assert.Fail("hubo un problema al crear la revista", e.Message);
             }
         }

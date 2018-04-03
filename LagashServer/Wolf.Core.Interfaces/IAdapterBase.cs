@@ -16,6 +16,7 @@ namespace Wolf.Core.Interfaces
         IEnumerable<T> GetAll();
         IEnumerable<T> GetAllOrderBy(Func<T, object> keySelector);
         IEnumerable<T> GetAllOrderByDescending(Func<T, object> keySelector);
+        IEnumerable<T> GetPage(int page, int limit, Func<T, object> keySelector);
         T Create(T entity);
         void Update(T entity);
         T Delete(T entity);
