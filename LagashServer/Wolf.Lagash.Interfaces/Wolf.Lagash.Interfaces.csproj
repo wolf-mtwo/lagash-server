@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="author\IAuthorService.cs" />
-    <Compile Include="author\IAuthorMapService.cs" />
+    <Compile Include="helpers\author\IAuthorService.cs" />
+    <Compile Include="helpers\author\IAuthorMapService.cs" />
     <Compile Include="books\IBookCatalogService.cs" />
     <Compile Include="books\IBookEjemplarService.cs" />
     <Compile Include="books\IBookService.cs" />
+    <Compile Include="helpers\editorial\IEditorialMapService.cs" />
+    <Compile Include="helpers\editorial\IEditorialService.cs" />
     <Compile Include="IUsersService.cs" />
     <Compile Include="IPersonService.cs" />
     <Compile Include="magazine\IMagazineCatalogService.cs" />

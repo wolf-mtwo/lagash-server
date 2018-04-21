@@ -10,12 +10,16 @@ namespace Wolf.Lagash.Entities.map
     public class AuthorMap : Base
     {
         [Key]
-        public int _id { get; set; }
-
-        [Required]
-        public int book_id { get; set; }
+        [StringLength(36)]
+        public string _id { get; set; }
 
         [Required]
         public int author_id { get; set; }
+
+        [Required]
+        public int type { get; set; }
+
+        [Required]
+        public int resource_id { get; set; }
     }
 }

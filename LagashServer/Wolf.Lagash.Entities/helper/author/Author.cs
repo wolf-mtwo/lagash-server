@@ -15,12 +15,17 @@ namespace Wolf.Lagash.Entities
         public string _id { get; set; }
 
         [Required]
-        [StringLength(100)]
-        public string name { get; set; }
+        [Index(IsUnique = true)]
+        [StringLength(50)]
+        public string code { get; set; }
 
         [Required]
         [StringLength(100)]
-        public string lastname { get; set; }
+        public string first_name { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        public string last_name { get; set; }
 
         [Required]
         [StringLength(100)]
