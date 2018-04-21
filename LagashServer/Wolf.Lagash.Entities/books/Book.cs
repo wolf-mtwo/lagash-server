@@ -13,7 +13,10 @@ namespace Wolf.Lagash.Entities.books
         [Key]
         [StringLength(36)]
         public string _id { get; set; }
-        
+
+        [Required]
+        public bool enabled { get; set; }
+
         [Required]
         [StringLength(250)]
         public string title { get; set; }
@@ -22,50 +25,36 @@ namespace Wolf.Lagash.Entities.books
         [StringLength(20)]
         public string isbn { get; set; }
 
-        [Required]
-        public bool enabled { get; set; }
-
-        [Required]
         [StringLength(250)]
-        public string description { get; set; }
+        public string tags { get; set; }
 
-        public string state_catalog_id { get; set; }
+        [StringLength(36)]
+        public string catalog_id { get; set; }
+
         // autors
-        // specimen
+        // editorial
 
         // optative
-        [StringLength(10)]
-        public string volumen { get; set; }
+        [StringLength(15)]
+        public string type { get; set; }
 
-        [StringLength(10)]
-        public string tome { get; set; }
+        [StringLength(15)]
+        public string cover { get; set; }
 
+        [StringLength(250)]
+        public string illustration { get; set; }
+
+        public int length { get; set; }
+        public int width { get; set; }
         public int pages { get; set; }
-
-        [StringLength(100)]
-        public string editorial { get; set; }
-
-        [StringLength(50)]
-        public string country { get; set; }
-
-        [StringLength(50)]
-        public string city { get; set; }
+        public int year { get; set; }
 
         [StringLength(100)]
         public string brings { get; set; }
 
-        public int year { get; set; }
+        public int price { get; set; }
 
-        [StringLength(50)]
-        public string type { get; set; }
-        
-        [StringLength(100)]
-        public string illustration { get; set; }
-
-        [StringLength(20)]
-        public string size { get; set; }
-
-        [StringLength(1000)]
+        [StringLength(1500)]
         public string index { get; set; }
     }
 }

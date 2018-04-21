@@ -88,5 +88,10 @@ namespace Wolf.Core.EntityFramework
             IEnumerable<T> enumerable = context.Set<T>().OrderByDescending(keySelector);
             return enumerable.Skip(page * limit).Take(limit);
         }
+
+        public int Count()
+        {
+            return context.Set<T>().Count();
+        }
     }
 }

@@ -52,6 +52,8 @@
     <Compile Include="author\AuthorMap.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="author\Author.cs" />
+    <Compile Include="editorial\EditorialMap.cs" />
+    <Compile Include="editorial\Editorial.cs" />
     <Compile Include="magazine\Magazine.cs" />
     <Compile Include="magazine\MagazineCatalog.cs" />
     <Compile Include="magazine\MagazineEjemplar.cs" />

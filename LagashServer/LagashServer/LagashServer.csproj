@@ -241,6 +241,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\helpers\Size.cs" />
     <Compile Include="Controllers\v1\books\BookCatalogsController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineCatalogsController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineController.cs" />

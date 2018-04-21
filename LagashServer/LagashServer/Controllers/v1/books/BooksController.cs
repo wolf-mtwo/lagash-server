@@ -13,6 +13,7 @@ using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
+using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.books
 {
@@ -90,6 +91,15 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Book> Get(int page, int limit)
         {
             return service.GetPage(page, limit, o => o.created);
+        }
+
+        [Route("size")]
+        public Size GetSize()
+        {
+            return new Size()
+            {
+                total = service.Count()
+            };
         }
     }
 }
