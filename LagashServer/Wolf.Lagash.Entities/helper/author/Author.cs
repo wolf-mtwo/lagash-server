@@ -29,6 +29,6 @@ namespace Wolf.Lagash.Entities
 
         [Required]
         [StringLength(100)]
-        public string nationality { get; set; }
+        public string country { get; set; }
     }
 }
