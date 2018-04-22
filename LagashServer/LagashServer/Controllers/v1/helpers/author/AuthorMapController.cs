@@ -19,7 +19,7 @@ using Wolf.Lagash.Entities.map;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v1/books/map")]
+    [RoutePrefix("v1/author/map")]
     public class AuthorMapController : ApiController
     {
         private IAuthorMapService service = new AuthorMapService(new LagashContext());

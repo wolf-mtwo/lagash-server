@@ -185,7 +185,6 @@
       <HintPath>..\packages\Remotion.Linq.2.0.1\lib\net45\Remotion.Linq.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Collections.Concurrent" />
     <Reference Include="System.Collections.Immutable, Version=1.1.36.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Collections.Immutable.1.1.36\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
       <Private>True</Private>
@@ -243,6 +242,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\helpers\Size.cs" />
     <Compile Include="Controllers\v1\books\BookCatalogsController.cs" />
+    <Compile Include="Controllers\v1\helpers\author\AuthorMapController.cs" />
+    <Compile Include="Controllers\v1\helpers\author\AuthorController.cs" />
+    <Compile Include="Controllers\v1\helpers\editorial\EditorialController.cs" />
+    <Compile Include="Controllers\v1\helpers\editorial\EditorialMapController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineCatalogsController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineEjemplaresController.cs" />
