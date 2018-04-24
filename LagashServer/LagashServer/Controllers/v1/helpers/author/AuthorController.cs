@@ -86,11 +86,14 @@ namespace LagashServer.Controllers.v1.books
             }
             return Ok(item);
         }
-
-        [Route("page/{page}/limit/{limit}")]
-        public IEnumerable<Author> Get(int page, int limit)
+        
+        [Route("page/{page}/limit/{limit}/search")]
+        public IEnumerable<Author> GetFind(int page, int limit, string search)
         {
-            return service.GetPage(page, limit, o => o.created);
+            if (search == null) search = "";
+            return service.Where(page, limit, (u) => {
+                return u.first_name.Contains(search) || u.last_name.Contains(search);
+            }, o => o.created);
         }
 
         [Route("size")]
@@ -100,6 +103,12 @@ namespace LagashServer.Controllers.v1.books
             {
                 total = service.Count()
             };
+        }
+
+        [Route("page/{page}/limit/{limit}")]
+        public IEnumerable<Author> Get(int page, int limit)
+        {
+            return service.GetPage(page, limit, o => o.created);
         }
     }
 }

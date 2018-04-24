@@ -84,14 +84,21 @@ namespace Wolf.Core.EntityFramework
 
         public IEnumerable<T> GetPage(int page, int limit, Func<T, object> keySelector)
         {
-            page--;
-            IEnumerable<T> enumerable = context.Set<T>().OrderByDescending(keySelector);
-            return enumerable.Skip(page * limit).Take(limit);
+            page--;            
+            // IEnumerable<T> enumerable = context.Set<T>().OrderByDescending(keySelector);
+            // return enumerable.Skip(page * limit).Take(limit);
+            return context.Set<T>().OrderByDescending(keySelector).Skip(page * limit).Take(limit);
         }
 
         public int Count()
         {
             return context.Set<T>().Count();
+        }
+
+        public IEnumerable<T> Where(int page, int limit, Func<T, bool> where, Func<T, object> selector)
+        {
+            page--;
+            return context.Set<T>().Where(where).OrderByDescending(selector).Skip(page * limit).Take(limit);
         }
     }
 }

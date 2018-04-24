@@ -17,10 +17,10 @@ namespace Wolf.Lagash.Entities
         [StringLength(100)]
         public string name { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string city { get; set; }
         
-        [StringLength(50)]
+        [StringLength(100)]
         public string country { get; set; }
     }
 }
