@@ -14,12 +14,15 @@ namespace Wolf.Lagash.Entities.map
         public string _id { get; set; }
 
         [Required]
-        public int author_id { get; set; }
+        [StringLength(36)]
+        public string author_id { get; set; }
 
         [Required]
-        public int type { get; set; }
+        [StringLength(10)]
+        public string type { get; set; }
 
         [Required]
-        public int resource_id { get; set; }
+        [StringLength(36)]
+        public string resource_id { get; set; }
     }
 }

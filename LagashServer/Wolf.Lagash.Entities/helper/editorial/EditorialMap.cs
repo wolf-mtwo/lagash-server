@@ -15,12 +15,13 @@ namespace Wolf.Lagash.Entities
         public string _id { get; set; }
 
         [Required]
-        public int editorial_id { get; set; }
+        [StringLength(36)]
+        public string editorial_id { get; set; }
 
         [Required]
-        public int type { get; set; }
+        public string type { get; set; }
 
         [Required]
-        public int resource_id { get; set; }
+        public string resource_id { get; set; }
     }
 }
