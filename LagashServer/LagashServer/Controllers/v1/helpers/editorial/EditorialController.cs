@@ -14,6 +14,7 @@ using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
 using LagashServer.Controllers.helpers;
+using Wolf.Lagash.Interfaces.map;
 
 namespace LagashServer.Controllers.v1.books
 {
@@ -21,6 +22,7 @@ namespace LagashServer.Controllers.v1.books
     public class EditorialController : ApiController
     {
         private IEditorialService service = new EditorialService(new LagashContext());
+        private IEditorialMapService service_map = new EditorialMapService(new LagashContext());
 
         [Route("")]
         public IEnumerable<Editorial> Get()
@@ -107,6 +109,19 @@ namespace LagashServer.Controllers.v1.books
         {
             if (search == null) search = "";
             return service.Where(page, limit, (u) => u.name.Contains(search), o => o.created);
+        }
+
+        [Route("find")]
+        public IEnumerable<Editorial> GetFind(string resource_id)
+        {
+            IEnumerable<EditorialMap> items = service_map.Query(o => o.resource_id == resource_id);
+            List<Editorial> result = new List<Editorial>();
+            foreach (var item in items)
+            {
+                result.Add(service.FindById(item.editorial_id));
+            }
+
+            return result;
         }
     }
 }

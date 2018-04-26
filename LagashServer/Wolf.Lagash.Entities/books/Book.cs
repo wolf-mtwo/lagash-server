@@ -42,7 +42,7 @@ namespace Wolf.Lagash.Entities.books
         public string cover { get; set; }
 
         [StringLength(250)]
-        public string illustration { get; set; }
+        public string illustrations { get; set; }
 
         public int length { get; set; }
         public int width { get; set; }

@@ -14,6 +14,8 @@ using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
 using LagashServer.Controllers.helpers;
+using Wolf.Lagash.Interfaces.map;
+using Wolf.Lagash.Entities.map;
 
 namespace LagashServer.Controllers.v1.books
 {
@@ -21,6 +23,7 @@ namespace LagashServer.Controllers.v1.books
     public class AuthorController : ApiController
     {
         private IAuthorService service = new AuthorService(new LagashContext());
+        private IAuthorMapService service_map = new AuthorMapService(new LagashContext());
 
         [Route("")]
         public IEnumerable<Author> Get()
@@ -109,6 +112,19 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Author> Get(int page, int limit)
         {
             return service.GetPage(page, limit, o => o.created);
+        }
+
+        [Route("find")]
+        public IEnumerable<Author> GetFind(string resource_id)
+        {
+            IEnumerable<AuthorMap> items = service_map.Query(o => o.resource_id == resource_id);
+            List <Author> result = new List<Author>();
+            foreach (var item in items)
+            {
+                result.Add(service.FindById(item.author_id));
+            }
+
+            return result;
         }
     }
 }
