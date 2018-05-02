@@ -30,6 +30,9 @@ namespace Wolf.Lagash.Entities.books
 
         [StringLength(36)]
         public string catalog_id { get; set; }
+        
+        [StringLength(36)]
+        public string editorial_id { get; set; }
 
         // autors
         // editorial
