@@ -93,6 +93,15 @@ namespace LagashServer.Controllers.v1.books
             return service.GetPage(page, limit, o => o.created);
         }
 
+        [Route("page/{page}/limit/{limit}/search")]
+        public IEnumerable<Book> GetFind(int page, int limit, string search)
+        {
+            if (search == null) search = "";
+            return service.Where(page, limit, (o) => {
+                return o.title.Contains(search) || o._id.Contains(search);
+            }, o => o.created);
+        }
+
         [Route("size")]
         public Size GetSize()
         {
