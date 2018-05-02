@@ -20,12 +20,13 @@ namespace LagashServer.Controllers.v1.books
     {
         private IThesisEjemplarService service = new ThesisEjemplarService(new LagashContext());
 
+        [Route("")]
         public IEnumerable<ThesisEjemplar> Get()
         {
             return service.GetAll();
         }
 
-        [ResponseType(typeof(ThesisEjemplar))]
+        [Route("")]
         public IHttpActionResult Post(ThesisEjemplar item)
         {
             if (!ModelState.IsValid) {
@@ -40,7 +41,7 @@ namespace LagashServer.Controllers.v1.books
             return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
         }
 
-        [ResponseType(typeof(Book))]
+        [Route("{id}")]
         public IHttpActionResult Get(String id)
         {
             ThesisEjemplar item = service.FindById(id);
@@ -50,7 +51,7 @@ namespace LagashServer.Controllers.v1.books
             return Ok(item);
         }
 
-        [ResponseType(typeof(Book))]
+        [Route("{id}")]
         public IHttpActionResult Delete(String id)
         {
             ThesisEjemplar item = service.FindById(id);
@@ -62,7 +63,7 @@ namespace LagashServer.Controllers.v1.books
             return Ok(item);
         }
 
-        [ResponseType(typeof(void))]
+        [Route("{id}")]
         public IHttpActionResult Put(String id, ThesisEjemplar item)
         {
             if (!ModelState.IsValid) {

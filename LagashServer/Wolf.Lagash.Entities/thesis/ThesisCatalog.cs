@@ -10,7 +10,7 @@ namespace Wolf.Lagash.Entities
     public class ThesisCatalog : Base
     {
         [Key]
-        public int _id { get; set; }
+        public string _id { get; set; }
 
         [Required]
         [StringLength(50)]

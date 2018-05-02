@@ -10,6 +10,6 @@ namespace Wolf.Lagash.Interfaces
 {
     public interface IThesisCatalogService : IAdapterBase<ThesisCatalog>
     {
-        bool exists(int id);
+        bool exists(String id);
     }
 }

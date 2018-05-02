@@ -10,6 +10,6 @@ namespace Wolf.Lagash.Interfaces
 {
     public interface IBookCatalogService : IAdapterBase<BookCatalog>
     {
-        bool exists(int id);
+        bool exists(String id);
     }
 }

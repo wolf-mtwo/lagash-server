@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wolf.Lagash.Entities.map;
 
 namespace Wolf.Lagash.Entities
 {
@@ -30,5 +31,8 @@ namespace Wolf.Lagash.Entities
         [Required]
         [StringLength(100)]
         public string country { get; set; }
+
+        [NotMapped]
+        public AuthorMap map { get; set; }
     }
 }

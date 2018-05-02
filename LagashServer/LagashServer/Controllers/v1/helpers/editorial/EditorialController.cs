@@ -118,9 +118,10 @@ namespace LagashServer.Controllers.v1.books
             List<Editorial> result = new List<Editorial>();
             foreach (var item in items)
             {
-                result.Add(service.FindById(item.editorial_id));
+                Editorial editorial = service.FindById(item.editorial_id);
+                editorial.map = item;
+                result.Add(editorial);
             }
-
             return result;
         }
     }

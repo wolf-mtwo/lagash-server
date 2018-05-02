@@ -21,12 +21,13 @@ namespace LagashServer.Controllers.v1.books
     {
         private IBookEjemplarService service = new BookEjemplarService(new LagashContext());
 
+        [Route("")]
         public IEnumerable<BookEjemplar> Get()
         {
             return service.GetAll();
         }
 
-        [ResponseType(typeof(BookEjemplar))]
+        [Route("")]
         public IHttpActionResult Post(BookEjemplar item)
         {
             if (!ModelState.IsValid) {
@@ -42,7 +43,6 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        [ResponseType(typeof(Book))]
         public IHttpActionResult Get(String id)
         {
             BookEjemplar item = service.FindById(id);
@@ -52,7 +52,7 @@ namespace LagashServer.Controllers.v1.books
             return Ok(item);
         }
 
-        [ResponseType(typeof(Book))]
+        [Route("{id}")]
         public IHttpActionResult Delete(String id)
         {
             BookEjemplar item = service.FindById(id);
@@ -64,7 +64,7 @@ namespace LagashServer.Controllers.v1.books
             return Ok(item);
         }
 
-        [ResponseType(typeof(void))]
+        [Route("{id}")]
         public IHttpActionResult Put(String id, BookEjemplar item)
         {
             if (!ModelState.IsValid) {

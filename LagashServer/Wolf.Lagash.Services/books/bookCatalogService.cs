@@ -16,7 +16,7 @@ namespace Wolf.Lagash.Services
         {
         }
 
-        public bool exists(int id)
+        public bool exists(String id)
         {
             return context.Set<BookCatalog>().Count(e => e._id == id) > 0;
         }

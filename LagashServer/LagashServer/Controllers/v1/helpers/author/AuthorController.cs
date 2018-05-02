@@ -121,9 +121,10 @@ namespace LagashServer.Controllers.v1.books
             List <Author> result = new List<Author>();
             foreach (var item in items)
             {
-                result.Add(service.FindById(item.author_id));
+                Author author = service.FindById(item.author_id);
+                author.map = item;
+                result.Add(author);
             }
-
             return result;
         }
     }

@@ -31,6 +31,6 @@ namespace Wolf.Lagash.Entities
         [Required]
         public string state { get; set; }
 
-        public string state_catalog_id { get; set; }
+        public string catalog_id { get; set; }
     }
 }

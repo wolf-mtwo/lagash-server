@@ -19,12 +19,13 @@ namespace LagashServer.Controllers.v1.books
     {
         private IBookCatalogService service = new BookCatalogService(new LagashContext());
 
+        [Route("")]
         public IEnumerable<BookCatalog> Get()
         {
             return service.GetAll();
         }
 
-        [ResponseType(typeof(BookCatalog))]
+        [Route("")]
         public IHttpActionResult Post(BookCatalog item)
         {
             if (!ModelState.IsValid) {
@@ -40,8 +41,8 @@ namespace LagashServer.Controllers.v1.books
             return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
         }
 
-        [ResponseType(typeof(BookCatalog))]
-        public IHttpActionResult Get(int id)
+        [Route("{id}")]
+        public IHttpActionResult Get(String id)
         {
             BookCatalog item = service.FindById(id);
             if (item == null) {
@@ -50,8 +51,8 @@ namespace LagashServer.Controllers.v1.books
             return Ok(item);
         }
 
-        [ResponseType(typeof(BookCatalog))]
-        public IHttpActionResult Delete(int id)
+        [Route("{id}")]
+        public IHttpActionResult Delete(String id)
         {
             BookCatalog item = service.FindById(id);
             if (item == null) {
@@ -62,8 +63,8 @@ namespace LagashServer.Controllers.v1.books
             return Ok(item);
         }
 
-        [ResponseType(typeof(void))]
-        public IHttpActionResult Put(int id, BookCatalog item)
+        [Route("{id}")]
+        public IHttpActionResult Put(String id, BookCatalog item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
