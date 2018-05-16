@@ -29,7 +29,6 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("")]
-        [ResponseType(typeof(Thesis))]
         public IHttpActionResult Post(Thesis item)
         {
             if (!ModelState.IsValid) {
@@ -41,7 +40,7 @@ namespace LagashServer.Controllers.v1.books
             } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
-            return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
+            return Ok(item);
         }
 
         [Route("{id}")]

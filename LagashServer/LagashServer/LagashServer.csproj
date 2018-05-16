@@ -240,6 +240,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\helpers\File.cs" />
     <Compile Include="Controllers\helpers\Size.cs" />
     <Compile Include="Controllers\v1\books\BookCatalogsController.cs" />
     <Compile Include="Controllers\v1\helpers\author\AuthorMapController.cs" />
@@ -252,6 +253,7 @@
     <Compile Include="Controllers\v1\thesis\ThesisCatalogsController.cs" />
     <Compile Include="Controllers\v1\thesis\ThesisEjemplaresController.cs" />
     <Compile Include="Controllers\v1\thesis\ThesisController.cs" />
+    <Compile Include="Controllers\v1\upload\UploadController.cs" />
     <Compile Include="Controllers\v2\thesis\V2ThesisEjemplaresController.cs" />
     <Compile Include="Controllers\v2\books\V2BookEjemplaresController.cs" />
     <Compile Include="Controllers\v1\books\BookEjemplaresController.cs" />
