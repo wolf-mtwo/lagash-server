@@ -16,7 +16,7 @@ using Wolf.Lagash.Entities.books;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v1/ejemplares")]
+    [RoutePrefix("v1/books/ejemplares")]
     public class BookEjemplaresController : ApiController
     {
         private IBookEjemplarService service = new BookEjemplarService(new LagashContext());

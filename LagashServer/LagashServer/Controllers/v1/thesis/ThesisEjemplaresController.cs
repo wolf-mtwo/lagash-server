@@ -16,6 +16,7 @@ using Wolf.Lagash.Entities.books;
 
 namespace LagashServer.Controllers.v1.books
 {
+    [RoutePrefix("v1/thesis/ejemplares")]
     public class ThesisEjemplaresController : ApiController
     {
         private IThesisEjemplarService service = new ThesisEjemplarService(new LagashContext());
