@@ -13,6 +13,7 @@ using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
+using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.books
 {
@@ -94,6 +95,24 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Thesis> Get(int page, int limit)
         {
             return service.GetPage(page, limit, o => o.created);
+        }
+
+        [Route("page/{page}/limit/{limit}/search")]
+        public IEnumerable<Thesis> GetFind(int page, int limit, string search)
+        {
+            if (search == null) search = "";
+            return service.Where(page, limit, (o) => {
+                return o.title.Contains(search) || o._id.Contains(search);
+            }, o => o.created);
+        }
+
+        [Route("size")]
+        public Size GetSize()
+        {
+            return new Size()
+            {
+                total = service.Count()
+            };
         }
     }
 }
