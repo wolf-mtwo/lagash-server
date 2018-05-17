@@ -46,5 +46,8 @@ namespace Wolf.Lagash.Entities
         
         [StringLength(1000)]
         public string index { get; set; }
+
+        [StringLength(50)]
+        public string image { get; set; }
     }
 }

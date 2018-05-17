@@ -13,7 +13,5 @@ namespace LagashServer.Controllers.helpers
         {
             this.name = name;
         }
-
-        
     }
 }

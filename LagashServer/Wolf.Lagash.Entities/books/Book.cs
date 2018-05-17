@@ -59,5 +59,8 @@ namespace Wolf.Lagash.Entities.books
 
         [StringLength(1500)]
         public string index { get; set; }
+
+        [StringLength(50)]
+        public string image { get; set; }
     }
 }
