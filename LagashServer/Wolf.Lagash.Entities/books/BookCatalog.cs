@@ -15,5 +15,8 @@ namespace Wolf.Lagash.Entities
         [Required]
         [StringLength(50)]
         public string title { get; set; }
+        
+        [Required]
+        public bool enabled { get; set; }
     }
 }
