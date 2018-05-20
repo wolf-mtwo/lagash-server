@@ -9,6 +9,7 @@ using Wolf.Lagash.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Wolf.Lagash.Entities.books;
 using Wolf.Lagash.Entities.map;
+using Wolf.Lagash.Entities.history;
 
 namespace LagashServer.helper
 {
@@ -29,6 +30,7 @@ namespace LagashServer.helper
 
         public DbSet<AuthorMap> author_map { get; set; }
         public DbSet<EditorialMap> editorial_map { get; set; }
+        public DbSet<Ejemplar> ejemplar { get; set; }
 
         public LagashContext() : base("LagashContext")
         {
