@@ -33,16 +33,20 @@ namespace LagashServer.Controllers.v1.books
         [Route("")]
         public IHttpActionResult Post(Ejemplar item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            try {
+            try
+            {
                 service.Create(item);
                 service.Commit();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 return new LagashActionResult(e.Message);
             }
-            return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
+            return Ok(item);
         }
 
         [Route("{id}")]
