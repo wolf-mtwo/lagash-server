@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wolf.Core.EntityFramework;
-using Wolf.Lagash.Entities.history;
-using Wolf.Lagash.Interfaces.history;
+using Wolf.Lagash.Entities.helper.ejemplar;
+using Wolf.Lagash.Interfaces.helper.ejemplar;
 
-namespace Wolf.Lagash.Services.history
+namespace Wolf.Lagash.Services.helper.ejemplar
 {
     public class EjemplarService : EFAdapterBase<Ejemplar>, IEjemplarService
     {

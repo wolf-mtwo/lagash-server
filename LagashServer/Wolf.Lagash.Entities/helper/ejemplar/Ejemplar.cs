@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wolf.Lagash.Entities.history
+namespace Wolf.Lagash.Entities.helper.ejemplar
 {
     public class Ejemplar
     {

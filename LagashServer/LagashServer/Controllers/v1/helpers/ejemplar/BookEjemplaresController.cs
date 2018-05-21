@@ -13,11 +13,11 @@ using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
-using Wolf.Lagash.Entities.history;
-using Wolf.Lagash.Services.history;
-using Wolf.Lagash.Interfaces.history;
+using Wolf.Lagash.Interfaces.helper.ejemplar;
+using Wolf.Lagash.Entities.helper.ejemplar;
+using Wolf.Lagash.Services.helper.ejemplar;
 
-namespace LagashServer.Controllers.v1.books
+namespace LagashServer.Controllers.v1.helper.ejemplar
 {
     [RoutePrefix("v1/ejemplares")]
     public class EjemplaresController : ApiController

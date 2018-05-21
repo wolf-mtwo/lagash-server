@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wolf.Core.Interfaces;
-using Wolf.Lagash.Entities.history;
+using Wolf.Lagash.Entities.helper.ejemplar;
 
-namespace Wolf.Lagash.Interfaces.history
+namespace Wolf.Lagash.Interfaces.helper.ejemplar
 {
     public interface IEjemplarService : IAdapterBase<Ejemplar>
     {
