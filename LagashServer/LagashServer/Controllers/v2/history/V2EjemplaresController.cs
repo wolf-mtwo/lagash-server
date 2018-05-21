@@ -6,11 +6,11 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Wolf.Lagash.Entities;
-using Wolf.Lagash.Entities.history;
+using Wolf.Lagash.Entities.helper.ejemplar;
 using Wolf.Lagash.Interfaces;
-using Wolf.Lagash.Interfaces.history;
+using Wolf.Lagash.Interfaces.helper.ejemplar;
 using Wolf.Lagash.Services;
-using Wolf.Lagash.Services.history;
+using Wolf.Lagash.Services.helper.ejemplar;
 
 namespace LagashServer.Controllers.v2.history
 {

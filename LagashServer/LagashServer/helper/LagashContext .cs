@@ -5,11 +5,10 @@ using System.Web;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using Wolf.Lagash.Entities;
-//using LagashServer.Migrations;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Wolf.Lagash.Entities.books;
 using Wolf.Lagash.Entities.map;
-using Wolf.Lagash.Entities.history;
+using Wolf.Lagash.Entities.helper.ejemplar;
 
 namespace LagashServer.helper
 {

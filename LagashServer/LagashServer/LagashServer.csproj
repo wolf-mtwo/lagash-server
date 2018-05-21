@@ -247,7 +247,7 @@
     <Compile Include="Controllers\v1\helpers\author\AuthorController.cs" />
     <Compile Include="Controllers\v1\helpers\editorial\EditorialController.cs" />
     <Compile Include="Controllers\v1\helpers\editorial\EditorialMapController.cs" />
-    <Compile Include="Controllers\v1\history\BookEjemplaresController.cs" />
+    <Compile Include="Controllers\v1\helpers\ejemplar\BookEjemplaresController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineCatalogsController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineEjemplaresController.cs" />

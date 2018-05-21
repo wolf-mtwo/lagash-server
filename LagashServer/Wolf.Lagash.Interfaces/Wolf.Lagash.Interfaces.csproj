@@ -47,7 +47,7 @@
     <Compile Include="books\IBookService.cs" />
     <Compile Include="helpers\editorial\IEditorialMapService.cs" />
     <Compile Include="helpers\editorial\IEditorialService.cs" />
-    <Compile Include="history\IEjemplarService.cs" />
+    <Compile Include="helpers\ejemplar\IEjemplarService.cs" />
     <Compile Include="IUsersService.cs" />
     <Compile Include="IPersonService.cs" />
     <Compile Include="magazine\IMagazineCatalogService.cs" />
