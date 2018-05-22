@@ -16,7 +16,7 @@ using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v1/book/catalogs")]
+    [RoutePrefix("v2/books/catalogs")]
     public class BookCatalogsController : ApiController
     {
         private IBookCatalogService service = new BookCatalogService(new LagashContext());

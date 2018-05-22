@@ -12,10 +12,11 @@ using Wolf.Lagash.Services;
 using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
+using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v1/thesis/catalogs")]
+    [RoutePrefix("v2/thesis/catalogs")]
     public class ThesisCatalogsController : ApiController
     {
         private IThesisCatalogService service = new ThesisCatalogService(new LagashContext());
@@ -29,18 +30,20 @@ namespace LagashServer.Controllers.v1.books
         [Route("")]
         public IHttpActionResult Post(ThesisCatalog item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-
-            try {
+            try
+            {
                 service.Create(item);
                 service.Commit();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 return new LagashActionResult(e.Message);
             }
-
-            return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
+            return Ok(item);
         }
 
         [Route("{id}")]
@@ -89,6 +92,31 @@ namespace LagashServer.Controllers.v1.books
             }
 
             return Ok(item);
+        }
+
+
+        [Route("page/{page}/limit/{limit}")]
+        public IEnumerable<ThesisCatalog> Get(int page, int limit)
+        {
+            return service.GetPage(page, limit, o => o.created);
+        }
+
+        [Route("page/{page}/limit/{limit}/search")]
+        public IEnumerable<ThesisCatalog> GetFind(int page, int limit, string search)
+        {
+            if (search == null) search = "";
+            return service.Where(page, limit, (o) => {
+                return o.title.Contains(search) || o._id.Contains(search);
+            }, o => o.created);
+        }
+
+        [Route("size")]
+        public Size GetSize()
+        {
+            return new Size()
+            {
+                total = service.Count()
+            };
         }
     }
 }
