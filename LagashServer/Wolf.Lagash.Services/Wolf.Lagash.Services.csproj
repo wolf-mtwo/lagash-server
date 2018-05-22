@@ -57,6 +57,8 @@
     <Compile Include="magazine\MagazineCatalogService.cs" />
     <Compile Include="magazine\MagazineEjemplarService.cs" />
     <Compile Include="magazine\MagazineService.cs" />
+    <Compile Include="newspaper\NewspaperCatalogService.cs" />
+    <Compile Include="newspaper\NewspaperService.cs" />
     <Compile Include="thesis\ThesisCatalogService.cs" />
     <Compile Include="thesis\ThesisEjemplarService.cs" />
     <Compile Include="thesis\ThesisService.cs" />
@@ -90,6 +92,7 @@
       <Name>Wolf.Lagash.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Wolf.Lagash.Entities
+namespace Wolf.Lagash.Entities.newspaper
 {
-    public class Magazine : Base
+    public class Newspaper : Base
     {
         [Key]
         [StringLength(36)]

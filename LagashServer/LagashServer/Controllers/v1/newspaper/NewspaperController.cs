@@ -13,20 +13,24 @@ using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
+using LagashServer.Controllers.helpers;
+using Wolf.Lagash.Entities.newspaper;
 
 namespace LagashServer.Controllers.v1.books
 {
-    public class MagazineEjemplaresController : ApiController
+    [RoutePrefix("v1/books")]
+    public class NewspaperController : ApiController
     {
-        private IMagazineEjemplarService service = new MagazineEjemplarService(new LagashContext());
+        private INewspaperService service = new NewspaperService(new LagashContext());
 
-        public IEnumerable<MagazineEjemplar> Get()
+        [Route("")]
+        public IEnumerable<Newspaper> Get()
         {
             return service.GetAll();
         }
 
-        [ResponseType(typeof(MagazineEjemplar))]
-        public IHttpActionResult Post(MagazineEjemplar item)
+        [Route("")]
+        public IHttpActionResult Post(Newspaper item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
@@ -37,23 +41,23 @@ namespace LagashServer.Controllers.v1.books
             } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
-            return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
+            return Ok(item);
         }
 
-        [ResponseType(typeof(MagazineEjemplar))]
+        [Route("{id}")]
         public IHttpActionResult Get(String id)
         {
-            MagazineEjemplar item = service.FindById(id);
+            Newspaper item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
             return Ok(item);
         }
 
-        [ResponseType(typeof(MagazineEjemplar))]
+        [Route("{id}")]
         public IHttpActionResult Delete(String id)
         {
-            MagazineEjemplar item = service.FindById(id);
+            Newspaper item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -62,8 +66,8 @@ namespace LagashServer.Controllers.v1.books
             return Ok(item);
         }
 
-        [ResponseType(typeof(void))]
-        public IHttpActionResult Put(String id, MagazineEjemplar item)
+        [Route("{id}")]
+        public IHttpActionResult Put(String id, Newspaper item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
@@ -82,6 +86,30 @@ namespace LagashServer.Controllers.v1.books
                 }
             }
             return Ok(item);
+        }
+
+        [Route("page/{page}/limit/{limit}")]
+        public IEnumerable<Newspaper> Get(int page, int limit)
+        {
+            return service.GetPage(page, limit, o => o.created);
+        }
+
+        [Route("page/{page}/limit/{limit}/search")]
+        public IEnumerable<Newspaper> GetFind(int page, int limit, string search)
+        {
+            if (search == null) search = "";
+            return service.Where(page, limit, (o) => {
+                return o.title.Contains(search) || o._id.Contains(search);
+            }, o => o.created);
+        }
+
+        [Route("size")]
+        public Size GetSize()
+        {
+            return new Size()
+            {
+                total = service.Count()
+            };
         }
     }
 }

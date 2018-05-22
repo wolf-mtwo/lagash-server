@@ -17,31 +17,27 @@ using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v1/magazines")]
-    public class MagazineController : ApiController
+    [RoutePrefix("v1/books")]
+    public class BookController : ApiController
     {
-        private IMagazineService service = new MagazineService(new LagashContext());
+        private IBookService service = new BookService(new LagashContext());
 
         [Route("")]
-        public IEnumerable<Magazine> Get()
+        public IEnumerable<Book> Get()
         {
             return service.GetAll();
         }
 
         [Route("")]
-        public IHttpActionResult Post(Magazine item)
+        public IHttpActionResult Post(Book item)
         {
-            if (!ModelState.IsValid)
-            {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-            try
-            {
+            try {
                 service.Create(item);
                 service.Commit();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
             return Ok(item);
@@ -50,7 +46,7 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}")]
         public IHttpActionResult Get(String id)
         {
-            Magazine item = service.FindById(id);
+            Book item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -60,7 +56,7 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}")]
         public IHttpActionResult Delete(String id)
         {
-            Magazine item = service.FindById(id);
+            Book item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -70,8 +66,7 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        [ResponseType(typeof(void))]
-        public IHttpActionResult Put(String id, Magazine item)
+        public IHttpActionResult Put(String id, Book item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
@@ -93,13 +88,13 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("page/{page}/limit/{limit}")]
-        public IEnumerable<Magazine> Get(int page, int limit)
+        public IEnumerable<Book> Get(int page, int limit)
         {
             return service.GetPage(page, limit, o => o.created);
         }
-        
+
         [Route("page/{page}/limit/{limit}/search")]
-        public IEnumerable<Magazine> GetFind(int page, int limit, string search)
+        public IEnumerable<Book> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {

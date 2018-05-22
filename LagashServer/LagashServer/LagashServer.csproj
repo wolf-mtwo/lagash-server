@@ -250,7 +250,8 @@
     <Compile Include="Controllers\v1\helpers\ejemplar\EjemplaresController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineCatalogsController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineController.cs" />
-    <Compile Include="Controllers\v1\magazine\MagazineEjemplaresController.cs" />
+    <Compile Include="Controllers\v1\newspaper\NewspaperCatalogsController.cs" />
+    <Compile Include="Controllers\v1\newspaper\NewspaperController.cs" />
     <Compile Include="Controllers\v1\thesis\ThesisCatalogsController.cs" />
     <Compile Include="Controllers\v1\thesis\ThesisEjemplaresController.cs" />
     <Compile Include="Controllers\v1\thesis\ThesisController.cs" />
@@ -262,7 +263,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\v1\books\BooksController.cs" />
+    <Compile Include="Controllers\v1\books\BookController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="helper\LagashActionResult.cs" />
     <Compile Include="helper\Startup.cs" />

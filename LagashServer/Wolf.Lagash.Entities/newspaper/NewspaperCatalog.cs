@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Wolf.Lagash.Entities
 {
-    public class MagazineCatalog : Base
+    public class NewspaperCatalog : Base
     {
         [Key]
         public string _id { get; set; }
