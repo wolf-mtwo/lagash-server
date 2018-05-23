@@ -29,5 +29,11 @@ namespace Wolf.Lagash.Entities.newspaper
 
         [StringLength(50)]
         public string image { get; set; }
+
+        public int pages { get; set; }
+        public int year { get; set; }
+        public int price { get; set; }
+        public int edition { get; set; }
+        public DateTime edition_date { get; set; }
     }
 }
