@@ -21,8 +21,8 @@ namespace Wolf.Lagash.Entities.helper.ejemplar
 
         [Required]
         [Index(IsUnique = true)]
-        [StringLength(100)]
-        public string inventory { get; set; }
+        //[StringLength(100)]
+        public int inventory { get; set; }
 
         [Required]
         [StringLength(36)]

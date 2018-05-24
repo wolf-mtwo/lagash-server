@@ -40,8 +40,9 @@ namespace Wolf.Lagash.Entities
         public int width { get; set; }
         public int pages { get; set; }
         public int year { get; set; }
+        public int price { get; set; }
 
-        [StringLength(100)]
+        [StringLength(150)]
         public string brings { get; set; }
         
         [StringLength(1000)]

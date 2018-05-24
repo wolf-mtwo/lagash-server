@@ -50,11 +50,10 @@ namespace Wolf.Lagash.Entities.books
         public int width { get; set; }
         public int pages { get; set; }
         public int year { get; set; }
-
-        [StringLength(100)]
-        public string brings { get; set; }
-
         public int price { get; set; }
+
+        [StringLength(150)]
+        public string brings { get; set; }
 
         [StringLength(1500)]
         public string index { get; set; }
