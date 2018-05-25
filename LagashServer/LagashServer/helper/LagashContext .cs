@@ -10,6 +10,7 @@ using Wolf.Lagash.Entities.books;
 using Wolf.Lagash.Entities.map;
 using Wolf.Lagash.Entities.helper.ejemplar;
 using Wolf.Lagash.Entities.newspaper;
+using Wolf.Lagash.Entities.tutor;
 
 namespace LagashServer.helper
 {
@@ -29,9 +30,10 @@ namespace LagashServer.helper
         public DbSet<Newspaper> newspapers { get; set; }
         public DbSet<NewspaperCatalog> newspaper_catalog { get; set; }
 
+        public DbSet<Tutor> tutor { get; set; }
         public DbSet<Author> author { get; set; }
         public DbSet<Editorial> editorial { get; set; }
-
+                
         public DbSet<AuthorMap> author_map { get; set; }
         public DbSet<EditorialMap> editorial_map { get; set; }
         public DbSet<Ejemplar> ejemplar { get; set; }

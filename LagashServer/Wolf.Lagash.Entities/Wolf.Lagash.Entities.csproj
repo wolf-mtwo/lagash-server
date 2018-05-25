@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="helper\tutor\Tutor.cs" />
     <Compile Include="helper\author\AuthorMap.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="helper\author\Author.cs" />

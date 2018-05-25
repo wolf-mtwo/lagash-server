@@ -54,6 +54,7 @@
     <Compile Include="helpers\author\AuthorService.cs" />
     <Compile Include="helpers\author\AuthorMapService.cs" />
     <Compile Include="helpers\ejemplar\EjemplarService.cs" />
+    <Compile Include="helpers\tutor\TutorService.cs" />
     <Compile Include="magazine\MagazineCatalogService.cs" />
     <Compile Include="magazine\MagazineEjemplarService.cs" />
     <Compile Include="magazine\MagazineService.cs" />

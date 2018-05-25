@@ -248,6 +248,7 @@
     <Compile Include="Controllers\v1\helpers\editorial\EditorialController.cs" />
     <Compile Include="Controllers\v1\helpers\editorial\EditorialMapController.cs" />
     <Compile Include="Controllers\v1\helpers\ejemplar\EjemplaresController.cs" />
+    <Compile Include="Controllers\v1\helpers\tutor\TutorController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineCatalogsController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineController.cs" />
     <Compile Include="Controllers\v1\newspaper\NewspaperCatalogsController.cs" />
