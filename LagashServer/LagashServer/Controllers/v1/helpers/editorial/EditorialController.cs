@@ -89,6 +89,13 @@ namespace LagashServer.Controllers.v1.books
             return Ok(item);
         }
 
+        [Route("page/{page}/limit/{limit}/search")]
+        public IEnumerable<Editorial> GetFind(int page, int limit, string search)
+        {
+            if (search == null) search = "";
+            return service.Where(page, limit, (u) => u.name.Contains(search), o => o.created);
+        }
+
         [Route("page/{page}/limit/{limit}")]
         public IEnumerable<Editorial> Get(int page, int limit)
         {
@@ -102,13 +109,6 @@ namespace LagashServer.Controllers.v1.books
             {
                 total = service.Count()
             };
-        }
-
-        [Route("page/{page}/limit/{limit}/search")]
-        public IEnumerable<Editorial> GetFind(int page, int limit, string search)
-        {
-            if (search == null) search = "";
-            return service.Where(page, limit, (u) => u.name.Contains(search), o => o.created);
         }
 
         [Route("find")]

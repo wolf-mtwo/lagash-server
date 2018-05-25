@@ -48,6 +48,8 @@
     <Compile Include="helpers\editorial\IEditorialMapService.cs" />
     <Compile Include="helpers\editorial\IEditorialService.cs" />
     <Compile Include="helpers\ejemplar\IEjemplarService.cs" />
+    <Compile Include="helpers\faculties\IFacultyService.cs" />
+    <Compile Include="helpers\faculties\ICareerService.cs" />
     <Compile Include="helpers\tutor\ITutorService.cs" />
     <Compile Include="IUsersService.cs" />
     <Compile Include="IPersonService.cs" />

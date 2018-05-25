@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Wolf.Lagash.Entities.helper.ejemplar
 {
-    public class Ejemplar
+    public class Ejemplar : Base
     {
         [Key]
         [StringLength(36)]

@@ -90,33 +90,10 @@ namespace LagashServer.Controllers.v1.books
             return Ok(item);
         }
  
-        [Route("size")]
-        public Size GetSize()
-        {
-            return new Size()
-            {
-                total = service.Count()
-            };
-        }
-
         [Route("page/{page}/limit/{limit}")]
         public IEnumerable<Author> Get(int page, int limit)
         {
             return service.GetPage(page, limit, o => o.created);
-        }
-
-        [Route("find")]
-        public IEnumerable<Author> GetFind(string resource_id)
-        {
-            IEnumerable<AuthorMap> items = service_map.Query(o => o.resource_id == resource_id);
-            List <Author> result = new List<Author>();
-            foreach (var item in items)
-            {
-                Author author = service.FindById(item.author_id);
-                author.map = item;
-                result.Add(author);
-            }
-            return result;
         }
 
         [Route("page/{page}/limit/{limit}/search")]
@@ -126,6 +103,29 @@ namespace LagashServer.Controllers.v1.books
             return service.Where(page, limit, (u) => {
                 return u.code.Contains(search)|| u.first_name.Contains(search) || u.last_name.Contains(search);
             }, o => o.created);
+        }
+
+        [Route("size")]
+        public Size GetSize()
+        {
+            return new Size()
+            {
+                total = service.Count()
+            };
+        }
+
+        [Route("find")]
+        public IEnumerable<Author> GetFind(string resource_id)
+        {
+            IEnumerable<AuthorMap> items = service_map.Query(o => o.resource_id == resource_id);
+            List<Author> result = new List<Author>();
+            foreach (var item in items)
+            {
+                Author author = service.FindById(item.author_id);
+                author.map = item;
+                result.Add(author);
+            }
+            return result;
         }
     }
 }

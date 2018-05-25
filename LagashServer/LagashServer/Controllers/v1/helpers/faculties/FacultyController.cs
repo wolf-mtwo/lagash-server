@@ -13,38 +13,32 @@ using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
-using Wolf.Lagash.Interfaces.helper.ejemplar;
-using Wolf.Lagash.Entities.helper.ejemplar;
-using Wolf.Lagash.Services.helper.ejemplar;
 using LagashServer.Controllers.helpers;
+using Wolf.Lagash.Interfaces.map;
 
-namespace LagashServer.Controllers.v1.helper.ejemplar
+namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v1/ejemplares")]
-    public class EjemplaresController : ApiController
+    [RoutePrefix("v1/faculties")]
+    public class FacultyController : ApiController
     {
-        private IEjemplarService service = new EjemplarService(new LagashContext());
+        private IFacultyService service = new FacultyService(new LagashContext());
 
         [Route("")]
-        public IEnumerable<Ejemplar> Get()
+        public IEnumerable<Faculty> Get()
         {
             return service.GetAll();
         }
 
         [Route("")]
-        public IHttpActionResult Post(Ejemplar item)
+        public IHttpActionResult Post(Faculty item)
         {
-            if (!ModelState.IsValid)
-            {
+            if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-            try
-            {
+            try {
                 service.Create(item);
                 service.Commit();
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 return new LagashActionResult(e.Message);
             }
             return Ok(item);
@@ -53,7 +47,7 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         [Route("{id}")]
         public IHttpActionResult Get(String id)
         {
-            Ejemplar item = service.FindById(id);
+            Faculty item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -63,7 +57,7 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         [Route("{id}")]
         public IHttpActionResult Delete(String id)
         {
-            Ejemplar item = service.FindById(id);
+            Faculty item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -73,7 +67,7 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         }
 
         [Route("{id}")]
-        public IHttpActionResult Put(String id, Ejemplar item)
+        public IHttpActionResult Put(String id, Faculty item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
@@ -95,17 +89,17 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         }
 
         [Route("page/{page}/limit/{limit}")]
-        public IEnumerable<Ejemplar> Get(int page, int limit)
+        public IEnumerable<Faculty> Get(int page, int limit)
         {
             return service.GetPage(page, limit, o => o.created);
         }
 
         [Route("page/{page}/limit/{limit}/search")]
-        public IEnumerable<Ejemplar> GetFind(int page, int limit, string search)
+        public IEnumerable<Faculty> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {
-                return o.code.Contains(search) || o._id.Contains(search);
+                return o.name.Contains(search) || o._id.Contains(search);
             }, o => o.created);
         }
 
