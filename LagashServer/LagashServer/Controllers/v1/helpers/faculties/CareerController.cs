@@ -16,7 +16,7 @@ using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v2/books/carrers")]
+    [RoutePrefix("v1/carrers")]
     public class CarrerController : ApiController
     {
         private ICarrerService service = new CarrerService(new LagashContext());
@@ -112,6 +112,12 @@ namespace LagashServer.Controllers.v1.books
             {
                 total = service.Count()
             };
+        }
+
+        [Route("find")]
+        public IEnumerable<Carrer> GetFind(string faculty_id)
+        {
+            return service.Query(o => o.faculty_id == faculty_id);
         }
     }
 }

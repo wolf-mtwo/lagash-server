@@ -30,6 +30,9 @@ namespace LagashServer.helper
         public DbSet<Newspaper> newspapers { get; set; }
         public DbSet<NewspaperCatalog> newspaper_catalog { get; set; }
 
+        public DbSet<Faculty> faculties { get; set; }
+        public DbSet<Carrer> carrers { get; set; }
+
         public DbSet<Tutor> tutor { get; set; }
         public DbSet<Author> author { get; set; }
         public DbSet<Editorial> editorial { get; set; }
