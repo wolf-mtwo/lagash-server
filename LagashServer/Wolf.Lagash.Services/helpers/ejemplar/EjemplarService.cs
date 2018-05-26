@@ -20,5 +20,19 @@ namespace Wolf.Lagash.Services.helper.ejemplar
         {
             return context.Set<Ejemplar>().Count(e => e._id == id) > 0;
         }
+
+        public IEnumerable<Ejemplar> select(int start, int end)
+        {
+            return context.Set<Ejemplar>()
+            .OrderByDescending(o => o.inventory)
+            .Where(o => o.inventory <= start && o.inventory >= end);
+        }
+
+        public Ejemplar next()
+        {
+            return context.Set<Ejemplar>()
+            .OrderByDescending(o => o.inventory)
+            .FirstOrDefault();
+        }
     }
 }

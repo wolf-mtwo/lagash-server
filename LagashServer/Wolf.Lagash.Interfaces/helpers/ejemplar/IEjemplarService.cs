@@ -11,5 +11,7 @@ namespace Wolf.Lagash.Interfaces.helper.ejemplar
     public interface IEjemplarService : IAdapterBase<Ejemplar>
     {
         bool exists(String id);
+        IEnumerable<Ejemplar> select(int start, int end);
+        Ejemplar next();
     }
 }

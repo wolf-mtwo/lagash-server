@@ -97,7 +97,7 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         [Route("page/{page}/limit/{limit}")]
         public IEnumerable<Ejemplar> Get(int page, int limit)
         {
-            return service.GetPage(page, limit, o => o.created);
+            return service.GetPage(page, limit, o => o.inventory);
         }
 
         [Route("page/{page}/limit/{limit}/search")]
@@ -105,8 +105,8 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {
-                return o.code.Contains(search) || o._id.Contains(search);
-            }, o => o.created);
+                return o.inventory.ToString().Contains(search) || o.code.Contains(search) || o._id.Contains(search);
+            }, o => o.inventory);
         }
 
         [Route("size")]
@@ -116,6 +116,18 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
             {
                 total = service.Count()
             };
+        }
+
+        [Route("next")]
+        public Ejemplar GetNext()
+        {
+            return service.next();
+        }
+
+        [Route("select")]
+        public IEnumerable<Ejemplar> GetSelect(int start, int end)
+        {
+            return service.select(start, end);
         }
     }
 }
