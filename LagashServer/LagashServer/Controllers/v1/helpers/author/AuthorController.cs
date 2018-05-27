@@ -38,6 +38,11 @@ namespace LagashServer.Controllers.v1.books
                 return BadRequest(ModelState);
             }
             try {
+                Author ejemplar = service.FindOne(o => o.code == item.code);
+                if (ejemplar != null)
+                {
+                    return new LagashActionResult("El codigo de autor ya existe");
+                }
                 service.Create(item);
                 service.Commit();
             } catch (Exception e) {
