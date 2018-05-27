@@ -18,7 +18,7 @@ using Wolf.Lagash.Interfaces.map;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v1/editorial")]
+    [RoutePrefix("v1/editorials")]
     public class EditorialController : ApiController
     {
         private IEditorialService service = new EditorialService(new LagashContext());
