@@ -30,6 +30,9 @@ namespace Wolf.Lagash.Entities
         [StringLength(36)]
         public string tutor_id { get; set; }
 
+        [StringLength(36)]
+        public string carrer_id { get; set; }
+
         // autors
 
         // optative
