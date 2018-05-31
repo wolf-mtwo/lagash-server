@@ -93,7 +93,7 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Editorial> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (u) => u.name.Contains(search), o => o.created);
+            return service.Where(page, limit, (u) => u.name.ToLower().Contains(search.ToLower()), o => o.created);
         }
 
         [Route("page/{page}/limit/{limit}")]

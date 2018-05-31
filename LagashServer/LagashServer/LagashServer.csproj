@@ -268,6 +268,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\v1\books\BookController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\v3\V3BookController.cs" />
     <Compile Include="helper\LagashActionResult.cs" />
     <Compile Include="helper\Startup.cs" />
     <Compile Include="helper\LagashContext .cs" />
