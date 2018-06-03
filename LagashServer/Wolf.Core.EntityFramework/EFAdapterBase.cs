@@ -43,7 +43,12 @@ namespace Wolf.Core.EntityFramework
             return context.Set<T>().ToList();
         }
 
-        public IEnumerable<T> get(Func<T, bool> where, Func<T, object> order)
+        public IEnumerable<T> get_asc(Func<T, bool> where, Func<T, object> order)
+        {
+            return context.Set<T>().Where(where).OrderBy(order).ToList();
+        }
+
+        public IEnumerable<T> get_desc(Func<T, bool> where, Func<T, object> order)
         {
             return context.Set<T>().Where(where).OrderByDescending(order).ToList();
         }

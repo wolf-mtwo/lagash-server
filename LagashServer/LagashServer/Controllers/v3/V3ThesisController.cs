@@ -40,7 +40,8 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}/ejemplares")]
         public IEnumerable<Ejemplar> GetEjemplares(String id)
         {
-            return service_ejemplares.Query(o => o.data_id == id);
+            //return service_ejemplares.Query(o => o.data_id == id);
+            return service_ejemplares.get_asc(o => o.data_id == id, o => o.index);
         }
 
         //[Route("page/{page}/limit/{limit}")]
@@ -97,7 +98,7 @@ namespace LagashServer.Controllers.v1.books
         [Route("catalogs/{id}")]
         public IEnumerable<Thesis> GetCatalogs(String id)
         {
-            return service_thesis.get(o => o.catalog_id == id, o => o.created);
+            return service_thesis.get_desc(o => o.catalog_id == id, o => o.created);
         }
     }
 }
