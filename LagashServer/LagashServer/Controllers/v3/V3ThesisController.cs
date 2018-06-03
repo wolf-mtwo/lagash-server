@@ -17,6 +17,8 @@ using LagashServer.Controllers.helpers;
 using Wolf.Lagash.Interfaces.helper.ejemplar;
 using Wolf.Lagash.Services.helper.ejemplar;
 using Wolf.Lagash.Entities.helper.ejemplar;
+using Wolf.Lagash.Interfaces.map;
+using Wolf.Lagash.Entities.map;
 
 namespace LagashServer.Controllers.v1.books
 {
@@ -25,6 +27,8 @@ namespace LagashServer.Controllers.v1.books
     {
         private IThesisService service_thesis = new ThesisService(new LagashContext());
         private IThesisCatalogService service_catalogs = new ThesisCatalogService(new LagashContext());
+        private IAuthorService service_authors = new AuthorService(new LagashContext());
+        private IAuthorMapService service_authors_map = new AuthorMapService(new LagashContext());
         private IEjemplarService service_ejemplares = new EjemplarService(new LagashContext());
 
         [Route("{id}")]
@@ -40,18 +44,8 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}/ejemplares")]
         public IEnumerable<Ejemplar> GetEjemplares(String id)
         {
-            //return service_ejemplares.Query(o => o.data_id == id);
             return service_ejemplares.get_asc(o => o.data_id == id, o => o.index);
         }
-
-        //[Route("page/{page}/limit/{limit}")]
-        //public IEnumerable<Thesis> GetPagination(int page, int limit, string search)
-        //{
-        //    if (search == null) search = "";
-        //    return service_thesis.search(page, limit, (o) => {
-        //        return o.title.ToLower().Contains(search.ToLower());
-        //    });
-        //}
 
         [Route("page/{page}/limit/{limit}")]
         public IEnumerable<Thesis> GetPagination(int page, int limit, string type, string search)
@@ -99,6 +93,19 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Thesis> GetCatalogs(String id)
         {
             return service_thesis.get_desc(o => o.catalog_id == id, o => o.created);
+        }
+
+        [Route("{id}/authors")]
+        public IEnumerable<Author> GetAuthors(string id)
+        {
+            IEnumerable<AuthorMap> items = service_authors_map.Query(o => o.resource_id == id);
+            List<Author> result = new List<Author>();
+            foreach (var item in items) {
+                Author author = service_authors.FindById(item.author_id);
+                author.map = item;
+                result.Add(author);
+            }
+            return result;
         }
     }
 }

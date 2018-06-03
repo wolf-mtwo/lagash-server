@@ -17,6 +17,8 @@ using LagashServer.Controllers.helpers;
 using Wolf.Lagash.Interfaces.helper.ejemplar;
 using Wolf.Lagash.Services.helper.ejemplar;
 using Wolf.Lagash.Entities.helper.ejemplar;
+using Wolf.Lagash.Interfaces.map;
+using Wolf.Lagash.Entities.map;
 
 namespace LagashServer.Controllers.v1.books
 {
@@ -24,7 +26,9 @@ namespace LagashServer.Controllers.v1.books
     public class V3BrowserController : ApiController
     {
         private IBookService service_books = new BookService(new LagashContext());
-        private IThesisService service_thesis = new ThesisService(new LagashContext());
+        private IBookCatalogService service_catalogs = new BookCatalogService(new LagashContext());
+        private IAuthorService service_authors = new AuthorService(new LagashContext());
+        private IAuthorMapService service_authors_map = new AuthorMapService(new LagashContext());
         private IEjemplarService service_ejemplares = new EjemplarService(new LagashContext());
 
         [Route("{id}")]
@@ -44,18 +48,66 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("page/{page}/limit/{limit}")]
-        public IEnumerable<Book> GetPagination(int page, int limit, string search)
+        public IEnumerable<Book> GetPagination(int page, int limit, string type, string search)
         {
             if (search == null) search = "";
-            return service_books.search(page, limit, (o) => {
-                return o.title.ToLower().Contains(search.ToLower());
-            });
+            Func<Book, bool> where = null;
+            switch (type)
+            {
+                case "ALL":
+                    where = (o) => {
+                        return o.title.ToLower().Contains(search.ToLower()) || (o.tags != null && o.tags.ToLower().Contains(search.ToLower()));
+                    };
+                    break;
+                case "TITLE":
+                    where = (o) => {
+                        return o.title.ToLower().Contains(search.ToLower());
+                    };
+                    break;
+                case "SUBJECT":
+                    where = (o) => {
+                        return o.tags != null && o.tags.ToLower().Contains(search.ToLower());
+                    };
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }
+            return service_books.search(page, limit, where);
         }
 
         [Route("suggestions")]
         public IEnumerable<Book> GetSuggestions()
         {
             return service_books.suggestions();
+        }
+
+        [Route("catalogs/page/{page}/limit/{limit}")]
+        public IEnumerable<BookCatalog> GetCatalogs(int page, int limit)
+        {
+            return service_catalogs.Where(page, limit, (o) => {
+                return o.enabled == true;
+            }, o => o.created);
+        }
+
+        [Route("catalogs/{id}")]
+        public IEnumerable<Book> GetCatalogs(String id)
+        {
+            return service_books.get_desc(o => o.catalog_id == id, o => o.created);
+        }
+
+        [Route("{id}/authors")]
+        public IEnumerable<Author> GetAuthors(string id)
+        {
+            IEnumerable<AuthorMap> items = service_authors_map.Query(o => o.resource_id == id);
+            List<Author> result = new List<Author>();
+            foreach (var item in items)
+            {
+                Author author = service_authors.FindById(item.author_id);
+                author.map = item;
+                result.Add(author);
+            }
+            return result;
         }
     }
 }
