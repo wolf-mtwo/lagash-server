@@ -19,14 +19,15 @@ using Wolf.Lagash.Services.helper.ejemplar;
 using Wolf.Lagash.Entities.helper.ejemplar;
 using Wolf.Lagash.Interfaces.map;
 using Wolf.Lagash.Entities.map;
+using Wolf.Lagash.Entities.newspaper;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v3/browser/thesis")]
-    public class V3ThesisController : ApiController
+    [RoutePrefix("v3/browser/newspappers")]
+    public class V3NewspapersController : ApiController
     {
-        private IThesisService service_thesis = new ThesisService(new LagashContext());
-        private IThesisCatalogService service_catalogs = new ThesisCatalogService(new LagashContext());
+        private INewspaperService service_newspapers = new NewspaperService(new LagashContext());
+        private INewspaperCatalogService service_catalogs = new NewspaperCatalogService(new LagashContext());
         private IAuthorService service_authors = new AuthorService(new LagashContext());
         private IAuthorMapService service_authors_map = new AuthorMapService(new LagashContext());
         private IEjemplarService service_ejemplares = new EjemplarService(new LagashContext());
@@ -34,7 +35,7 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}")]
         public IHttpActionResult Get(String id)
         {
-            Thesis item = service_thesis.FindById(id);
+            Newspaper item = service_newspapers.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -48,10 +49,10 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("page/{page}/limit/{limit}")]
-        public IEnumerable<Thesis> GetPagination(int page, int limit, string type, string search)
+        public IEnumerable<Newspaper> GetPagination(int page, int limit, string type, string search)
         {
             if (search == null) search = "";
-            Func<Thesis, bool> where = null;
+            Func<Newspaper, bool> where = null;
             switch (type) {
                  case "ALL":
                     where = (o) => {
@@ -72,11 +73,11 @@ namespace LagashServer.Controllers.v1.books
                     Console.WriteLine("Default case");
                 break;
             }
-            return service_thesis.search(page, limit, where);
+            return service_newspapers.search(page, limit, where);
         }
-        
+
         [Route("catalogs/page/{page}/limit/{limit}")]
-        public IEnumerable<ThesisCatalog> GetCatalogs(int page, int limit)
+        public IEnumerable<NewspaperCatalog> GetCatalogs(int page, int limit)
         {
             return service_catalogs.Where(page, limit, (o) => {
                 return o.enabled == true;
@@ -84,9 +85,9 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("catalogs/{id}")]
-        public IEnumerable<Thesis> GetCatalogs(String id)
+        public IEnumerable<Newspaper> GetCatalogs(String id)
         {
-            return service_thesis.get_desc(o => o.catalog_id == id, o => o.created);
+            return service_newspapers.get_desc(o => o.catalog_id == id, o => o.created);
         }
 
         [Route("{id}/authors")]

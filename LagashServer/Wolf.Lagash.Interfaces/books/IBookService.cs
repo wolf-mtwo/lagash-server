@@ -12,7 +12,6 @@ namespace Wolf.Lagash.Interfaces
     public interface IBookService : IAdapterBase<Book>
     {
         bool exists(String id);
-        IEnumerable<Book> suggestions();
         IEnumerable<Book> search(int page, int limit, Func<Book, bool> where);
     }
 }

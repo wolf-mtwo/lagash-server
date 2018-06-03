@@ -22,5 +22,11 @@ namespace Wolf.Lagash.Services
         {
             return context.Set<Newspaper>().Count(e => e._id == id) > 0;
         }
+
+        public IEnumerable<Newspaper> search(int page, int limit, Func<Newspaper, bool> where)
+        {
+            page--;
+            return context.Set<Newspaper>().Where(o => o.enabled).OrderByDescending(o => o.created).Where(where).Skip(page * limit).Take(limit);
+        }
     }
 }

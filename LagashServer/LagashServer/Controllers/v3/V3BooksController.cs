@@ -22,11 +22,11 @@ using Wolf.Lagash.Entities.map;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v3/browser/thesis")]
-    public class V3ThesisController : ApiController
+    [RoutePrefix("v3/browser/books")]
+    public class V3BooksController : ApiController
     {
-        private IThesisService service_thesis = new ThesisService(new LagashContext());
-        private IThesisCatalogService service_catalogs = new ThesisCatalogService(new LagashContext());
+        private IBookService service_books = new BookService(new LagashContext());
+        private IBookCatalogService service_catalogs = new BookCatalogService(new LagashContext());
         private IAuthorService service_authors = new AuthorService(new LagashContext());
         private IAuthorMapService service_authors_map = new AuthorMapService(new LagashContext());
         private IEjemplarService service_ejemplares = new EjemplarService(new LagashContext());
@@ -34,7 +34,7 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}")]
         public IHttpActionResult Get(String id)
         {
-            Thesis item = service_thesis.FindById(id);
+            Book item = service_books.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -44,16 +44,17 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}/ejemplares")]
         public IEnumerable<Ejemplar> GetEjemplares(String id)
         {
-            return service_ejemplares.get_asc(o => o.data_id == id, o => o.index);
+            return service_ejemplares.Query(o => o.data_id == id);
         }
 
         [Route("page/{page}/limit/{limit}")]
-        public IEnumerable<Thesis> GetPagination(int page, int limit, string type, string search)
+        public IEnumerable<Book> GetPagination(int page, int limit, string type, string search)
         {
             if (search == null) search = "";
-            Func<Thesis, bool> where = null;
-            switch (type) {
-                 case "ALL":
+            Func<Book, bool> where = null;
+            switch (type)
+            {
+                case "ALL":
                     where = (o) => {
                         return o.title.ToLower().Contains(search.ToLower()) || (o.tags != null && o.tags.ToLower().Contains(search.ToLower()));
                     };
@@ -70,13 +71,13 @@ namespace LagashServer.Controllers.v1.books
                     break;
                 default:
                     Console.WriteLine("Default case");
-                break;
+                    break;
             }
-            return service_thesis.search(page, limit, where);
+            return service_books.search(page, limit, where);
         }
-        
+
         [Route("catalogs/page/{page}/limit/{limit}")]
-        public IEnumerable<ThesisCatalog> GetCatalogs(int page, int limit)
+        public IEnumerable<BookCatalog> GetCatalogs(int page, int limit)
         {
             return service_catalogs.Where(page, limit, (o) => {
                 return o.enabled == true;
@@ -84,9 +85,9 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("catalogs/{id}")]
-        public IEnumerable<Thesis> GetCatalogs(String id)
+        public IEnumerable<Book> GetCatalogs(String id)
         {
-            return service_thesis.get_desc(o => o.catalog_id == id, o => o.created);
+            return service_books.get_desc(o => o.catalog_id == id, o => o.created);
         }
 
         [Route("{id}/authors")]
@@ -94,7 +95,8 @@ namespace LagashServer.Controllers.v1.books
         {
             IEnumerable<AuthorMap> items = service_authors_map.Query(o => o.resource_id == id);
             List<Author> result = new List<Author>();
-            foreach (var item in items) {
+            foreach (var item in items)
+            {
                 Author author = service_authors.FindById(item.author_id);
                 author.map = item;
                 result.Add(author);

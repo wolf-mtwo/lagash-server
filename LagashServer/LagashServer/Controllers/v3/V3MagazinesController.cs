@@ -22,11 +22,11 @@ using Wolf.Lagash.Entities.map;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v3/browser/books")]
-    public class V3BrowserController : ApiController
+    [RoutePrefix("v3/browser/magazines")]
+    public class V3MagazinesController : ApiController
     {
-        private IBookService service_books = new BookService(new LagashContext());
-        private IBookCatalogService service_catalogs = new BookCatalogService(new LagashContext());
+        private IMagazineService service = new MagazineService(new LagashContext());
+        private IMagazineCatalogService service_catalogs = new MagazineCatalogService(new LagashContext());
         private IAuthorService service_authors = new AuthorService(new LagashContext());
         private IAuthorMapService service_authors_map = new AuthorMapService(new LagashContext());
         private IEjemplarService service_ejemplares = new EjemplarService(new LagashContext());
@@ -34,7 +34,7 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}")]
         public IHttpActionResult Get(String id)
         {
-            Book item = service_books.FindById(id);
+            Magazine item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -44,17 +44,16 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}/ejemplares")]
         public IEnumerable<Ejemplar> GetEjemplares(String id)
         {
-            return service_ejemplares.Query(o => o.data_id == id);
+            return service_ejemplares.get_asc(o => o.data_id == id, o => o.index);
         }
 
         [Route("page/{page}/limit/{limit}")]
-        public IEnumerable<Book> GetPagination(int page, int limit, string type, string search)
+        public IEnumerable<Magazine> GetPagination(int page, int limit, string type, string search)
         {
             if (search == null) search = "";
-            Func<Book, bool> where = null;
-            switch (type)
-            {
-                case "ALL":
+            Func<Magazine, bool> where = null;
+            switch (type) {
+                 case "ALL":
                     where = (o) => {
                         return o.title.ToLower().Contains(search.ToLower()) || (o.tags != null && o.tags.ToLower().Contains(search.ToLower()));
                     };
@@ -71,19 +70,13 @@ namespace LagashServer.Controllers.v1.books
                     break;
                 default:
                     Console.WriteLine("Default case");
-                    break;
+                break;
             }
-            return service_books.search(page, limit, where);
-        }
-
-        [Route("suggestions")]
-        public IEnumerable<Book> GetSuggestions()
-        {
-            return service_books.suggestions();
+            return service.search(page, limit, where);
         }
 
         [Route("catalogs/page/{page}/limit/{limit}")]
-        public IEnumerable<BookCatalog> GetCatalogs(int page, int limit)
+        public IEnumerable<MagazineCatalog> GetCatalogs(int page, int limit)
         {
             return service_catalogs.Where(page, limit, (o) => {
                 return o.enabled == true;
@@ -91,9 +84,9 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("catalogs/{id}")]
-        public IEnumerable<Book> GetCatalogs(String id)
+        public IEnumerable<Magazine> GetCatalogs(String id)
         {
-            return service_books.get_desc(o => o.catalog_id == id, o => o.created);
+            return service.get_desc(o => o.catalog_id == id, o => o.created);
         }
 
         [Route("{id}/authors")]
@@ -101,8 +94,7 @@ namespace LagashServer.Controllers.v1.books
         {
             IEnumerable<AuthorMap> items = service_authors_map.Query(o => o.resource_id == id);
             List<Author> result = new List<Author>();
-            foreach (var item in items)
-            {
+            foreach (var item in items) {
                 Author author = service_authors.FindById(item.author_id);
                 author.map = item;
                 result.Add(author);

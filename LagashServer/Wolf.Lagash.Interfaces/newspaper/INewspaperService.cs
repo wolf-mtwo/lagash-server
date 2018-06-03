@@ -13,5 +13,6 @@ namespace Wolf.Lagash.Interfaces
     public interface INewspaperService : IAdapterBase<Newspaper>
     {
         bool exists(String id);
+        IEnumerable<Newspaper> search(int page, int limit, Func<Newspaper, bool> where);
     }
 }
