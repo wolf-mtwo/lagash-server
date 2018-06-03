@@ -22,7 +22,7 @@ namespace Wolf.Core.EntityFramework
         {
             return context.Set<T>().Where(predicate).ToList();
         }
-
+        
         public T FindById(int id)
         {
             return context.Set<T>().Find(id);
@@ -43,10 +43,16 @@ namespace Wolf.Core.EntityFramework
             return context.Set<T>().ToList();
         }
 
+        public IEnumerable<T> get(Func<T, bool> where, Func<T, object> order)
+        {
+            return context.Set<T>().Where(where).OrderByDescending(order).ToList();
+        }
+
         public IEnumerable<T> GetAllOrderBy(Func<T, object> keySelector)
         {
             return context.Set<T>().OrderBy(keySelector).ToList();
         }
+        
 
         public IEnumerable<T> GetAllOrderByDescending(Func<T, object> keySelector)
         {

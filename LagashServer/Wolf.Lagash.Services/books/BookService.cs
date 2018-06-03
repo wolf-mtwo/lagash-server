@@ -30,7 +30,7 @@ namespace Wolf.Lagash.Services
         public IEnumerable<Book> search(int page, int limit, Func<Book, bool> where)
         {
             page--;
-            return context.Set<Book>().Where(o => o.enabled).OrderByDescending(o => o.year).Where(where).Skip(page * limit).Take(limit);
+            return context.Set<Book>().Where(o => o.enabled).OrderByDescending(o => o.created).Where(where).Skip(page * limit).Take(limit);
         }
 
         public IEnumerable<Book> searchByYear(int page, int limit, Func<Book, bool> where)

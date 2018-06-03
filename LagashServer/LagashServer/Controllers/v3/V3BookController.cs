@@ -14,6 +14,9 @@ using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
 using LagashServer.Controllers.helpers;
+using Wolf.Lagash.Interfaces.helper.ejemplar;
+using Wolf.Lagash.Services.helper.ejemplar;
+using Wolf.Lagash.Entities.helper.ejemplar;
 
 namespace LagashServer.Controllers.v1.books
 {
@@ -22,6 +25,7 @@ namespace LagashServer.Controllers.v1.books
     {
         private IBookService service_books = new BookService(new LagashContext());
         private IThesisService service_thesis = new ThesisService(new LagashContext());
+        private IEjemplarService service_ejemplares = new EjemplarService(new LagashContext());
 
         [Route("{id}")]
         public IHttpActionResult Get(String id)
@@ -32,7 +36,13 @@ namespace LagashServer.Controllers.v1.books
             }
             return Ok(item);
         }
-        
+
+        [Route("{id}/ejemplares")]
+        public IEnumerable<Ejemplar> GetEjemplares(String id)
+        {
+            return service_ejemplares.Query(o => o.data_id == id);
+        }
+
         [Route("page/{page}/limit/{limit}")]
         public IEnumerable<Book> GetPagination(int page, int limit, string search)
         {

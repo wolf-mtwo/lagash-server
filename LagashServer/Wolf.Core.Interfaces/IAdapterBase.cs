@@ -14,6 +14,7 @@ namespace Wolf.Core.Interfaces
         T FindById(int id);
         T FindById(String id);
         IEnumerable<T> GetAll();
+        IEnumerable<T> get(Func<T, bool> where, Func<T, object> order);
         IEnumerable<T> GetAllOrderBy(Func<T, object> keySelector);
         IEnumerable<T> GetAllOrderByDescending(Func<T, object> keySelector);
         IEnumerable<T> GetPage(int page, int limit, Func<T, object> keySelector);
