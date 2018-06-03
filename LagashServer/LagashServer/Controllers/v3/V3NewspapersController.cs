@@ -23,7 +23,7 @@ using Wolf.Lagash.Entities.newspaper;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v3/browser/newspappers")]
+    [RoutePrefix("v3/browser/newspapers")]
     public class V3NewspapersController : ApiController
     {
         private INewspaperService service_newspapers = new NewspaperService(new LagashContext());
