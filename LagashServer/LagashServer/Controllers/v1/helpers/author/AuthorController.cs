@@ -122,7 +122,7 @@ namespace LagashServer.Controllers.v1.books
         [Route("find")]
         public IEnumerable<Author> GetFind(string resource_id)
         {
-            IEnumerable<AuthorMap> items = service_map.Query(o => o.resource_id == resource_id);
+            IEnumerable<AuthorMap> items = service_map.get_asc(o => o.resource_id == resource_id, o => o.created);
             List<Author> result = new List<Author>();
             foreach (var item in items)
             {

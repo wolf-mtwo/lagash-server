@@ -110,7 +110,7 @@ namespace LagashServer.Controllers.v1.books
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {
-                return o.title.ToLower().Contains(search.ToLower()) || o._id.Contains(search);
+                return o.title.ToLower().Contains(search.ToLower()) || o.code.Contains(search.ToLower());
             }, o => o.created);
         }
 
