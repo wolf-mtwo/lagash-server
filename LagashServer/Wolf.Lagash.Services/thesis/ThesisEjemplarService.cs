@@ -18,7 +18,17 @@ namespace Wolf.Lagash.Services
 
         public bool exists(String id)
         {
-            return context.Set<BookEjemplar>().Count(e => e._id == id) > 0;
+            return context.Set<ThesisEjemplar>().Count(e => e._id == id) > 0;
+        }
+
+        public IEnumerable<ThesisEjemplar> select(int start, int end)
+        {
+            return context.Set<ThesisEjemplar>().OrderByDescending(o => o.inventory).Where(o => o.inventory <= start && o.inventory >= end);
+        }
+
+        public ThesisEjemplar next()
+        {
+            return context.Set<ThesisEjemplar>().OrderByDescending(o => o.inventory).FirstOrDefault();
         }
     }
 }

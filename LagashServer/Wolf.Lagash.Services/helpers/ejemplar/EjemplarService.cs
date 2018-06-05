@@ -23,16 +23,12 @@ namespace Wolf.Lagash.Services.helper.ejemplar
 
         public IEnumerable<Ejemplar> select(int start, int end)
         {
-            return context.Set<Ejemplar>()
-            .OrderByDescending(o => o.inventory)
-            .Where(o => o.inventory <= start && o.inventory >= end);
+            return context.Set<Ejemplar>().OrderByDescending(o => o.inventory).Where(o => o.inventory <= start && o.inventory >= end);
         }
 
         public Ejemplar next()
         {
-            return context.Set<Ejemplar>()
-            .OrderByDescending(o => o.inventory)
-            .FirstOrDefault();
+            return context.Set<Ejemplar>().OrderByDescending(o => o.inventory).FirstOrDefault();
         }
     }
 }

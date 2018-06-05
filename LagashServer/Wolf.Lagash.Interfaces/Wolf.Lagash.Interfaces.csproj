@@ -57,6 +57,7 @@
     <Compile Include="magazine\IMagazineEjemplarService.cs" />
     <Compile Include="magazine\IMagazineService.cs" />
     <Compile Include="map\IUsersMapService.cs" />
+    <Compile Include="newspaper\INewspaperEjemplarService.cs" />
     <Compile Include="newspaper\INewspaperCatalogService.cs" />
     <Compile Include="newspaper\INewspaperService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

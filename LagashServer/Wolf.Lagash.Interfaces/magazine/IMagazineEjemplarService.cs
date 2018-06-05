@@ -11,5 +11,7 @@ namespace Wolf.Lagash.Interfaces
     public interface IMagazineEjemplarService : IAdapterBase<MagazineEjemplar>
     {
         bool exists(String id);
+        IEnumerable<MagazineEjemplar> select(int start, int end);
+        MagazineEjemplar next();
     }
 }

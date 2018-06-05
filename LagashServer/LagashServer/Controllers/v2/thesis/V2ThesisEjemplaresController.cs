@@ -19,19 +19,28 @@ namespace LagashServer.Controllers.v2.books
         [Route("{id}/ejemplares")]
         public IEnumerable<ThesisEjemplar> Get(string id)
         {
-            return service.Query(o => o.thesis_id == id);
+            return service.Query(o => o.data_id == id);
         }
 
         [Route("{id}/ejemplares")]
         public IHttpActionResult Post(ThesisEjemplar item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            try {
+            try
+            {
+                ThesisEjemplar ejemplar = service.FindOne(o => o.code == item.code);
+                if (ejemplar != null)
+                {
+                    return new LagashActionResult("La signatura topográfica ya existe");
+                }
                 service.Create(item);
                 service.Commit();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 return new LagashActionResult(e.Message);
             }
             return Ok(item);

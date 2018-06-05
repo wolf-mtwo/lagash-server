@@ -243,6 +243,7 @@
     <Compile Include="Controllers\helpers\File.cs" />
     <Compile Include="Controllers\helpers\Size.cs" />
     <Compile Include="Controllers\v1\books\BookCatalogsController.cs" />
+    <Compile Include="Controllers\v1\books\BookEjemplaresController.cs" />
     <Compile Include="Controllers\v1\helpers\author\AuthorMapController.cs" />
     <Compile Include="Controllers\v1\helpers\author\AuthorController.cs" />
     <Compile Include="Controllers\v1\helpers\editorial\EditorialController.cs" />
@@ -251,8 +252,10 @@
     <Compile Include="Controllers\v1\helpers\faculties\CareerController.cs" />
     <Compile Include="Controllers\v1\helpers\faculties\FacultyController.cs" />
     <Compile Include="Controllers\v1\helpers\tutor\TutorController.cs" />
+    <Compile Include="Controllers\v1\magazine\MagazineEjemplaresController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineCatalogsController.cs" />
     <Compile Include="Controllers\v1\magazine\MagazineController.cs" />
+    <Compile Include="Controllers\v1\newspaper\MagazineEjemplaresController.cs" />
     <Compile Include="Controllers\v1\newspaper\NewspaperCatalogsController.cs" />
     <Compile Include="Controllers\v1\newspaper\NewspaperController.cs" />
     <Compile Include="Controllers\v1\thesis\ThesisCatalogsController.cs" />
@@ -262,7 +265,6 @@
     <Compile Include="Controllers\v2\history\V2EjemplaresController.cs" />
     <Compile Include="Controllers\v2\thesis\V2ThesisEjemplaresController.cs" />
     <Compile Include="Controllers\v2\books\V2BookEjemplaresController.cs" />
-    <Compile Include="Controllers\v1\books\BookEjemplaresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\LoginController.cs" />

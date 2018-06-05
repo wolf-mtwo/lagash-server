@@ -62,6 +62,7 @@
     <Compile Include="magazine\MagazineService.cs" />
     <Compile Include="newspaper\NewspaperCatalogService.cs" />
     <Compile Include="newspaper\NewspaperService.cs" />
+    <Compile Include="newspaper\NewspaperEjemplarService.cs" />
     <Compile Include="thesis\ThesisCatalogService.cs" />
     <Compile Include="thesis\ThesisEjemplarService.cs" />
     <Compile Include="thesis\ThesisService.cs" />

@@ -9,7 +9,7 @@ using Wolf.Lagash.Entities.helper.ejemplar;
 
 namespace Wolf.Lagash.Entities
 {
-    public class ThesisEjemplar : Ejemplar
+    public class NewspaperEjemplar : Ejemplar
     {
     }
 }

@@ -13,6 +13,7 @@ using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
+using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.books
 {
@@ -30,23 +31,33 @@ namespace LagashServer.Controllers.v1.books
         [Route("")]
         public IHttpActionResult Post(ThesisEjemplar item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            try {
+            try
+            {
+                ThesisEjemplar ejemplar = service.FindOne(o => o.code == item.code);
+                if (ejemplar != null)
+                {
+                    return new LagashActionResult("La signatura topográfica ya existe");
+                }
                 service.Create(item);
                 service.Commit();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 return new LagashActionResult(e.Message);
             }
-            return CreatedAtRoute("DefaultApi", new { id = item._id }, item);
+            return Ok(item);
         }
 
         [Route("{id}")]
         public IHttpActionResult Get(String id)
         {
             ThesisEjemplar item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             return Ok(item);
@@ -56,7 +67,8 @@ namespace LagashServer.Controllers.v1.books
         public IHttpActionResult Delete(String id)
         {
             ThesisEjemplar item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             service.Delete(item);
@@ -67,23 +79,67 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}")]
         public IHttpActionResult Put(String id, ThesisEjemplar item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            if (id != item._id) {
+            if (id != item._id)
+            {
                 return new LagashActionResult("should provide a valid _id");
             }
             service.Update(item);
-            try {
+            try
+            {
                 service.Commit();
-            } catch (DbUpdateConcurrencyException) {
-                if (!service.exists(id)) {
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!service.exists(id))
+                {
                     return NotFound();
-                } else {
+                }
+                else
+                {
                     throw;
                 }
             }
             return Ok(item);
+        }
+
+        [Route("page/{page}/limit/{limit}")]
+        public IEnumerable<ThesisEjemplar> Get(int page, int limit)
+        {
+            return service.GetPage(page, limit, o => o.inventory);
+        }
+
+        [Route("page/{page}/limit/{limit}/search")]
+        public IEnumerable<ThesisEjemplar> GetFind(int page, int limit, string search)
+        {
+            if (search == null) search = "";
+            return service.Where(page, limit, (o) => {
+                return o.inventory.ToString().Contains(search) || o.code.Contains(search) || o._id.Contains(search);
+            }, o => o.inventory);
+        }
+
+        [Route("size")]
+        public Size GetSize()
+        {
+            return new Size()
+            {
+                total = service.Count()
+            };
+        }
+
+        [Route("next")]
+        public ThesisEjemplar GetNext()
+        {
+            return service.next();
+        }
+
+        [Route("select")]
+        public IEnumerable<ThesisEjemplar> GetSelect(int start, int end)
+        {
+            return service.select(start, end);
         }
     }
 }

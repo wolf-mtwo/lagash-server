@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="helper\Material.cs" />
     <Compile Include="helper\faculties\Career.cs" />
     <Compile Include="helper\faculties\Faculty.cs" />
     <Compile Include="helper\tutor\Tutor.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="magazine\Magazine.cs" />
     <Compile Include="magazine\MagazineCatalog.cs" />
     <Compile Include="magazine\MagazineEjemplar.cs" />
+    <Compile Include="newspaper\NewspaperEjemplar.cs" />
     <Compile Include="newspaper\Newspaper.cs" />
     <Compile Include="newspaper\NewspaperCatalog.cs" />
     <Compile Include="thesis\ThesisEjemplar.cs" />

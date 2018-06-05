@@ -11,5 +11,7 @@ namespace Wolf.Lagash.Interfaces
     public interface IBookEjemplarService : IAdapterBase<BookEjemplar>
     {
         bool exists(String id);
+        IEnumerable<BookEjemplar> select(int start, int end);
+        BookEjemplar next();
     }
 }

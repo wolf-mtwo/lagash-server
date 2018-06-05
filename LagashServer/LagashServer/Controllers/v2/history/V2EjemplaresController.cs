@@ -33,8 +33,7 @@ namespace LagashServer.Controllers.v2.history
             }
             try {
                 Ejemplar ejemplar = service.FindOne(o => o.code == item.code);
-                if (ejemplar != null)
-                {
+                if (ejemplar != null) {
                     return new LagashActionResult("La signatura topográfica ya existe");
                 }
                 service.Create(item);

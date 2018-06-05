@@ -21,24 +21,24 @@ using LagashServer.Controllers.helpers;
 namespace LagashServer.Controllers.v1.helper.ejemplar
 {
     [RoutePrefix("v1/books/ejemplares")]
-    public class BookEjemplaresController : ApiController
+    public class MagazineEjemplaresController : ApiController
     {
-        private IBookEjemplarService service = new BookEjemplarService(new LagashContext());
+        private IMagazineEjemplarService service = new MagazineEjemplarService(new LagashContext());
 
         [Route("")]
-        public IEnumerable<BookEjemplar> Get()
+        public IEnumerable<MagazineEjemplar> Get()
         {
             return service.GetAll();
         }
 
         [Route("")]
-        public IHttpActionResult Post(BookEjemplar item)
+        public IHttpActionResult Post(MagazineEjemplar item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
             try {
-                BookEjemplar ejemplar = service.FindOne(o => o.code == item.code);
+                MagazineEjemplar ejemplar = service.FindOne(o => o.code == item.code);
                 if (ejemplar != null) {
                     return new LagashActionResult("La signatura topográfica ya existe");
                 }
@@ -55,7 +55,7 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         [Route("{id}")]
         public IHttpActionResult Get(String id)
         {
-            BookEjemplar item = service.FindById(id);
+            MagazineEjemplar item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -65,7 +65,7 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         [Route("{id}")]
         public IHttpActionResult Delete(String id)
         {
-            BookEjemplar item = service.FindById(id);
+            MagazineEjemplar item = service.FindById(id);
             if (item == null) {
                 return NotFound();
             }
@@ -75,7 +75,7 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         }
 
         [Route("{id}")]
-        public IHttpActionResult Put(String id, BookEjemplar item)
+        public IHttpActionResult Put(String id, MagazineEjemplar item)
         {
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
@@ -97,13 +97,13 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         }
 
         [Route("page/{page}/limit/{limit}")]
-        public IEnumerable<BookEjemplar> Get(int page, int limit)
+        public IEnumerable<MagazineEjemplar> Get(int page, int limit)
         {
             return service.GetPage(page, limit, o => o.inventory);
         }
 
         [Route("page/{page}/limit/{limit}/search")]
-        public IEnumerable<BookEjemplar> GetFind(int page, int limit, string search)
+        public IEnumerable<MagazineEjemplar> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {
@@ -127,7 +127,7 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         }
 
         [Route("select")]
-        public IEnumerable<BookEjemplar> GetSelect(int start, int end)
+        public IEnumerable<MagazineEjemplar> GetSelect(int start, int end)
         {
             return service.select(start, end);
         }

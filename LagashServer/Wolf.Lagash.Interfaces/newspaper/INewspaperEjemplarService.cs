@@ -8,10 +8,10 @@ using Wolf.Lagash.Entities;
 
 namespace Wolf.Lagash.Interfaces
 {
-    public interface IThesisEjemplarService : IAdapterBase<ThesisEjemplar>
+    public interface INewspaperEjemplarService : IAdapterBase<NewspaperEjemplar>
     {
         bool exists(String id);
-        IEnumerable<ThesisEjemplar> select(int start, int end);
-        ThesisEjemplar next();
+        IEnumerable<NewspaperEjemplar> select(int start, int end);
+        NewspaperEjemplar next();
     }
 }

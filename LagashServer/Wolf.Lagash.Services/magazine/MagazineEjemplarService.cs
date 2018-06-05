@@ -20,5 +20,15 @@ namespace Wolf.Lagash.Services
         {
             return context.Set<MagazineEjemplar>().Count(e => e._id == id) > 0;
         }
+
+        public IEnumerable<MagazineEjemplar> select(int start, int end)
+        {
+            return context.Set<MagazineEjemplar>().OrderByDescending(o => o.inventory).Where(o => o.inventory <= start && o.inventory >= end);
+        }
+
+        public MagazineEjemplar next()
+        {
+            return context.Set<MagazineEjemplar>().OrderByDescending(o => o.inventory).FirstOrDefault();
+        }
     }
 }
