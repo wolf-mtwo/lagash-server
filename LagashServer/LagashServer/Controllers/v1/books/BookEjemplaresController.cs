@@ -38,10 +38,6 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
                 return BadRequest(ModelState);
             }
             try {
-                BookEjemplar ejemplar = service.FindOne(o => o.code == item.code);
-                if (ejemplar != null) {
-                    return new LagashActionResult("La signatura topográfica ya existe");
-                }
                 service.Create(item);
                 service.Commit();
             }

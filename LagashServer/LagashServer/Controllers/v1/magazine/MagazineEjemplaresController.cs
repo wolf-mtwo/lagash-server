@@ -20,7 +20,7 @@ using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.helper.ejemplar
 {
-    [RoutePrefix("v1/books/ejemplares")]
+    [RoutePrefix("v1/magazines/ejemplares")]
     public class MagazineEjemplaresController : ApiController
     {
         private IMagazineEjemplarService service = new MagazineEjemplarService(new LagashContext());
@@ -38,10 +38,6 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
                 return BadRequest(ModelState);
             }
             try {
-                MagazineEjemplar ejemplar = service.FindOne(o => o.code == item.code);
-                if (ejemplar != null) {
-                    return new LagashActionResult("La signatura topográfica ya existe");
-                }
                 service.Create(item);
                 service.Commit();
             }

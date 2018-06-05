@@ -15,7 +15,7 @@ namespace Wolf.Lagash.Entities.helper
         public string _id { get; set; }
 
         [Required]
-        [StringLength(250)]
+        [StringLength(300)]
         public string title { get; set; }
 
         [Required]
@@ -23,7 +23,7 @@ namespace Wolf.Lagash.Entities.helper
         [StringLength(50)]
         public string code { get; set; }
 
-        [StringLength(250)]
+        [StringLength(500)]
         public string tags { get; set; }
 
         [StringLength(36)]

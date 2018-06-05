@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Wolf.Core.Interfaces
 {
     public interface IAdapterBase<T>
-    {
+    {   
         IEnumerable<T> Query(Expression<Func<T, bool>> predicate);
         T FindOne(Expression<Func<T, bool>> predicate);
         T FindById(int id);
@@ -25,6 +25,7 @@ namespace Wolf.Core.Interfaces
         void Update(T entity);
         T Delete(T entity);
         void Commit();
+        void discart(T entity);
         void Dispose();
     }
 }

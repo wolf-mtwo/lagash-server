@@ -11,13 +11,13 @@ namespace Wolf.Core.EntityFramework
 {
     public class EFAdapterBase<T> : IAdapterBase<T> where T : class
     {
-        protected readonly DbContext context;
+        public readonly DbContext context;
 
         protected EFAdapterBase(DbContext context)
         {
             this.context = context;
         }
-
+        
         public IEnumerable<T> Query(Expression<Func<T, bool>> predicate)
         {
             return context.Set<T>().Where(predicate).ToList();
@@ -82,6 +82,14 @@ namespace Wolf.Core.EntityFramework
         public T Delete(T entity)
         {
             return context.Set<T>().Remove(entity);
+        }
+
+        public void discart(T entity)
+        {
+            if (entity != null)
+            {
+                context.Entry(entity).State = EntityState.Detached;
+            }
         }
 
         public void Dispose()

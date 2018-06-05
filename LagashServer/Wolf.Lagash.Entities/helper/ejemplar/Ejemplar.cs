@@ -15,7 +15,6 @@ namespace Wolf.Lagash.Entities.helper.ejemplar
         public string _id { get; set; }
 
         [Required]
-        [Index(IsUnique = true)]
         [StringLength(50)]
         public string code { get; set; }
 
@@ -28,16 +27,15 @@ namespace Wolf.Lagash.Entities.helper.ejemplar
         public string data_id { get; set; }
 
         [Required]
-        [StringLength(20)]
-        public string type { get; set; }
-
-        [Required]
-        public int index { get; set; }
+        public int order { get; set; }
 
         [Required]
         public bool enabled { get; set; }
 
         [Required]
         public string state { get; set; }
+
+        [StringLength(10)]
+        public string suffix { get; set; }
     }
 }

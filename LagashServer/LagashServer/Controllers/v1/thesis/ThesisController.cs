@@ -77,8 +77,14 @@ namespace LagashServer.Controllers.v1.books
             if (id != item._id) {
                 return new LagashActionResult("should provide a valid _id");
             }
-            service.Update(item);
             try {
+                Thesis ejemplar = service.FindOne(o => o.code == item.code);
+                if (ejemplar != null && ejemplar._id != id)
+                {
+                    return new LagashActionResult("El codigo ya esta registrado");
+                }
+                service.discart(ejemplar);
+                service.Update(item);
                 service.Commit();
             } catch (DbUpdateConcurrencyException) {
                 if (!service.exists(id)) {

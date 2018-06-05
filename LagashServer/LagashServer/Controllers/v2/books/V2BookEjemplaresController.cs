@@ -19,7 +19,7 @@ namespace LagashServer.Controllers.v2.books
         [Route("{id}/ejemplares")]
         public IEnumerable<BookEjemplar> Get(string id)
         {
-            return service.Query(o => o.data_id == id);
+            return service.get_asc(o => o.data_id == id, o => o.order);
         }
 
         [Route("{id}/ejemplares")]
@@ -29,10 +29,6 @@ namespace LagashServer.Controllers.v2.books
                 return BadRequest(ModelState);
             }
             try {
-                BookEjemplar ejemplar = service.FindOne(o => o.code == item.code);
-                if (ejemplar != null) {
-                    return new LagashActionResult("La signatura topográfica ya existe");
-                }
                 service.Create(item);
                 service.Commit();
             } catch (Exception e) {
