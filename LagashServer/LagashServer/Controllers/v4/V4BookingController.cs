@@ -178,11 +178,11 @@ namespace LagashServer.Controllers.v1.books
         public IHttpActionResult PostBorrow(Loan loan)
         {
             try
-            {
-                
-                this.loan_material(loan);
+            {                
+                loan_material(loan);
                 Booking booking = service.FindById(loan._id);
                 booking.state = loan.state;
+                booking.created = DateTime.Now;
                 service.Update(booking);
                 service.Commit();
             }
