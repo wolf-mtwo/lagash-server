@@ -30,7 +30,7 @@ namespace LagashServer.Controllers.v1.books
         private INewspaperCatalogService service_catalogs = new NewspaperCatalogService(new LagashContext());
         private IAuthorService service_authors = new AuthorService(new LagashContext());
         private IAuthorMapService service_authors_map = new AuthorMapService(new LagashContext());
-        private IEjemplarService service_ejemplares = new EjemplarService(new LagashContext());
+        private INewspaperEjemplarService service_ejemplares = new NewspaperEjemplarService(new LagashContext());
 
         [Route("{id}")]
         public IHttpActionResult Get(String id)
