@@ -26,6 +26,10 @@ namespace LagashServer.Controllers.v1.books
     public class V4BookingController : ApiController
     {
         private IBookingService service = new BookingService(new LagashContext());
+        private IBookEjemplarService service_books = new BookEjemplarService(new LagashContext());
+        private IThesisEjemplarService service_thesis = new ThesisEjemplarService(new LagashContext());
+        private IMagazineEjemplarService service_magazines = new MagazineEjemplarService(new LagashContext());
+        private INewspaperEjemplarService service_newpapes = new NewspaperEjemplarService(new LagashContext());
 
         [Route("")]
         public IEnumerable<Booking> Get()
@@ -42,6 +46,14 @@ namespace LagashServer.Controllers.v1.books
             }
             try
             {
+                Loan loan = new Loan()
+                {
+                    data_id = item.data_id,
+                    state = item.state,
+                    ejemplar_id = item.ejemplar_id,
+                    type = item.type
+                };
+                this.loan_material(loan);
                 service.Create(item);
                 service.Commit();
             }
@@ -71,6 +83,14 @@ namespace LagashServer.Controllers.v1.books
             {
                 return NotFound();
             }
+            Loan loan = new Loan()
+            {
+                data_id = item.data_id,
+                state = "STORED",
+                ejemplar_id = item.ejemplar_id,
+                type = item.type
+            };
+            this.loan_material(loan);
             service.Delete(item);
             service.Commit();
             return Ok(item);
@@ -134,6 +154,77 @@ namespace LagashServer.Controllers.v1.books
             {
                 total = service.Count()
             };
+        }
+
+        [Route("page/{page}/limit/{limit}/loans")]
+        public IEnumerable<Booking> GetLoans(int page, int limit, string search)
+        {
+            if (search == null) search = "";
+            return service.Where(page, limit, (o) => {
+                return o.name.ToLower().Contains(search.ToLower()) && o.state.Equals("BOOKED");
+            }, o => o.created);
+        }
+        
+        [Route("page/{page}/limit/{limit}/returns")]
+        public IEnumerable<Booking> GetReturns(int page, int limit, string search)
+        {
+            if (search == null) search = "";
+            return service.Where(page, limit, (o) => {
+                return o.name.ToLower().Contains(search.ToLower()) && o.state.Equals("BORROWED");
+            }, o => o.created);
+        }
+
+        [Route("loan")]
+        public IHttpActionResult PostBorrow(Loan loan)
+        {
+            try
+            {
+                this.loan_material(loan);
+                Booking booking = service.FindById(loan._id);
+                booking.state = loan.state;
+                service.Update(booking);
+                service.Commit();
+            }
+            catch (Exception e)
+            {
+                return new LagashActionResult(e.Message);
+            }
+            return Ok(loan);
+        }
+
+        void loan_material(Loan loan)
+        {
+            switch (loan.type)
+            {
+                case "BOOK":
+                    BookEjemplar book_ejemplar = service_books.FindById(loan.ejemplar_id);
+                    book_ejemplar.state = loan.state;
+                    service_books.Update(book_ejemplar);
+                    service_books.Commit();
+                    break;
+                case "THESIS":
+                    ThesisEjemplar thesis_ejemplar = service_thesis.FindById(loan.ejemplar_id);
+                    thesis_ejemplar.state = loan.state;
+                    service_thesis.Update(thesis_ejemplar);
+                    service_thesis.Commit();
+                    break;
+                case "MAGAZINE":
+                    MagazineEjemplar magazine_ejemplar = service_magazines.FindById(loan.ejemplar_id);
+                    magazine_ejemplar.state = loan.state;
+                    service_magazines.Update(magazine_ejemplar);
+                    service_magazines.Commit();
+                    break;
+                case "NEWSPAPER":
+                    NewspaperEjemplar newspaper_ejemplar = service_newpapes.FindById(loan.ejemplar_id);
+                    newspaper_ejemplar.state = loan.state;
+                    service_newpapes.Update(newspaper_ejemplar);
+                    service_newpapes.Commit();
+                    break;
+
+                default:
+                    Console.WriteLine("default case");
+                    break;
+            }
         }
     }
 }
