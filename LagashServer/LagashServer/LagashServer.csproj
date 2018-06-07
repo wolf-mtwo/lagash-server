@@ -276,6 +276,7 @@
     <Compile Include="Controllers\v3\V3NewspapersController.cs" />
     <Compile Include="Controllers\v3\V3ThesisController.cs" />
     <Compile Include="Controllers\v3\V3BooksController.cs" />
+    <Compile Include="Controllers\v4\V4BookingController.cs" />
     <Compile Include="helper\LagashActionResult.cs" />
     <Compile Include="helper\Startup.cs" />
     <Compile Include="helper\LagashContext .cs" />

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="booking\BookingService.cs" />
     <Compile Include="helpers\editorial\EditorialMapService.cs" />
     <Compile Include="helpers\editorial\EditorialService.cs" />
     <Compile Include="helpers\author\AuthorService.cs" />
