@@ -179,6 +179,7 @@ namespace LagashServer.Controllers.v1.books
         {
             try
             {
+                
                 this.loan_material(loan);
                 Booking booking = service.FindById(loan._id);
                 booking.state = loan.state;
@@ -194,29 +195,33 @@ namespace LagashServer.Controllers.v1.books
 
         void loan_material(Loan loan)
         {
+            string state = loan.state;
+            if (loan.state.Equals("RESTORED")) {
+                state = "STORED";
+            }
             switch (loan.type)
             {
                 case "BOOK":
                     BookEjemplar book_ejemplar = service_books.FindById(loan.ejemplar_id);
-                    book_ejemplar.state = loan.state;
+                    book_ejemplar.state = state;
                     service_books.Update(book_ejemplar);
                     service_books.Commit();
                     break;
                 case "THESIS":
                     ThesisEjemplar thesis_ejemplar = service_thesis.FindById(loan.ejemplar_id);
-                    thesis_ejemplar.state = loan.state;
+                    thesis_ejemplar.state = state;
                     service_thesis.Update(thesis_ejemplar);
                     service_thesis.Commit();
                     break;
                 case "MAGAZINE":
                     MagazineEjemplar magazine_ejemplar = service_magazines.FindById(loan.ejemplar_id);
-                    magazine_ejemplar.state = loan.state;
+                    magazine_ejemplar.state = state;
                     service_magazines.Update(magazine_ejemplar);
                     service_magazines.Commit();
                     break;
                 case "NEWSPAPER":
                     NewspaperEjemplar newspaper_ejemplar = service_newpapes.FindById(loan.ejemplar_id);
-                    newspaper_ejemplar.state = loan.state;
+                    newspaper_ejemplar.state = state;
                     service_newpapes.Update(newspaper_ejemplar);
                     service_newpapes.Commit();
                     break;
