@@ -117,5 +117,14 @@ namespace LagashServer.Controllers.v1.books
                 total = service.Count()
             };
         }
+
+        [Route("catalog/{id}/page/{page}/limit/{limit}")]
+        public IEnumerable<Newspaper> GetItems(string id, int page, int limit, string search)
+        {
+            if (search == null) search = "";
+            return service.Where(page, limit, (o) => {
+                return o.catalog_id != null && o.catalog_id.Equals(id) && o.title.ToLower().Contains(search.ToLower());
+            }, o => o.created);
+        }
     }
 }
