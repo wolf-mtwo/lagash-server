@@ -30,6 +30,8 @@ namespace LagashServer.Controllers.v1.books
         private IAuthorService service_authors = new AuthorService(new LagashContext());
         private IAuthorMapService service_authors_map = new AuthorMapService(new LagashContext());
         private IThesisEjemplarService service_ejemplares = new ThesisEjemplarService(new LagashContext());
+        private IAuthorService service_author = new AuthorService(new LagashContext());
+        private IAuthorMapService service_author_map = new AuthorMapService(new LagashContext());
 
         [Route("{id}")]
         public IHttpActionResult Get(String id)
@@ -68,13 +70,37 @@ namespace LagashServer.Controllers.v1.books
                         return o.tags != null && o.tags.ToLower().Contains(search.ToLower());
                     };
                     break;
+                case "AUTHOR":
+                    return find_by_autors(page, limit, search);
                 default:
                     Console.WriteLine("Default case");
                 break;
             }
             return service_thesis.search(page, limit, where);
         }
-        
+
+        private IEnumerable<Thesis> find_by_autors(int page, int limit, string search)
+        {
+            List<AuthorMap> list = new List<AuthorMap>();
+            List<Author> authores = service_author.get_desc((o) => {
+                return o.first_name.ToLower().Contains(search.ToLower()) || o.last_name.ToLower().Contains(search.ToLower());
+            }, o => o.created).ToList();
+            authores.ForEach((author) => {
+                list.AddRange(service_author_map.get_desc(o => o.author_id == author._id, o => o.created).ToList());
+            });
+            List<Thesis> items = new List<Thesis>();
+            int index = (page - 1) * limit;
+            for (int i = index; i < page * limit; i++)
+            {
+                AuthorMap map = list.ElementAtOrDefault(i);
+                if (map != null)
+                {
+                    items.Add(service_thesis.FindById(map.resource_id));
+                }
+            }
+            return items;
+        }
+
         [Route("catalogs/page/{page}/limit/{limit}")]
         public IEnumerable<ThesisCatalog> GetCatalogs(int page, int limit)
         {
