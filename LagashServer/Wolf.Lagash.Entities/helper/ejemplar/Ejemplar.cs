@@ -14,9 +14,9 @@ namespace Wolf.Lagash.Entities.helper.ejemplar
         [StringLength(36)]
         public string _id { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string code { get; set; }
+        //[Required]
+        //[StringLength(50)]
+        //public string code { get; set; }
 
         [Required]
         [Index(IsUnique = true)]
@@ -24,7 +24,7 @@ namespace Wolf.Lagash.Entities.helper.ejemplar
 
         [Required]
         [StringLength(36)]
-        public string data_id { get; set; }
+        public string material_id { get; set; }
 
         [Required]
         public int order { get; set; }

@@ -81,7 +81,7 @@ namespace LagashServer.Controllers.v1.books
             }
             
             try {
-                Magazine ejemplar = service.FindOne(o => o.code == item.code);
+                Magazine ejemplar = service.FindOne(o => o.code_material == item.code_material);
                 if (ejemplar != null && ejemplar._id != id)
                 {
                     return new LagashActionResult("El codigo ya esta registrado");
@@ -110,7 +110,7 @@ namespace LagashServer.Controllers.v1.books
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {
-                return o.title.ToLower().Contains(search.ToLower()) || o.code.Contains(search.ToLower());
+                return o.title.ToLower().Contains(search.ToLower());
             }, o => o.created);
         }
 

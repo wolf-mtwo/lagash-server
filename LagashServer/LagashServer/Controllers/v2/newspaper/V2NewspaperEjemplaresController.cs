@@ -28,7 +28,7 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         [Route("{id}/ejemplares")]
         public IEnumerable<NewspaperEjemplar> Get(string id)
         {
-            return service.get_asc(o => o.data_id == id, o => o.order);
+            return service.get_asc(o => o.material_id == id, o => o.order);
         }
 
         [Route("{id}/ejemplares")]

@@ -93,7 +93,7 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Editorial> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (u) => u.name.ToLower().Contains(search.ToLower()), o => o.created);
+            return service.Where(page, limit, (u) => u.name != null && u.name.ToLower().Contains(search.ToLower()), o => o.created);
         }
 
         [Route("page/{page}/limit/{limit}")]
@@ -112,12 +112,11 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("find")]
-        public IEnumerable<Editorial> GetFind(string resource_id)
+        public IEnumerable<Editorial> GetFind(string material_id)
         {
-            IEnumerable<EditorialMap> items = service_map.Query(o => o.resource_id == resource_id);
+            IEnumerable<EditorialMap> items = service_map.Query(o => o.material_id == material_id);
             List<Editorial> result = new List<Editorial>();
-            foreach (var item in items)
-            {
+            foreach (var item in items) {
                 Editorial editorial = service.FindById(item.editorial_id);
                 editorial.map = item;
                 result.Add(editorial);

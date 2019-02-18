@@ -46,7 +46,7 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}/ejemplares")]
         public IEnumerable<Ejemplar> GetEjemplares(String id)
         {
-            return service_ejemplares.get_asc(o => o.data_id == id && o.state.Equals("STORED"), o => o.order);
+            return service_ejemplares.get_asc(o => o.material_id == id && o.state.Equals("STORED"), o => o.order);
         }
 
         [Route("page/{page}/limit/{limit}")]
@@ -95,7 +95,7 @@ namespace LagashServer.Controllers.v1.books
                 AuthorMap map = list.ElementAtOrDefault(i);
                 if (map != null)
                 {
-                    items.Add(service_thesis.FindById(map.resource_id));
+                    items.Add(service_thesis.FindById(map.material_id));
                 }
             }
             return items;
@@ -118,7 +118,7 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}/authors")]
         public IEnumerable<Author> GetAuthors(string id)
         {
-            IEnumerable<AuthorMap> items = service_authors_map.Query(o => o.resource_id == id);
+            IEnumerable<AuthorMap> items = service_authors_map.Query(o => o.material_id == id);
             List<Author> result = new List<Author>();
             foreach (var item in items) {
                 Author author = service_authors.FindById(item.author_id);

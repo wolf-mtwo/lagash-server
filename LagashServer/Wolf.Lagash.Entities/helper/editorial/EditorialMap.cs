@@ -22,6 +22,6 @@ namespace Wolf.Lagash.Entities
         public string type { get; set; }
 
         [Required]
-        public string resource_id { get; set; }
+        public string material_id { get; set; }
     }
 }

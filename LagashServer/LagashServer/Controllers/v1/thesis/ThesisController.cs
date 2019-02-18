@@ -78,7 +78,7 @@ namespace LagashServer.Controllers.v1.books
                 return new LagashActionResult("should provide a valid _id");
             }
             try {
-                Thesis ejemplar = service.FindOne(o => o.code == item.code);
+                Thesis ejemplar = service.FindOne(o => o.code_material == item.code_material);
                 if (ejemplar != null && ejemplar._id != id)
                 {
                     return new LagashActionResult("El codigo ya esta registrado");
@@ -107,7 +107,7 @@ namespace LagashServer.Controllers.v1.books
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {
-                return o.title.ToLower().Contains(search.ToLower()) || o.code.Contains(search.ToLower());
+                return o.title.ToLower().Contains(search.ToLower()) || o.code_material.Contains(search.ToLower());
             }, o => o.created);
         }
 

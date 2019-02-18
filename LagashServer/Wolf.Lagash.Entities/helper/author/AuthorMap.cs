@@ -23,6 +23,6 @@ namespace Wolf.Lagash.Entities.map
 
         [Required]
         [StringLength(36)]
-        public string resource_id { get; set; }
+        public string material_id { get; set; }
     }
 }

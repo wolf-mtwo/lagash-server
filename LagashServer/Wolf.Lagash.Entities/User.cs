@@ -47,5 +47,4 @@ namespace Wolf.Lagash.Entities
         [Required(ErrorMessage = "El email no puede ser vacio")]
         public string email { get; set; }
     }
-
 }

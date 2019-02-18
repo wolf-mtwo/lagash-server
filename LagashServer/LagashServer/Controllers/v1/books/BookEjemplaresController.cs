@@ -103,7 +103,7 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {
-                return o.inventory.ToString().Contains(search) || o.code.Contains(search) || o._id.Contains(search);
+                return o.inventory.ToString().Contains(search) || o._id.Contains(search);
             }, o => o.inventory);
         }
 

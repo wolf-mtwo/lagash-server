@@ -38,11 +38,11 @@ namespace LagashServer.Controllers.v1.books
                 return BadRequest(ModelState);
             }
             try {
-                Author ejemplar = service.FindOne(o => o.code == item.code);
-                if (ejemplar != null)
-                {
-                    return new LagashActionResult("El codigo de autor ya existe");
-                }
+                //Author ejemplar = service.FindOne(o => o.code == item.code);
+                //if (ejemplar != null)
+                //{
+                //    return new LagashActionResult("El codigo de autor ya existe");
+                //}
                 service.Create(item);
                 service.Commit();
             } catch (Exception e) {
@@ -120,15 +120,17 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("find")]
-        public IEnumerable<Author> GetFind(string resource_id)
+        public IEnumerable<Author> GetFind(string material_id)
         {
-            IEnumerable<AuthorMap> items = service_map.get_asc(o => o.resource_id == resource_id, o => o.created);
+            IEnumerable<AuthorMap> items = service_map.get_asc(o => o.material_id == material_id, o => o.created);
             List<Author> result = new List<Author>();
             foreach (var item in items)
             {
                 Author author = service.FindById(item.author_id);
-                author.map = item;
-                result.Add(author);
+                if (author != null) {
+                    author.map = item;
+                    result.Add(author);
+                }
             }
             return result;
         }

@@ -19,9 +19,14 @@ namespace Wolf.Lagash.Entities.helper
         public string title { get; set; }
 
         [Required]
-        [Index(IsUnique = true)]
+        //[Index(IsUnique = true)]
         [StringLength(50)]
-        public string code { get; set; }
+        public string code_material { get; set; }
+
+        [Required]
+        //[Index(IsUnique = true)]
+        [StringLength(50)]
+        public string code_author { get; set; }
 
         [StringLength(500)]
         public string tags { get; set; }

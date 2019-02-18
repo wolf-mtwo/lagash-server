@@ -76,12 +76,12 @@ namespace LagashServer.Controllers.v1.books
             }
             
             try {
-                Book ejemplar = service.FindOne(o => o.code == item.code);
-                if (ejemplar != null && ejemplar._id != id)
-                {
-                    return new LagashActionResult("El codigo ya esta registrado");
-                }
-                service.discart(ejemplar);
+                //Book ejemplar = service.FindOne(o => o.code == item.code);
+                //if (ejemplar != null && ejemplar._id != id)
+                //{
+                //    return new LagashActionResult("El codigo ya esta registrado");
+                //}
+                //service.discart(ejemplar);
                 service.Update(item);
                 service.Commit();
             } catch (DbUpdateConcurrencyException) {
@@ -105,7 +105,7 @@ namespace LagashServer.Controllers.v1.books
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {
-                return o.title.ToLower().Contains(search.ToLower()) || o.code.Contains(search.ToLower());
+                return o.title.ToLower().Contains(search.ToLower()) || o.code_material.Contains(search.ToLower());
             }, o => o.created);
         }
 
