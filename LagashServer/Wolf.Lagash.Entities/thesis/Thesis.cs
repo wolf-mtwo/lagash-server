@@ -15,21 +15,27 @@ namespace Wolf.Lagash.Entities
         public string tutor_id { get; set; }
 
         [StringLength(36)]
-        public string carrer_id { get; set; }
+        public string editorial_id { get; set; }
+
+        [StringLength(36)]
+        public string faculty_id { get; set; }
+
+        [StringLength(36)]
+        public string carrera_id { get; set; }
 
         [StringLength(15)]
         public string cover { get; set; }
 
-        [StringLength(250)]
-        public string illustrations { get; set; }
+        //[StringLength(250)]
+        //public string illustrations { get; set; }
 
-        public int high { get; set; }
-        public int width { get; set; }
+        //public int high { get; set; }
+        //public int width { get; set; }
         public int pages { get; set; }
         public int price { get; set; }
 
-        [StringLength(150)]
-        public string brings { get; set; }
+        //[StringLength(150)]
+        //public string brings { get; set; }
         
         [StringLength(1500)]
         public string index { get; set; }
