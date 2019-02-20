@@ -13,10 +13,7 @@ namespace Wolf.Lagash.Entities
     {
         [StringLength(36)]
         public string tutor_id { get; set; }
-
-        [StringLength(36)]
-        public string editorial_id { get; set; }
-
+        
         [StringLength(36)]
         public string faculty_id { get; set; }
 
@@ -25,6 +22,9 @@ namespace Wolf.Lagash.Entities
 
         [StringLength(15)]
         public string cover { get; set; }
+
+        [StringLength(25)]
+        public string category { get; set; }
 
         //[StringLength(250)]
         //public string illustrations { get; set; }

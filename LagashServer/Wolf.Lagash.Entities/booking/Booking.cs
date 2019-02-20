@@ -22,7 +22,7 @@ namespace Wolf.Lagash.Entities.books
         public string type { get; set; }
 
         [StringLength(36)]
-        public string data_id { get; set; }
+        public string material_id { get; set; }
         
         [StringLength(36)]
         public string ejemplar_id { get; set; }

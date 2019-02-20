@@ -23,6 +23,9 @@ namespace Wolf.Lagash.Entities
         [StringLength(100)]
         public string country { get; set; }
 
+        [StringLength(50)]
+        public string image { get; set; }
+
         [NotMapped]
         public EditorialMap map { get; set; }
     }

@@ -34,6 +34,9 @@ namespace Wolf.Lagash.Entities.helper
         [StringLength(36)]
         public string catalog_id { get; set; }
 
+        [StringLength(36)]
+        public string editorial_id { get; set; }
+
         [StringLength(50)]
         public string image { get; set; }
 

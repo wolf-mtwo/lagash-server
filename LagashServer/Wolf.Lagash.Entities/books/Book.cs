@@ -14,9 +14,6 @@ namespace Wolf.Lagash.Entities.books
         [StringLength(20)]
         public string isbn { get; set; }
 
-        [StringLength(36)]
-        public string editorial_id { get; set; }
-
         //[StringLength(15)]
         //public string type { get; set; }
         

@@ -47,7 +47,7 @@ namespace LagashServer.Controllers.v1.books
         [Route("{id}/ejemplares")]
         public IEnumerable<Ejemplar> GetEjemplares(String id)
         {
-            return service_ejemplares.get_asc(o => o.material_id == id && o.state.Equals("STORED"), o => o.order);
+            return service_ejemplares.get_asc(o => o.material_id == id && o.enabled == true, o => o.order);
         }
 
         [Route("page/{page}/limit/{limit}")]

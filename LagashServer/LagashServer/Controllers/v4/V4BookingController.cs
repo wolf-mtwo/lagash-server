@@ -48,7 +48,7 @@ namespace LagashServer.Controllers.v1.books
             {
                 Loan loan = new Loan()
                 {
-                    data_id = item.data_id,
+                    material_id = item.material_id,
                     state = item.state,
                     ejemplar_id = item.ejemplar_id,
                     type = item.type
@@ -85,7 +85,7 @@ namespace LagashServer.Controllers.v1.books
             }
             Loan loan = new Loan()
             {
-                data_id = item.data_id,
+                material_id = item.material_id,
                 state = "STORED",
                 ejemplar_id = item.ejemplar_id,
                 type = item.type

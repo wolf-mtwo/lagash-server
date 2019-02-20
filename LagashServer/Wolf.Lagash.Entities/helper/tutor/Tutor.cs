@@ -28,7 +28,10 @@ namespace Wolf.Lagash.Entities.tutor
 
         [StringLength(100)]
         public string country { get; set; }
-        
+
+        [StringLength(50)]
+        public string image { get; set; }
+
         [NotMapped]
         public AuthorMap map { get; set; }
     }
