@@ -16,5 +16,8 @@ namespace Wolf.Lagash.Entities
 
         [StringLength(100)]
         public string name { get; set; }
+
+        [StringLength(50)]
+        public string image { get; set; }
     }
 }
