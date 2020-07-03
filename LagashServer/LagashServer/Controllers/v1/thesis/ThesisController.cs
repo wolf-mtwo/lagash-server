@@ -17,7 +17,7 @@ using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.books
 {
-    [RoutePrefix("v1/thesis")]
+    [RoutePrefix("v1/theses")]
     public class ThesisController : ApiController
     {
         private IThesisService service = new ThesisService(new LagashContext());
