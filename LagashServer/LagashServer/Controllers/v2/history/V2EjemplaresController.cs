@@ -14,6 +14,7 @@ using Wolf.Lagash.Services.helper.ejemplar;
 
 namespace LagashServer.Controllers.v2.history
 {
+    [Authorize]
     [RoutePrefix("v2/resource")]
     public class V2EjemplaresController : ApiController
     {

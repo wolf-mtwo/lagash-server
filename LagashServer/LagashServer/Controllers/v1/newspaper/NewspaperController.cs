@@ -18,6 +18,7 @@ using Wolf.Lagash.Entities.newspaper;
 
 namespace LagashServer.Controllers.v1.books
 {
+    [Authorize]
     [RoutePrefix("v1/newspapers")]
     public class NewspaperController : ApiController
     {

@@ -10,6 +10,7 @@ using System.Drawing.Drawing2D;
 
 namespace LagashServer.Controllers.v1.books
 {
+    [Authorize]
     [RoutePrefix("v1/upload")]
     public class UploadController : ApiController
     {

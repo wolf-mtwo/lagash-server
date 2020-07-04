@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using LagashServer.App_Start;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace LagashServer
             //);
 
             config.MapHttpAttributeRoutes();
+            config.MessageHandlers.Add(new ValidateToken());
             var jsonFormatter = config.Formatters.OfType<JsonMediaTypeFormatter>().First();
             jsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
         }

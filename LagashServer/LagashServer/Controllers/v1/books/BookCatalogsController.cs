@@ -16,6 +16,7 @@ using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.books
 {
+    [Authorize]
     [RoutePrefix("v2/books/catalogs")]
     public class BookCatalogsController : ApiController
     {

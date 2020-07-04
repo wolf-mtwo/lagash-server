@@ -34,7 +34,9 @@ namespace LagashServer.Controllers
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
             }
-            try {
+            try 
+            {
+                item.password = new EncryptPassword().EncodePassword(item.password);
                 user = service.CreateUser(item);
                 service.Commit();
             } catch (Exception e) {

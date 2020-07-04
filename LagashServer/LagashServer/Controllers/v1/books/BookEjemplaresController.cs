@@ -20,7 +20,8 @@ using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.helper.ejemplar
 {
-    [RoutePrefix("v1/books/ejemplares")]
+    [Authorize]
+    [RoutePrefix("v1/book/ejemplares")]
     public class BookEjemplaresController : ApiController
     {
         private IBookEjemplarService service = new BookEjemplarService(new LagashContext());

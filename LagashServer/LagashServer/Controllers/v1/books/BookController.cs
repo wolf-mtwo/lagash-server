@@ -17,11 +17,12 @@ using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.books
 {
+    [Authorize]
     [RoutePrefix("v1/books")]
     public class BookController : ApiController
     {
         private IBookService service = new BookService(new LagashContext());
-
+        
         [Route("")]
         public IEnumerable<Book> Get()
         {

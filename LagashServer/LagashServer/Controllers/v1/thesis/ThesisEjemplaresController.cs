@@ -17,6 +17,7 @@ using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.books
 {
+    [Authorize]
     [RoutePrefix("v1/thesis/ejemplares")]
     public class ThesisEjemplaresController : ApiController
     {

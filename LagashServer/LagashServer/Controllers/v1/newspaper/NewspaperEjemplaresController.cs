@@ -20,7 +20,8 @@ using LagashServer.Controllers.helpers;
 
 namespace LagashServer.Controllers.v1.helper.ejemplar
 {
-    [RoutePrefix("v1/newspapers/ejemplares")]
+    [Authorize]
+    [RoutePrefix("v1/newspaper/ejemplares")]
     public class NewspaperEjemplaresController : ApiController
     {
         private INewspaperEjemplarService service = new NewspaperEjemplarService(new LagashContext());

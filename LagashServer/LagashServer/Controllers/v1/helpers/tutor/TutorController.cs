@@ -20,6 +20,7 @@ using Wolf.Lagash.Entities.tutor;
 
 namespace LagashServer.Controllers.v1.books
 {
+    [Authorize]
     [RoutePrefix("v1/tutors")]
     public class TutorController : ApiController
     {

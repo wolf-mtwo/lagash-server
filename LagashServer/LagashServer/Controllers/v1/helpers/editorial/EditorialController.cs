@@ -18,6 +18,7 @@ using Wolf.Lagash.Interfaces.map;
 
 namespace LagashServer.Controllers.v1.books
 {
+    [Authorize]
     [RoutePrefix("v1/editorials")]
     public class EditorialController : ApiController
     {

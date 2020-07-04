@@ -11,6 +11,7 @@ using Wolf.Lagash.Services;
 
 namespace LagashServer.Controllers.v2.books
 {
+    [Authorize]
     [RoutePrefix("v2/thesis")]
     public class V2ThesisEjemplaresController : ApiController
     {
