@@ -79,6 +79,7 @@ namespace LagashServer.Controllers
             if (id != user._id) {
                 return new LagashActionResult("should provide a valid _id");
             }
+            user.password = new EncryptPassword().EncodePassword(user.password);
             service.Update(user);
             try {
                 service.Commit();
