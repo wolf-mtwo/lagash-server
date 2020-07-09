@@ -34,13 +34,13 @@ namespace LagashServer.Controllers.v1.books
                     fileName = Guid.NewGuid().ToString() + ext.ToLower();
                     //var filePath = HttpContext.Current.Server.MapPath("~/files/" + fileName + "/" + ext.ToLower());
 
-                    string filePathThumbnail = Path.Combine(HttpRuntime.AppDomainAppPath, "files/thumbnails/" + fileName);
+                    string filePathThumbnail = Path.Combine(HttpRuntime.AppDomainAppPath, "files/thumbnail/" + fileName);
                     File.WriteAllBytes(filePathThumbnail, ResizeImage(binData, 200));
                     
                     string filePathThumbnailHD = Path.Combine(HttpRuntime.AppDomainAppPath, "files/hd/" + fileName);
                     File.WriteAllBytes(filePathThumbnailHD, ResizeImage(binData));
 
-                    string filePath = Path.Combine(HttpRuntime.AppDomainAppPath, "files/originales/" + fileName);
+                    string filePath = Path.Combine(HttpRuntime.AppDomainAppPath, "files/original/" + fileName);
                     postedFile.SaveAs(filePath);
                 }
             }
