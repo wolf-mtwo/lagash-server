@@ -45,6 +45,7 @@ namespace LagashServer.helper
         public DbSet<AuthorMap> author_map { get; set; }
         public DbSet<EditorialMap> editorial_map { get; set; }
         //public DbSet<Ejemplar> ejemplar { get; set; }
+       // public DbSet<Search> search { get; set; }
 
         public LagashContext() : base("LagashContext")
         {

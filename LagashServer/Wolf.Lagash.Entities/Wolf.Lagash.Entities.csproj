@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="booking\Booking.cs" />
+    <Compile Include="search\Search.cs" />
     <Compile Include="helper\Material.cs" />
     <Compile Include="helper\faculties\Career.cs" />
     <Compile Include="helper\faculties\Faculty.cs" />

@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="booking\BookingService.cs" />
+    <Compile Include="search\SearchService.cs" />
     <Compile Include="helpers\editorial\EditorialMapService.cs" />
     <Compile Include="helpers\editorial\EditorialService.cs" />
     <Compile Include="helpers\author\AuthorService.cs" />
