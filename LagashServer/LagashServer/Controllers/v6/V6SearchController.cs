@@ -13,10 +13,10 @@ namespace LagashServer.Controllers.v1.books
     {
         private ISearchService service = new SearchService(new LagashContext());
        
-        [Route("page/{page}/limit/{limit}/typeSearch/{typeSearch}/isAll/{isAll}/search/{search}")]
-        public IHttpActionResult Get(int page, int limit, string typeSearch, bool isAll, string search)
+        [Route("page/{page}/limit/{limit}")]
+        public IHttpActionResult Get(int page, int limit, string type, bool isAll, string search)
         {
-            var listSearch = service.SearchItems(typeSearch, isAll, search, page, limit);
+            var listSearch = service.SearchItems(type, isAll, search, page, limit);
             return Ok(listSearch);
         }
 
