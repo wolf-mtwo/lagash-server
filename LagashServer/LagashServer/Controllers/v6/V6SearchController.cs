@@ -6,7 +6,7 @@ using Wolf.Lagash.Services;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 
-namespace LagashServer.Controllers.v1.books
+namespace LagashServer.Controllers.v6
 {
     [RoutePrefix("v6/search")]
     public class V6SearchController : ApiController
