@@ -11,6 +11,6 @@ namespace Wolf.Lagash.Interfaces
 {
     public interface ISearchService : IAdapterBase<Search>
     {
-        List<Search> SearchItems(string typeSearch, bool isAll, string filter, int page, int limit);
+        List<Search> SearchItems(string typeSearch, bool isAll, string filter, string listAuthor, string listEditorial, string listYear, int page, int limit);
     }
 }

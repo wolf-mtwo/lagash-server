@@ -13,6 +13,9 @@ CREATE PROCEDURE [dbo].[lg_search_data]
 	@typeSearch as varchar(50) ='THESES',
 	@isAll as Bit = 1,
 	@filter as varchar(100)= '',
+	@autorList as nvarchar(max),
+	@editorialList as nvarchar(max),
+	@yearList as nvarchar(max),
 	/********   pager  ****/
     @page			int =1,
     @numRows			int =10
@@ -53,10 +56,23 @@ begin
 	left join Authors a on a._id = am.author_id
 	left join Editorials e on b.editorial_id = e._id
 
-	where title like ('%'+ @filter +'%') 
-		or b.year LIKE CAST(@filter AS NVARCHAR) + '%'
-		--or b.Index LIKE ('%' + @filter +'')
-		or a.first_name like ('%'+ @filter +'%')
+	where 
+		(
+		title like ('%'+ @filter +'%') 
+		or a.first_name like ('%'+ @filter +'%'))
+		and (
+			(@yearList ='' and b.year LIKE CAST(@filter AS NVARCHAR) + '%' ) or
+			(@yearList !='' and b.year in( select value from STRING_SPLIT (@yearList, ',')))
+		)
+		and (
+			(@editorialList ='' ) or
+			(@editorialList !='' and e.name in( select value from STRING_SPLIT (@editorialList, ',')))
+		)
+		
+		and (
+			(@autorList = '' ) or
+			(@autorList !='' and a.first_name in( select value from STRING_SPLIT (@autorList, ',')))
+		)
 end
 
 if(@isAll = 1 or @typeSearch='THESES')
@@ -76,10 +92,21 @@ begin
 	left join Authors a on a._id = am.author_id
 	left join Editorials e on t.editorial_id = e._id
 
-	where title like ('%'+ @filter +'%') 
-		or t.year LIKE CAST(@filter AS NVARCHAR) + '%'
-		--or b.index LIKE ('%' + @filter +'')
-		or a.first_name like ('%'+ @filter +'%')
+	where (title like ('%'+ @filter +'%') 
+		or a.first_name like ('%'+ @filter +'%'))
+		and (
+			(@yearList ='' and t.year LIKE CAST(@filter AS NVARCHAR) + '%' ) or
+			(@yearList !='' and t.year in( select value from STRING_SPLIT (@yearList, ',')))
+		)
+		and (
+			(@editorialList ='' ) or
+			(@editorialList !='' and e.name in( select value from STRING_SPLIT (@editorialList, ',')))
+		)
+		
+		and (
+			(@autorList = '' ) or
+			(@autorList !='' and a.first_name in( select value from STRING_SPLIT (@autorList, ',')))
+		)
 end
 
 if(@isAll = 1 or @typeSearch='MAGAZINES')
@@ -96,23 +123,44 @@ begin
 		m.image Image 
 	from Magazines m
 	left join Editorials e on m.editorial_id = e._id
+
 	where m.title like ('%'+ @filter +'%') 
+	and (
+			(@yearList ='' and m.year LIKE CAST(@filter AS NVARCHAR) + '%' ) or
+			(@yearList !='' and m.year in( select value from STRING_SPLIT (@yearList, ',')))
+		)
+		and (
+			(@editorialList ='' ) or
+			(@editorialList !='' and e.name in( select value from STRING_SPLIT (@editorialList, ',')))
+		)
+
 end
 
-if(@isAll = 1 or @typeSearch='EDITORIALS')
+if(@isAll = 1 or @typeSearch='NEWSPAPERS')
 begin
 	insert into @list
 	select 
 		e._id,
-		e.name Title,
-		'' as autor, 
-		'' code_author,
-		'' name,
-		'' code_material,
-		'' year,
+		n.title Title,
+		a.first_name +' - ' + a.last_name as autor, 
+		n.code_author,
+		e.name,
+		n.code_material,
+		n.year,
 		e.image Image
-	from Editorials e
-	where e.name like ('%'+ @filter +'%') 
+	from Newspapers n
+	left join AuthorMaps am on n._id = am.material_id
+	left join Authors a on a._id = am.author_id
+	left join Editorials e on n.editorial_id = e._id
+	where n.title like ('%'+ @filter +'%') 
+	and (
+			(@yearList ='' and n.year LIKE CAST(@filter AS NVARCHAR) + '%' ) or
+			(@yearList !='' and n.year in( select value from STRING_SPLIT (@yearList, ',')))
+		)
+		and (
+			(@editorialList ='' ) or
+			(@editorialList !='' and e.name in( select value from STRING_SPLIT (@editorialList, ',')))
+		)
 end
 
 set @total = (select count(*) from @list)
@@ -125,5 +173,6 @@ SET QUOTED_IDENTIFIER OFF
 GO
 SET ANSI_NULLS ON 
 GO
-
---exec dbo.lg_search_data '', 1, '', 1, 10
+-- 
+--exec dbo.lg_search_data typeSearch/isAll/filter/author/editorial/year/page/pagesize     
+--exec dbo.lg_search_data '', 1, '','ronald','','', 1, 10
