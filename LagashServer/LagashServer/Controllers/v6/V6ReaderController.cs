@@ -20,9 +20,8 @@ using Wolf.Lagash.Entities.tutor;
 
 namespace LagashServer.Controllers.v6
 {
-    [Authorize]
     [RoutePrefix("v6/readers")]
-    public class ReaderController : ApiController
+    public class V6ReaderController : ApiController
     {
         private IReaderService service = new ReaderService(new LagashContext());
         
