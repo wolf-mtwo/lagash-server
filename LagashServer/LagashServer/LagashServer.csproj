@@ -250,6 +250,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\v1\helpers\reader\ReaderController.cs" />
+    <Compile Include="Controllers\v6\V6ReaderController.cs" />
     <Compile Include="Controllers\v6\V6SearchController.cs" />
     <Compile Include="helper\EncryptPassword.cs" />
     <Compile Include="App_Start\ValidateToken.cs" />

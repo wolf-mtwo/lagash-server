@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
+﻿using System.Data.Entity;
 using Wolf.Lagash.Entities;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Wolf.Lagash.Entities.books;
 using Wolf.Lagash.Entities.map;
-using Wolf.Lagash.Entities.helper.ejemplar;
 using Wolf.Lagash.Entities.newspaper;
 using Wolf.Lagash.Entities.tutor;
 
@@ -40,6 +33,7 @@ namespace LagashServer.helper
         public DbSet<Tutor> tutor { get; set; }
         public DbSet<Author> author { get; set; }
         public DbSet<Editorial> editorial { get; set; }
+        public DbSet<Reader> reader { get; set; }
 
         public DbSet<Booking> booking { get; set; }
         public DbSet<AuthorMap> author_map { get; set; }
