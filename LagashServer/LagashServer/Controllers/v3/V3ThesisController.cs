@@ -19,6 +19,8 @@ using Wolf.Lagash.Services.helper.ejemplar;
 using Wolf.Lagash.Entities.helper.ejemplar;
 using Wolf.Lagash.Interfaces.map;
 using Wolf.Lagash.Entities.map;
+using Wolf.Lagash.Entities.thesis;
+using Wolf.Lagash.Entities.helper.author;
 
 namespace LagashServer.Controllers.v1.books
 {

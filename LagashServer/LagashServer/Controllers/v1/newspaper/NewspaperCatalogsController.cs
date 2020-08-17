@@ -13,6 +13,7 @@ using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using LagashServer.Controllers.helpers;
+using Wolf.Lagash.Entities.newspaper;
 
 namespace LagashServer.Controllers.v1.books
 {

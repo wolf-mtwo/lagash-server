@@ -15,6 +15,7 @@ using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
 using LagashServer.Controllers.helpers;
 using Wolf.Lagash.Interfaces.map;
+using Wolf.Lagash.Entities.helper.editorial;
 
 namespace LagashServer.Controllers.v1.books
 {

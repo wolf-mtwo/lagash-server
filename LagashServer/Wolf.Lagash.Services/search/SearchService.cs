@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wolf.Core.EntityFramework;
-using Wolf.Lagash.Entities;
-using Wolf.Lagash.Entities.books;
+using Wolf.Lagash.Entities.search;
 using Wolf.Lagash.Interfaces;
 
 namespace Wolf.Lagash.Services

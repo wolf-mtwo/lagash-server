@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Wolf.Lagash.Entities
 {
@@ -22,7 +18,5 @@ namespace Wolf.Lagash.Entities
         [Required]
         public bool enabled { get; set; }
 
-        [Required]
-        public BookStates state { get; set; }
     }
 }

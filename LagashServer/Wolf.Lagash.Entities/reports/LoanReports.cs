@@ -1,10 +1,14 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-s
+
 namespace Wolf.Lagash.Entities.reports
 {
     public class LoanReports : Base
     {
+        [Key]
+        [StringLength(36)]
+        public string _id { get; set; }
+
         [StringLength(36)]
         public string reader_id { get; set; }
 

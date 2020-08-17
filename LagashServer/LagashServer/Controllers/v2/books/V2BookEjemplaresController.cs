@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Wolf.Lagash.Entities;
+using Wolf.Lagash.Entities.books;
 using Wolf.Lagash.Interfaces;
 using Wolf.Lagash.Services;
 

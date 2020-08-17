@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 using Wolf.Lagash.Entities.helper;
 
 namespace Wolf.Lagash.Entities.books
@@ -14,9 +8,6 @@ namespace Wolf.Lagash.Entities.books
         [StringLength(20)]
         public string isbn { get; set; }
 
-        //[StringLength(15)]
-        //public string type { get; set; }
-        
         public int volumen { get; set; }
         public int tomo { get; set; }
         public int edition { get; set; }

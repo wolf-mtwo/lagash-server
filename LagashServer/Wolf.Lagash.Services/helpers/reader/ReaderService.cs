@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using Wolf.Core.EntityFramework;
-using Wolf.Lagash.Entities;
+using Wolf.Lagash.Entities.helper.reader;
 using Wolf.Lagash.Interfaces;
 
 namespace Wolf.Lagash.Services

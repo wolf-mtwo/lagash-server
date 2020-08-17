@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Wolf.Lagash.Entities
+namespace Wolf.Lagash.Entities.helper.reader
 {
     public class Reader : Base
     {

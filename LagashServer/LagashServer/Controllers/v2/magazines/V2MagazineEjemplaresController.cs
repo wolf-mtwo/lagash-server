@@ -17,6 +17,7 @@ using Wolf.Lagash.Interfaces.helper.ejemplar;
 using Wolf.Lagash.Entities.helper.ejemplar;
 using Wolf.Lagash.Services.helper.ejemplar;
 using LagashServer.Controllers.helpers;
+using Wolf.Lagash.Entities.magazine;
 
 namespace LagashServer.Controllers.v1.helper.ejemplar
 {

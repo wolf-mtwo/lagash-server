@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Wolf.Core.Interfaces;
 using Wolf.Lagash.Entities;
+using Wolf.Lagash.Entities.helper.editorial;
 
 namespace Wolf.Lagash.Interfaces
 {

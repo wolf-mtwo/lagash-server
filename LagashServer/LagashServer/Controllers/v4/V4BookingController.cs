@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Web.Http;
 using Wolf.Lagash.Services;
-using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
 using LagashServer.Controllers.helpers;
+using Wolf.Lagash.Entities.booking;
+using Wolf.Lagash.Entities.thesis;
+using Wolf.Lagash.Entities.magazine;
+using Wolf.Lagash.Entities.newspaper;
 
 namespace LagashServer.Controllers.v4
 {

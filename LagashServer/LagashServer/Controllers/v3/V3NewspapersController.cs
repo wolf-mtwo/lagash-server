@@ -20,6 +20,7 @@ using Wolf.Lagash.Entities.helper.ejemplar;
 using Wolf.Lagash.Interfaces.map;
 using Wolf.Lagash.Entities.map;
 using Wolf.Lagash.Entities.newspaper;
+using Wolf.Lagash.Entities.helper.author;
 
 namespace LagashServer.Controllers.v1.books
 {

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wolf.Lagash.Entities.map;
+using Wolf.Lagash.Entities.helper.author;
 
-namespace Wolf.Lagash.Entities.tutor
+namespace Wolf.Lagash.Entities.helper.tutor
 {
     public class Tutor : Base
     {
