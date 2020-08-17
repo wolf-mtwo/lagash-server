@@ -1,15 +1,9 @@
 ﻿using LagashServer.helper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using Wolf.Lagash.Entities;
 using Wolf.Lagash.Entities.helper.ejemplar;
-using Wolf.Lagash.Interfaces;
 using Wolf.Lagash.Interfaces.helpers.ejemplar;
-using Wolf.Lagash.Services;
 using Wolf.Lagash.Services.helpers.ejemplar;
 
 namespace LagashServer.Controllers.v2.history

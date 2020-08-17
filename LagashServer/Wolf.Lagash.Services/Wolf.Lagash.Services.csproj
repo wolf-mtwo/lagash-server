@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="booking\BookingService.cs" />
     <Compile Include="helpers\reader\ReaderService.cs" />
+    <Compile Include="magazine\MagazineEjemplarService.cs" />
     <Compile Include="reports\LoanReportsService.cs" />
     <Compile Include="search\SearchService.cs" />
     <Compile Include="helpers\editorial\EditorialMapService.cs" />
@@ -62,7 +63,6 @@
     <Compile Include="helpers\faculties\FacultyService.cs" />
     <Compile Include="helpers\tutor\TutorService.cs" />
     <Compile Include="magazine\MagazineCatalogService.cs" />
-    <Compile Include="magazine\MagazineEjemplarService.cs" />
     <Compile Include="magazine\MagazineService.cs" />
     <Compile Include="newspaper\NewspaperCatalogService.cs" />
     <Compile Include="newspaper\NewspaperService.cs" />

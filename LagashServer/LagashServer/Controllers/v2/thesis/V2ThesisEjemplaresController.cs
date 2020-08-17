@@ -1,16 +1,12 @@
 ﻿using LagashServer.helper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using Wolf.Lagash.Entities;
 using Wolf.Lagash.Entities.thesis;
 using Wolf.Lagash.Interfaces.thesis;
 using Wolf.Lagash.Services.thesis;
 
-namespace LagashServer.Controllers.v2.books
+namespace LagashServer.Controllers.v2.thesis
 {
     [Authorize]
     [RoutePrefix("v2/thesis")]

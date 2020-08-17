@@ -8,7 +8,7 @@ using Wolf.Lagash.Entities.magazine;
 using Wolf.Lagash.Services.magazine;
 using Wolf.Lagash.Interfaces.magazine;
 
-namespace LagashServer.Controllers.v1.books
+namespace LagashServer.Controllers.v1.magazine
 {
     [Authorize]
     [RoutePrefix("v2/magazines/catalogs")]
@@ -42,7 +42,7 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Get(String id)
+        public IHttpActionResult Get(string id)
         {
             MagazineCatalog item = service.FindById(id);
             if (item == null)
@@ -53,7 +53,7 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Delete(String id)
+        public IHttpActionResult Delete(string id)
         {
             MagazineCatalog item = service.FindById(id);
             if (item == null)
@@ -66,7 +66,7 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Put(String id, MagazineCatalog item)
+        public IHttpActionResult Put(string id, MagazineCatalog item)
         {
             if (!ModelState.IsValid)
             {
@@ -105,7 +105,8 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<MagazineCatalog> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (o) => {
+            return service.Where(page, limit, (o) =>
+            {
                 return o.title.Contains(search) || o._id.Contains(search);
             }, o => o.created);
         }

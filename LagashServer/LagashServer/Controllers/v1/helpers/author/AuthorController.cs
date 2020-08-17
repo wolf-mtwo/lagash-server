@@ -8,7 +8,7 @@ using Wolf.Lagash.Entities.helper.author;
 using Wolf.Lagash.Services.helpers.author;
 using Wolf.Lagash.Interfaces.helpers.author;
 
-namespace LagashServer.Controllers.v1.books
+namespace LagashServer.Controllers.v1.helpers.author
 {
     [Authorize]
     [RoutePrefix("v1/authors")]
@@ -26,10 +26,12 @@ namespace LagashServer.Controllers.v1.books
         [Route("")]
         public IHttpActionResult Post(Author item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            try {
+            try
+            {
                 //Author ejemplar = service.FindOne(o => o.code == item.code);
                 //if (ejemplar != null)
                 //{
@@ -37,27 +39,31 @@ namespace LagashServer.Controllers.v1.books
                 //}
                 service.Create(item);
                 service.Commit();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 return new LagashActionResult(e.Message);
             }
             return Ok(item);
         }
 
         [Route("{id}")]
-        public IHttpActionResult Get(String id)
+        public IHttpActionResult Get(string id)
         {
             Author item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             return Ok(item);
         }
 
         [Route("{id}")]
-        public IHttpActionResult Delete(String id)
+        public IHttpActionResult Delete(string id)
         {
             Author item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             service.Delete(item);
@@ -66,27 +72,35 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Put(String id, Author item)
+        public IHttpActionResult Put(string id, Author item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            if (id != item._id) {
+            if (id != item._id)
+            {
                 return new LagashActionResult("should provide a valid _id");
             }
             service.Update(item);
-            try {
+            try
+            {
                 service.Commit();
-            } catch (DbUpdateConcurrencyException) {
-                if (!service.exists(id)) {
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!service.exists(id))
+                {
                     return NotFound();
-                } else {
+                }
+                else
+                {
                     throw;
                 }
             }
             return Ok(item);
         }
- 
+
         [Route("page/{page}/limit/{limit}")]
         public IEnumerable<Author> Get(int page, int limit)
         {
@@ -97,8 +111,9 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Author> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (u) => {
-                return u.code.Contains(search)|| u.first_name.ToLower().Contains(search.ToLower()) || u.last_name.ToLower().Contains(search.ToLower());
+            return service.Where(page, limit, (u) =>
+            {
+                return u.code.Contains(search) || u.first_name.ToLower().Contains(search.ToLower()) || u.last_name.ToLower().Contains(search.ToLower());
             }, o => o.created);
         }
 
@@ -119,7 +134,8 @@ namespace LagashServer.Controllers.v1.books
             foreach (var item in items)
             {
                 Author author = service.FindById(item.author_id);
-                if (author != null) {
+                if (author != null)
+                {
                     author.map = item;
                     result.Add(author);
                 }

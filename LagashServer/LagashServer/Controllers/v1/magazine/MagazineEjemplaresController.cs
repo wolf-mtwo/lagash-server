@@ -1,26 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
-using Wolf.Lagash.Services;
-using Wolf.Lagash.Entities;
 using LagashServer.helper;
-using Wolf.Lagash.Entities.books;
-using Wolf.Lagash.Interfaces.helper.ejemplar;
 using Wolf.Lagash.Entities.helper.ejemplar;
-using Wolf.Lagash.Services.helper.ejemplar;
 using LagashServer.Controllers.helpers;
 using Wolf.Lagash.Entities.magazine;
 using Wolf.Lagash.Services.magazine;
 using Wolf.Lagash.Interfaces.magazine;
 
-namespace LagashServer.Controllers.v1.helper.ejemplar
+namespace LagashServer.Controllers.v1.magazine
 {
     [Authorize]
     [RoutePrefix("v1/magazine/ejemplares")]
@@ -37,10 +26,12 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         [Route("")]
         public IHttpActionResult Post(MagazineEjemplar item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            try {
+            try
+            {
                 service.Create(item);
                 service.Commit();
             }
@@ -52,20 +43,22 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         }
 
         [Route("{id}")]
-        public IHttpActionResult Get(String id)
+        public IHttpActionResult Get(string id)
         {
             MagazineEjemplar item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             return Ok(item);
         }
 
         [Route("{id}")]
-        public IHttpActionResult Delete(String id)
+        public IHttpActionResult Delete(string id)
         {
             MagazineEjemplar item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             service.Delete(item);
@@ -74,21 +67,29 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         }
 
         [Route("{id}")]
-        public IHttpActionResult Put(String id, MagazineEjemplar item)
+        public IHttpActionResult Put(string id, MagazineEjemplar item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            if (id != item._id) {
+            if (id != item._id)
+            {
                 return new LagashActionResult("should provide a valid _id");
             }
             service.Update(item);
-            try {
+            try
+            {
                 service.Commit();
-            } catch (DbUpdateConcurrencyException) {
-                if (!service.exists(id)) {
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!service.exists(id))
+                {
                     return NotFound();
-                } else {
+                }
+                else
+                {
                     throw;
                 }
             }
@@ -105,7 +106,8 @@ namespace LagashServer.Controllers.v1.helper.ejemplar
         public IEnumerable<MagazineEjemplar> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (o) => {
+            return service.Where(page, limit, (o) =>
+            {
                 return o.inventory.ToString().Contains(search) || o._id.Contains(search);
             }, o => o.inventory);
         }

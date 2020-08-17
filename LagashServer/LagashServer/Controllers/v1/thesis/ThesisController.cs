@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Wolf.Lagash.Entities;
 using LagashServer.helper;
-using Wolf.Lagash.Entities.books;
 using LagashServer.Controllers.helpers;
 using Wolf.Lagash.Entities.thesis;
 using Wolf.Lagash.Services.thesis;
 using Wolf.Lagash.Interfaces.thesis;
 
-namespace LagashServer.Controllers.v1.books
+namespace LagashServer.Controllers.v1.thesis
 {
     [Authorize]
     [RoutePrefix("v1/theses")]
@@ -33,13 +26,17 @@ namespace LagashServer.Controllers.v1.books
         [Route("")]
         public IHttpActionResult Post(Thesis item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            try {
+            try
+            {
                 service.Create(item);
                 service.Commit();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 return new LagashActionResult(e.Message);
             }
             return Ok(item);
@@ -47,10 +44,11 @@ namespace LagashServer.Controllers.v1.books
 
         [Route("{id}")]
         [ResponseType(typeof(Thesis))]
-        public IHttpActionResult Get(String id)
+        public IHttpActionResult Get(string id)
         {
             Thesis item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             return Ok(item);
@@ -58,10 +56,11 @@ namespace LagashServer.Controllers.v1.books
 
         [Route("{id}")]
         [ResponseType(typeof(Thesis))]
-        public IHttpActionResult Delete(String id)
+        public IHttpActionResult Delete(string id)
         {
             Thesis item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             service.Delete(item);
@@ -71,15 +70,18 @@ namespace LagashServer.Controllers.v1.books
 
         [Route("{id}")]
         [ResponseType(typeof(void))]
-        public IHttpActionResult Put(String id, Thesis item)
+        public IHttpActionResult Put(string id, Thesis item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            if (id != item._id) {
+            if (id != item._id)
+            {
                 return new LagashActionResult("should provide a valid _id");
             }
-            try {
+            try
+            {
                 Thesis ejemplar = service.FindOne(o => o.code_material == item.code_material);
                 if (ejemplar != null && ejemplar._id != id)
                 {
@@ -88,10 +90,15 @@ namespace LagashServer.Controllers.v1.books
                 service.discart(ejemplar);
                 service.Update(item);
                 service.Commit();
-            } catch (DbUpdateConcurrencyException) {
-                if (!service.exists(id)) {
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!service.exists(id))
+                {
                     return NotFound();
-                } else {
+                }
+                else
+                {
                     throw;
                 }
             }
@@ -108,7 +115,8 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Thesis> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (o) => {
+            return service.Where(page, limit, (o) =>
+            {
                 return o.title.ToLower().Contains(search.ToLower()) || o.code_material.Contains(search.ToLower());
             }, o => o.created);
         }
@@ -126,7 +134,8 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Thesis> GetItems(string id, int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (o) => {
+            return service.Where(page, limit, (o) =>
+            {
                 return o.catalog_id != null && o.catalog_id.Equals(id) && o.title.ToLower().Contains(search.ToLower());
             }, o => o.created);
         }

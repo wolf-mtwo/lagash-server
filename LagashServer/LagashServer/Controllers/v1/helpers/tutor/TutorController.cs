@@ -8,14 +8,14 @@ using Wolf.Lagash.Entities.helper.tutor;
 using Wolf.Lagash.Services.helpers.tutor;
 using Wolf.Lagash.Interfaces.helpers.tutor;
 
-namespace LagashServer.Controllers.v1.books
+namespace LagashServer.Controllers.v1.helpers.tutor
 {
     [Authorize]
     [RoutePrefix("v1/tutors")]
     public class TutorController : ApiController
     {
         private ITutorService service = new TutorService(new LagashContext());
-        
+
         [Route("")]
         public IEnumerable<Tutor> Get()
         {
@@ -25,33 +25,39 @@ namespace LagashServer.Controllers.v1.books
         [Route("")]
         public IHttpActionResult Post(Tutor item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            try {
+            try
+            {
                 service.Create(item);
                 service.Commit();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 return new LagashActionResult(e.Message);
             }
             return Ok(item);
         }
 
         [Route("{id}")]
-        public IHttpActionResult Get(String id)
+        public IHttpActionResult Get(string id)
         {
             Tutor item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             return Ok(item);
         }
 
         [Route("{id}")]
-        public IHttpActionResult Delete(String id)
+        public IHttpActionResult Delete(string id)
         {
             Tutor item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             service.Delete(item);
@@ -60,21 +66,29 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Put(String id, Tutor item)
+        public IHttpActionResult Put(string id, Tutor item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            if (id != item._id) {
+            if (id != item._id)
+            {
                 return new LagashActionResult("should provide a valid _id");
             }
             service.Update(item);
-            try {
+            try
+            {
                 service.Commit();
-            } catch (DbUpdateConcurrencyException) {
-                if (!service.exists(id)) {
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!service.exists(id))
+                {
                     return NotFound();
-                } else {
+                }
+                else
+                {
                     throw;
                 }
             }
@@ -91,7 +105,8 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Tutor> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (o) => {
+            return service.Where(page, limit, (o) =>
+            {
                 return o.first_name.ToLower().Contains(search.ToLower()) || o.last_name.ToLower().Contains(search.ToLower());
             }, o => o.created);
         }

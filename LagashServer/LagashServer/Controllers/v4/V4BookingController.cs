@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Web.Http;
-using Wolf.Lagash.Services;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
 using LagashServer.Controllers.helpers;

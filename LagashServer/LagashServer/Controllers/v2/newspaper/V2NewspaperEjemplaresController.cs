@@ -1,25 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
-using Wolf.Lagash.Entities;
 using LagashServer.helper;
-using Wolf.Lagash.Entities.books;
-using Wolf.Lagash.Interfaces.helper.ejemplar;
-using Wolf.Lagash.Entities.helper.ejemplar;
-using Wolf.Lagash.Services.helper.ejemplar;
-using LagashServer.Controllers.helpers;
 using Wolf.Lagash.Entities.newspaper;
 using Wolf.Lagash.Services.newspaper;
 using Wolf.Lagash.Interfaces.newspaper;
 
-namespace LagashServer.Controllers.v1.helper.ejemplar
+namespace LagashServer.Controllers.v2.newspaper
 {
     [Authorize]
     [RoutePrefix("v2/newspapers")]
