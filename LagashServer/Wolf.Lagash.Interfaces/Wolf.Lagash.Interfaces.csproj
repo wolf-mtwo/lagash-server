@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="booking\IBookingService.cs" />
     <Compile Include="helpers\reader\IReaderService.cs" />
+    <Compile Include="reports\LoanReports.cs" />
     <Compile Include="search\ISearchService.cs" />
     <Compile Include="helpers\author\IAuthorService.cs" />
     <Compile Include="helpers\author\IAuthorMapService.cs" />
