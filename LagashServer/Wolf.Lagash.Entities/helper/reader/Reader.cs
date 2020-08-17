@@ -32,6 +32,9 @@ namespace Wolf.Lagash.Entities
         [StringLength(36)]
         public string career_id { get; set; }
 
+        [StringLength(10)]
+        public string semester { get; set; }
+
         [Required]
         public bool enabled { get; set; }
     }
