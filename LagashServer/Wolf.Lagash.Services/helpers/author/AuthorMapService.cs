@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using Wolf.Core.EntityFramework;
 using Wolf.Lagash.Entities.helper.author;
-using Wolf.Lagash.Interfaces.map;
+using Wolf.Lagash.Interfaces.helpers.author;
 
-namespace Wolf.Lagash.Services
+namespace Wolf.Lagash.Services.helpers.author
 {
     public class AuthorMapService : EFAdapterBase<AuthorMap>, IAuthorMapService
     {

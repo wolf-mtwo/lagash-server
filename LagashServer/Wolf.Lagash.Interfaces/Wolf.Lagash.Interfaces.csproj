@@ -56,7 +56,6 @@
     <Compile Include="helpers\faculties\ICareerService.cs" />
     <Compile Include="helpers\tutor\ITutorService.cs" />
     <Compile Include="IUsersService.cs" />
-    <Compile Include="IPersonService.cs" />
     <Compile Include="magazine\IMagazineCatalogService.cs" />
     <Compile Include="magazine\IMagazineEjemplarService.cs" />
     <Compile Include="magazine\IMagazineService.cs" />

@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Wolf.Core.EntityFramework;
 using Wolf.Lagash.Entities.booking;
-using Wolf.Lagash.Interfaces;
+using Wolf.Lagash.Interfaces.booking;
 
-namespace Wolf.Lagash.Services
+namespace Wolf.Lagash.Services.booking
 {
     public class BookingService : EFAdapterBase<Booking>, IBookingService
     {

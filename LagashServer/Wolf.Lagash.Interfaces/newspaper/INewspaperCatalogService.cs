@@ -1,11 +1,10 @@
-﻿using System;
-using Wolf.Core.Interfaces;
+﻿using Wolf.Core.Interfaces;
 using Wolf.Lagash.Entities.newspaper;
 
-namespace Wolf.Lagash.Interfaces
+namespace Wolf.Lagash.Interfaces.newspaper
 {
     public interface INewspaperCatalogService : IAdapterBase<NewspaperCatalog>
     {
-        bool exists(String id);
+        bool exists(string id);
     }
 }

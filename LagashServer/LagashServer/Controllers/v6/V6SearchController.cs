@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Web.Http;
-using Wolf.Lagash.Services;
-using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using System.Linq;
+using Wolf.Lagash.Services.search;
+using Wolf.Lagash.Interfaces.search;
 
 namespace LagashServer.Controllers.v6
 {

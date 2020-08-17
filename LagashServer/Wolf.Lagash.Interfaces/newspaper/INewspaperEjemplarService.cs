@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Wolf.Core.Interfaces;
 using Wolf.Lagash.Entities.newspaper;
 
-namespace Wolf.Lagash.Interfaces
+namespace Wolf.Lagash.Interfaces.newspaper
 {
     public interface INewspaperEjemplarService : IAdapterBase<NewspaperEjemplar>
     {
-        bool exists(String id);
+        bool exists(string id);
         IEnumerable<NewspaperEjemplar> select(int start, int end);
         NewspaperEjemplar next();
     }

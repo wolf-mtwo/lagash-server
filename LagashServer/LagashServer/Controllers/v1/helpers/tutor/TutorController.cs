@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Web.Http;
-using Wolf.Lagash.Services;
-using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using LagashServer.Controllers.helpers;
 using Wolf.Lagash.Entities.helper.tutor;
+using Wolf.Lagash.Services.helpers.tutor;
+using Wolf.Lagash.Interfaces.helpers.tutor;
 
 namespace LagashServer.Controllers.v1.books
 {

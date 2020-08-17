@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Wolf.Core.Interfaces;
 using Wolf.Lagash.Entities.search;
 
-namespace Wolf.Lagash.Interfaces
+namespace Wolf.Lagash.Interfaces.search
 {
     public interface ISearchService : IAdapterBase<Search>
     {

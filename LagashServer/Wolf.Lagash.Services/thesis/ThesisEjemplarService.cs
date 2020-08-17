@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Wolf.Core.EntityFramework;
 using Wolf.Lagash.Entities.thesis;
-using Wolf.Lagash.Interfaces;
+using Wolf.Lagash.Interfaces.thesis;
 
-namespace Wolf.Lagash.Services
+namespace Wolf.Lagash.Services.thesis
 {
     public class ThesisEjemplarService : EFAdapterBase<ThesisEjemplar>, IThesisEjemplarService
     {
@@ -14,7 +13,7 @@ namespace Wolf.Lagash.Services
         {
         }
 
-        public bool exists(String id)
+        public bool exists(string id)
         {
             return context.Set<ThesisEjemplar>().Count(e => e._id == id) > 0;
         }

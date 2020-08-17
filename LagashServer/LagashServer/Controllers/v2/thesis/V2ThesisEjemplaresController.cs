@@ -7,8 +7,8 @@ using System.Net.Http;
 using System.Web.Http;
 using Wolf.Lagash.Entities;
 using Wolf.Lagash.Entities.thesis;
-using Wolf.Lagash.Interfaces;
-using Wolf.Lagash.Services;
+using Wolf.Lagash.Interfaces.thesis;
+using Wolf.Lagash.Services.thesis;
 
 namespace LagashServer.Controllers.v2.books
 {

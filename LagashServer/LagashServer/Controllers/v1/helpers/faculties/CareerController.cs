@@ -8,12 +8,12 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Wolf.Lagash.Services;
 using Wolf.Lagash.Entities;
-using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using LagashServer.Controllers.helpers;
 using Wolf.Lagash.Entities.helper.faculties;
+using Wolf.Lagash.Services.helpers.faculties;
+using Wolf.Lagash.Interfaces.helpers.faculties;
 
 namespace LagashServer.Controllers.v1.books
 {

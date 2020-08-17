@@ -75,7 +75,6 @@
     <Compile Include="books\BookService.cs" />
     <Compile Include="map\UsersMapService.cs" />
     <Compile Include="UsersService.cs" />
-    <Compile Include="PersonService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

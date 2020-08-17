@@ -3,9 +3,9 @@ using System.Data.Entity;
 using System.Linq;
 using Wolf.Core.EntityFramework;
 using Wolf.Lagash.Entities.search;
-using Wolf.Lagash.Interfaces;
+using Wolf.Lagash.Interfaces.search;
 
-namespace Wolf.Lagash.Services
+namespace Wolf.Lagash.Services.search
 {
     public class SearchService : EFAdapterBase<Search>, ISearchService
     {

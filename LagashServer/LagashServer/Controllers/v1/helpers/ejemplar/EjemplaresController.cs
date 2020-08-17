@@ -13,10 +13,10 @@ using Wolf.Lagash.Entities;
 using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using Wolf.Lagash.Entities.books;
-using Wolf.Lagash.Interfaces.helper.ejemplar;
 using Wolf.Lagash.Entities.helper.ejemplar;
-using Wolf.Lagash.Services.helper.ejemplar;
 using LagashServer.Controllers.helpers;
+using Wolf.Lagash.Services.helpers.ejemplar;
+using Wolf.Lagash.Interfaces.helpers.ejemplar;
 
 namespace LagashServer.Controllers.v1.helper.ejemplar
 {

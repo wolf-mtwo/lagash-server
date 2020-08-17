@@ -4,7 +4,7 @@ using Wolf.Core.EntityFramework;
 using Wolf.Lagash.Entities.map;
 using Wolf.Lagash.Interfaces.map;
 
-namespace Wolf.Lagash.Services
+namespace Wolf.Lagash.Services.map
 {
     public class UsersMapService : EFAdapterBase<UserMap>, IUsersMapService
     {

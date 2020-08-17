@@ -1,12 +1,10 @@
-﻿using System;
-using Wolf.Core.Interfaces;
-using Wolf.Lagash.Entities;
+﻿using Wolf.Core.Interfaces;
 using Wolf.Lagash.Entities.helper.reader;
 
-namespace Wolf.Lagash.Interfaces
+namespace Wolf.Lagash.Interfaces.helpers.reader
 {
     public interface IReaderService : IAdapterBase<Reader>
     {
-        bool exists(String id);
+        bool exists(string id);
     }
 }

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Wolf.Core.EntityFramework;
 using Wolf.Lagash.Entities.newspaper;
-using Wolf.Lagash.Interfaces;
+using Wolf.Lagash.Interfaces.newspaper;
 
-namespace Wolf.Lagash.Services
+namespace Wolf.Lagash.Services.newspaper
 {
     public class NewspaperEjemplarService : EFAdapterBase<NewspaperEjemplar>, INewspaperEjemplarService
     {
@@ -14,7 +13,7 @@ namespace Wolf.Lagash.Services
         {
         }
 
-        public bool exists(String id)
+        public bool exists(string id)
         {
             return context.Set<NewspaperEjemplar>().Count(e => e._id == id) > 0;
         }
