@@ -18,6 +18,7 @@ namespace Wolf.Lagash.Entities.books
         public string Editorial { get; set; }
         public string MaterialCode { get; set; }
         public string MaterialYear { get; set; }
+        public string Type { get; set; }
         public string Image { get; set; }
         public int RowNumber { get; set; }
         public int Total { get; set; }

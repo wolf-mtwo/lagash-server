@@ -15,12 +15,12 @@ namespace LagashServer.Controllers.v6
         private ISearchService service = new SearchService(new LagashContext());
        
         [Route("page/{page}/limit/{limit}")]
-        public IHttpActionResult Get(int page, int limit, string type, string listAuthor, string listEditorial, 
+        public IHttpActionResult Get(int page, int limit, string type, string listAuthor, string listDestriptor, string listIndexer, string listEditorial, 
                 string listYear, bool isAll, string search)
         {
             try
             {
-                var listSearch = service.SearchItems(type, isAll, search, listAuthor, listEditorial, listYear, page, limit);
+                var listSearch = service.SearchItems(type, isAll, search, listAuthor, listEditorial, listYear, listDestriptor, listIndexer,  page, limit);
 
                 var years = listSearch.Where(i => !String.IsNullOrEmpty( i.MaterialYear)).Select(i => i.MaterialYear).Distinct();
                 var authors = listSearch.Where(i => !String.IsNullOrEmpty(i.Autor)).Select(i => i.Autor).Distinct();
