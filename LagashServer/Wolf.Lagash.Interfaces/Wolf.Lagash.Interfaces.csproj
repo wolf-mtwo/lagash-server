@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="booking\IBookingService.cs" />
     <Compile Include="helpers\reader\IReaderService.cs" />
+    <Compile Include="reports\ILoanReportsService.cs" />
     <Compile Include="search\ISearchService.cs" />
     <Compile Include="helpers\author\IAuthorService.cs" />
     <Compile Include="helpers\author\IAuthorMapService.cs" />
@@ -55,7 +56,6 @@
     <Compile Include="helpers\faculties\ICareerService.cs" />
     <Compile Include="helpers\tutor\ITutorService.cs" />
     <Compile Include="IUsersService.cs" />
-    <Compile Include="IPersonService.cs" />
     <Compile Include="magazine\IMagazineCatalogService.cs" />
     <Compile Include="magazine\IMagazineEjemplarService.cs" />
     <Compile Include="magazine\IMagazineService.cs" />

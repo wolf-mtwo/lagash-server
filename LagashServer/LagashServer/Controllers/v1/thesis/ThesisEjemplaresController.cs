@@ -1,21 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
-using Wolf.Lagash.Services;
-using Wolf.Lagash.Entities;
-using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
-using Wolf.Lagash.Entities.books;
 using LagashServer.Controllers.helpers;
+using Wolf.Lagash.Entities.thesis;
+using Wolf.Lagash.Services.thesis;
+using Wolf.Lagash.Interfaces.thesis;
 
-namespace LagashServer.Controllers.v1.books
+namespace LagashServer.Controllers.v1.thesis
 {
     [Authorize]
     [RoutePrefix("v1/thesis/ejemplares")]
@@ -49,7 +42,7 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Get(String id)
+        public IHttpActionResult Get(string id)
         {
             ThesisEjemplar item = service.FindById(id);
             if (item == null)
@@ -60,7 +53,7 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Delete(String id)
+        public IHttpActionResult Delete(string id)
         {
             ThesisEjemplar item = service.FindById(id);
             if (item == null)
@@ -73,7 +66,7 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Put(String id, ThesisEjemplar item)
+        public IHttpActionResult Put(string id, ThesisEjemplar item)
         {
             if (!ModelState.IsValid)
             {
@@ -112,7 +105,8 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<ThesisEjemplar> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (o) => {
+            return service.Where(page, limit, (o) =>
+            {
                 return o.inventory.ToString().Contains(search) || o._id.Contains(search);
             }, o => o.inventory);
         }

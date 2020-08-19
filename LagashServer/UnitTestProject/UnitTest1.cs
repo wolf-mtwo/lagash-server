@@ -2,9 +2,13 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wolf.Lagash.Entities.books;
 using LagashServer.helper;
-using Wolf.Lagash.Services;
-using Wolf.Lagash.Interfaces;
 using Wolf.Lagash.Entities;
+using Wolf.Lagash.Services.books;
+using Wolf.Lagash.Services.magazine;
+using Wolf.Lagash.Services.thesis;
+using Wolf.Lagash.Interfaces.thesis;
+using Wolf.Lagash.Interfaces.magazine;
+using Wolf.Lagash.Interfaces.books;
 
 namespace UnitTestProject
 {

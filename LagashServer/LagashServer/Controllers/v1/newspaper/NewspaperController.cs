@@ -1,22 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
-using Wolf.Lagash.Services;
-using Wolf.Lagash.Entities;
-using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
-using Wolf.Lagash.Entities.books;
 using LagashServer.Controllers.helpers;
 using Wolf.Lagash.Entities.newspaper;
+using Wolf.Lagash.Services.newspaper;
+using Wolf.Lagash.Interfaces.newspaper;
 
-namespace LagashServer.Controllers.v1.books
+namespace LagashServer.Controllers.v1.newspaper
 {
     [Authorize]
     [RoutePrefix("v1/newspapers")]
@@ -33,33 +25,39 @@ namespace LagashServer.Controllers.v1.books
         [Route("")]
         public IHttpActionResult Post(Newspaper item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            try {
+            try
+            {
                 service.Create(item);
                 service.Commit();
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 return new LagashActionResult(e.Message);
             }
             return Ok(item);
         }
 
         [Route("{id}")]
-        public IHttpActionResult Get(String id)
+        public IHttpActionResult Get(string id)
         {
             Newspaper item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             return Ok(item);
         }
 
         [Route("{id}")]
-        public IHttpActionResult Delete(String id)
+        public IHttpActionResult Delete(string id)
         {
             Newspaper item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             service.Delete(item);
@@ -68,15 +66,18 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Put(String id, Newspaper item)
+        public IHttpActionResult Put(string id, Newspaper item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            if (id != item._id) {
+            if (id != item._id)
+            {
                 return new LagashActionResult("should provide a valid _id");
             }
-            try {
+            try
+            {
                 Newspaper ejemplar = service.FindOne(o => o.code_material == item.code_material);
                 if (ejemplar != null && ejemplar._id != id)
                 {
@@ -85,10 +86,15 @@ namespace LagashServer.Controllers.v1.books
                 service.discart(ejemplar);
                 service.Update(item);
                 service.Commit();
-            } catch (DbUpdateConcurrencyException) {
-                if (!service.exists(id)) {
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!service.exists(id))
+                {
                     return NotFound();
-                } else {
+                }
+                else
+                {
                     throw;
                 }
             }
@@ -105,7 +111,8 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Newspaper> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (o) => {
+            return service.Where(page, limit, (o) =>
+            {
                 return o.title.ToLower().Contains(search.ToLower()) || o.code_material.Contains(search.ToLower());
             }, o => o.created);
         }
@@ -123,7 +130,8 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<Newspaper> GetItems(string id, int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (o) => {
+            return service.Where(page, limit, (o) =>
+            {
                 return o.catalog_id != null && o.catalog_id.Equals(id) && o.title.ToLower().Contains(search.ToLower());
             }, o => o.created);
         }

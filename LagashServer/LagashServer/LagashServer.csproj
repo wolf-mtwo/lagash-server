@@ -251,6 +251,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\v1\helpers\reader\ReaderController.cs" />
+    <Compile Include="Controllers\v4\V4CareerController.cs" />
+    <Compile Include="Controllers\v4\V4FacultyController.cs" />
     <Compile Include="Controllers\v6\V6ReaderController.cs" />
     <Compile Include="Controllers\v6\V6SearchController.cs" />
     <Compile Include="helper\EncryptPassword.cs" />

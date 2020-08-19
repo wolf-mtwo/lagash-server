@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wolf.Lagash.Entities.helper.ejemplar;
+﻿using Wolf.Lagash.Entities.helper.ejemplar;
 
-namespace Wolf.Lagash.Entities
+namespace Wolf.Lagash.Entities.thesis
 {
     public class ThesisEjemplar : Ejemplar
     {

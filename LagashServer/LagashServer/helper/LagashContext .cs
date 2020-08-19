@@ -1,9 +1,15 @@
 ﻿using System.Data.Entity;
 using Wolf.Lagash.Entities;
+using Wolf.Lagash.Entities.booking;
 using Wolf.Lagash.Entities.books;
-using Wolf.Lagash.Entities.map;
+using Wolf.Lagash.Entities.helper.author;
+using Wolf.Lagash.Entities.helper.editorial;
+using Wolf.Lagash.Entities.helper.faculties;
+using Wolf.Lagash.Entities.helper.reader;
+using Wolf.Lagash.Entities.helper.tutor;
+using Wolf.Lagash.Entities.magazine;
 using Wolf.Lagash.Entities.newspaper;
-using Wolf.Lagash.Entities.tutor;
+using Wolf.Lagash.Entities.thesis;
 
 namespace LagashServer.helper
 {

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wolf.Core.EntityFramework;
-using Wolf.Lagash.Entities;
 using Wolf.Lagash.Entities.map;
-using Wolf.Lagash.Interfaces;
 using Wolf.Lagash.Interfaces.map;
 
-namespace Wolf.Lagash.Services
+namespace Wolf.Lagash.Services.map
 {
     public class UsersMapService : EFAdapterBase<UserMap>, IUsersMapService
     {

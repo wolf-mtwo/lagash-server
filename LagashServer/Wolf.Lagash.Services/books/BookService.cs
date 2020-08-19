@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wolf.Core.EntityFramework;
-using Wolf.Lagash.Entities;
 using Wolf.Lagash.Entities.books;
-using Wolf.Lagash.Interfaces;
+using Wolf.Lagash.Interfaces.books;
 
-namespace Wolf.Lagash.Services
+namespace Wolf.Lagash.Services.books
 {
     public class BookService : EFAdapterBase<Book>, IBookService
     {
@@ -17,11 +14,11 @@ namespace Wolf.Lagash.Services
         {
         }
 
-        public bool exists(String id)
+        public bool exists(string id)
         {
             return context.Set<Book>().Count(e => e._id == id) > 0;
         }
-        
+
         public IEnumerable<Book> suggestions()
         {
             return context.Set<Book>().Where(o => o.enabled).OrderByDescending(o => o.created).Skip(0).Take(10);

@@ -1,26 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
-using Wolf.Lagash.Services;
-using Wolf.Lagash.Entities;
-using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
-using Wolf.Lagash.Entities.books;
-using LagashServer.Controllers.helpers;
-using Wolf.Lagash.Interfaces.helper.ejemplar;
-using Wolf.Lagash.Services.helper.ejemplar;
 using Wolf.Lagash.Entities.helper.ejemplar;
-using Wolf.Lagash.Interfaces.map;
-using Wolf.Lagash.Entities.map;
+using Wolf.Lagash.Entities.thesis;
+using Wolf.Lagash.Entities.helper.author;
+using Wolf.Lagash.Services.helpers.author;
+using Wolf.Lagash.Services.thesis;
+using Wolf.Lagash.Interfaces.thesis;
+using Wolf.Lagash.Interfaces.helpers.author;
 
-namespace LagashServer.Controllers.v1.books
+namespace LagashServer.Controllers.v3
 {
     [RoutePrefix("v3/browser/thesis")]
     public class V3ThesisController : ApiController
@@ -34,17 +26,18 @@ namespace LagashServer.Controllers.v1.books
         private IAuthorMapService service_author_map = new AuthorMapService(new LagashContext());
 
         [Route("{id}")]
-        public IHttpActionResult Get(String id)
+        public IHttpActionResult Get(string id)
         {
             Thesis item = service_thesis.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             return Ok(item);
         }
 
         [Route("{id}/ejemplares")]
-        public IEnumerable<Ejemplar> GetEjemplares(String id)
+        public IEnumerable<Ejemplar> GetEjemplares(string id)
         {
             return service_ejemplares.get_asc(o => o.material_id == id && o.enabled == true, o => o.order);
         }
@@ -54,19 +47,23 @@ namespace LagashServer.Controllers.v1.books
         {
             if (search == null) search = "";
             Func<Thesis, bool> where = null;
-            switch (type) {
-                 case "ALL":
-                    where = (o) => {
-                        return o.title.ToLower().Contains(search.ToLower()) || (o.tags != null && o.tags.ToLower().Contains(search.ToLower()));
+            switch (type)
+            {
+                case "ALL":
+                    where = (o) =>
+                    {
+                        return o.title.ToLower().Contains(search.ToLower()) || o.tags != null && o.tags.ToLower().Contains(search.ToLower());
                     };
                     break;
                 case "TITLE":
-                    where = (o) => {
+                    where = (o) =>
+                    {
                         return o.title.ToLower().Contains(search.ToLower());
                     };
                     break;
                 case "SUBJECT":
-                    where = (o) => {
+                    where = (o) =>
+                    {
                         return o.tags != null && o.tags.ToLower().Contains(search.ToLower());
                     };
                     break;
@@ -74,7 +71,7 @@ namespace LagashServer.Controllers.v1.books
                     return find_by_autors(page, limit, search);
                 default:
                     Console.WriteLine("Default case");
-                break;
+                    break;
             }
             return service_thesis.search(page, limit, where);
         }
@@ -82,10 +79,12 @@ namespace LagashServer.Controllers.v1.books
         private IEnumerable<Thesis> find_by_autors(int page, int limit, string search)
         {
             List<AuthorMap> list = new List<AuthorMap>();
-            List<Author> authores = service_author.get_desc((o) => {
+            List<Author> authores = service_author.get_desc((o) =>
+            {
                 return o.first_name.ToLower().Contains(search.ToLower()) || o.last_name.ToLower().Contains(search.ToLower());
             }, o => o.created).ToList();
-            authores.ForEach((author) => {
+            authores.ForEach((author) =>
+            {
                 list.AddRange(service_author_map.get_desc(o => o.author_id == author._id, o => o.created).ToList());
             });
             List<Thesis> items = new List<Thesis>();
@@ -104,13 +103,14 @@ namespace LagashServer.Controllers.v1.books
         [Route("catalogs/page/{page}/limit/{limit}")]
         public IEnumerable<ThesisCatalog> GetCatalogs(int page, int limit)
         {
-            return service_catalogs.Where(page, limit, (o) => {
+            return service_catalogs.Where(page, limit, (o) =>
+            {
                 return o.enabled == true;
             }, o => o.created);
         }
 
         [Route("catalogs/{id}")]
-        public IEnumerable<Thesis> GetCatalogs(String id)
+        public IEnumerable<Thesis> GetCatalogs(string id)
         {
             return service_thesis.get_desc(o => o.catalog_id == id, o => o.created);
         }
@@ -120,7 +120,8 @@ namespace LagashServer.Controllers.v1.books
         {
             IEnumerable<AuthorMap> items = service_authors_map.Query(o => o.material_id == id);
             List<Author> result = new List<Author>();
-            foreach (var item in items) {
+            foreach (var item in items)
+            {
                 Author author = service_authors.FindById(item.author_id);
                 author.map = item;
                 result.Add(author);

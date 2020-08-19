@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Wolf.Core.Interfaces;
-using Wolf.Lagash.Entities.map;
+﻿using Wolf.Core.Interfaces;
+using Wolf.Lagash.Entities.helper.author;
 
-namespace Wolf.Lagash.Interfaces.map
+namespace Wolf.Lagash.Interfaces.helpers.author
 {
     public interface IAuthorMapService : IAdapterBase<AuthorMap>
     {
-        bool exists(String id);
+        bool exists(string id);
     }
 }

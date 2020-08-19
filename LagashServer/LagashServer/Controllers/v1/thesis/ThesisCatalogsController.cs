@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
-using Wolf.Lagash.Services;
-using Wolf.Lagash.Entities;
-using Wolf.Lagash.Interfaces;
 using LagashServer.helper;
 using LagashServer.Controllers.helpers;
+using Wolf.Lagash.Entities.thesis;
+using Wolf.Lagash.Services.thesis;
+using Wolf.Lagash.Interfaces.thesis;
 
-namespace LagashServer.Controllers.v1.books
+namespace LagashServer.Controllers.v1.thesis
 {
     [Authorize]
     [RoutePrefix("v2/thesis/catalogs")]
@@ -48,10 +42,11 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Get(String id)
+        public IHttpActionResult Get(string id)
         {
             ThesisCatalog item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
 
@@ -59,10 +54,11 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Delete(String id)
+        public IHttpActionResult Delete(string id)
         {
             ThesisCatalog item = service.FindById(id);
-            if (item == null) {
+            if (item == null)
+            {
                 return NotFound();
             }
             service.Delete(item);
@@ -72,22 +68,30 @@ namespace LagashServer.Controllers.v1.books
         }
 
         [Route("{id}")]
-        public IHttpActionResult Put(String id, ThesisCatalog item)
+        public IHttpActionResult Put(string id, ThesisCatalog item)
         {
-            if (!ModelState.IsValid) {
+            if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
             }
-            if (id != item._id) {
+            if (id != item._id)
+            {
                 return new LagashActionResult("should provide a valid _id");
             }
             service.Update(item);
 
-            try {
+            try
+            {
                 service.Commit();
-            } catch (DbUpdateConcurrencyException) {
-                if (!service.exists(id)) {
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!service.exists(id))
+                {
                     return NotFound();
-                } else {
+                }
+                else
+                {
                     throw;
                 }
             }
@@ -106,7 +110,8 @@ namespace LagashServer.Controllers.v1.books
         public IEnumerable<ThesisCatalog> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
-            return service.Where(page, limit, (o) => {
+            return service.Where(page, limit, (o) =>
+            {
                 return o.title.Contains(search) || o._id.Contains(search);
             }, o => o.created);
         }

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace LagashServer.Models
+namespace LagashServer.Controllers.helpers
 {
     public class Information
     {
@@ -13,7 +10,7 @@ namespace LagashServer.Models
         public Information(string version)
         {
             this.version = version;
-            this.uptime = DateTime.Now;
+            uptime = DateTime.Now;
         }
     }
 }

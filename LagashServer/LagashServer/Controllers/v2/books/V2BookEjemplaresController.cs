@@ -1,13 +1,10 @@
 ﻿using LagashServer.helper;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
-using Wolf.Lagash.Entities;
-using Wolf.Lagash.Interfaces;
-using Wolf.Lagash.Services;
+using Wolf.Lagash.Entities.books;
+using Wolf.Lagash.Interfaces.books;
+using Wolf.Lagash.Services.books;
 
 namespace LagashServer.Controllers.v2.books
 {

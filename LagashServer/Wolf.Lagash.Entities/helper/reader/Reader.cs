@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Wolf.Lagash.Entities
+namespace Wolf.Lagash.Entities.helper.reader
 {
     public class Reader : Base
     {
@@ -31,6 +31,9 @@ namespace Wolf.Lagash.Entities
 
         [StringLength(36)]
         public string career_id { get; set; }
+
+        [StringLength(10)]
+        public string semester { get; set; }
 
         [Required]
         public bool enabled { get; set; }

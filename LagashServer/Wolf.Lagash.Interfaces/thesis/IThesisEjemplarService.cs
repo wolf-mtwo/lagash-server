@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Wolf.Core.Interfaces;
-using Wolf.Lagash.Entities;
+using Wolf.Lagash.Entities.thesis;
 
-namespace Wolf.Lagash.Interfaces
+namespace Wolf.Lagash.Interfaces.thesis
 {
     public interface IThesisEjemplarService : IAdapterBase<ThesisEjemplar>
     {
-        bool exists(String id);
+        bool exists(string id);
         IEnumerable<ThesisEjemplar> select(int start, int end);
         ThesisEjemplar next();
     }

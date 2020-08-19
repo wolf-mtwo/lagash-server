@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Wolf.Core.Interfaces;
-using Wolf.Lagash.Entities;
-using Wolf.Lagash.Entities.books;
+using Wolf.Lagash.Entities.thesis;
 
-namespace Wolf.Lagash.Interfaces
+namespace Wolf.Lagash.Interfaces.thesis
 {
     public interface IThesisService : IAdapterBase<Thesis>
     {
-        bool exists(String id);
+        bool exists(string id);
         IEnumerable<Thesis> search(int page, int limit, Func<Thesis, bool> where);
     }
 }

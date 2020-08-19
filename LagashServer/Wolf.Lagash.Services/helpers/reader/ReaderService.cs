@@ -1,11 +1,10 @@
-﻿using System;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using Wolf.Core.EntityFramework;
-using Wolf.Lagash.Entities;
-using Wolf.Lagash.Interfaces;
+using Wolf.Lagash.Entities.helper.reader;
+using Wolf.Lagash.Interfaces.helpers.reader;
 
-namespace Wolf.Lagash.Services
+namespace Wolf.Lagash.Services.helpers.reader
 {
     public class ReaderService : EFAdapterBase<Reader>, IReaderService
     {
@@ -13,7 +12,7 @@ namespace Wolf.Lagash.Services
         {
         }
 
-        public bool exists(String id)
+        public bool exists(string id)
         {
             return context.Set<Reader>().Count(e => e._id == id) > 0;
         }
