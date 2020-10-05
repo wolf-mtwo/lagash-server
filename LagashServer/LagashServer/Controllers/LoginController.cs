@@ -27,7 +27,7 @@ namespace LagashServer.Controllers
             User user = service.login(login.email, login.password);
             if (user != null)
             {
-                user.token = new Token {session_id = GenerateTokenJwt(user.email, user._id) };
+                user.token = new Token { session_id = GenerateTokenJwt(user.email, user._id) };
                 return Ok(user);
             }
             else
@@ -54,7 +54,7 @@ namespace LagashServer.Controllers
             var securityKey = new SymmetricSecurityKey(System.Text.Encoding.Default.GetBytes(secretKey));
             var signingCredentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256Signature);
 
-            ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] { 
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(new[] {
                 new Claim(ClaimTypes.Email, email),
                 new Claim("_id", id)
             });
@@ -66,6 +66,7 @@ namespace LagashServer.Controllers
                 subject: claimsIdentity,
                 notBefore: DateTime.UtcNow,
                 expires: DateTime.UtcNow.AddDays(Convert.ToInt32(expireDays)),
+                //expires: DateTime.UtcNow.AddMinutes(1),
                 signingCredentials: signingCredentials);
 
             var token = tokenHandler.WriteToken(jwtSecurityToken);
