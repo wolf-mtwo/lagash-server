@@ -92,3 +92,13 @@ DELETE **/v1/journals/:journal_id** _OBJECT_
 
 POST **/p1/files** *excel*
 Form ['file_name']
+
+
+# Generate data base
+
+In order to generate the data base you have to comment this code line
+
+```
+  // LagashContext.cs
+  Database.SetInitializer<LagashContext>(null);
+```

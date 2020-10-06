@@ -9,6 +9,7 @@ using Wolf.Lagash.Entities.helper.reader;
 using Wolf.Lagash.Entities.helper.tutor;
 using Wolf.Lagash.Entities.magazine;
 using Wolf.Lagash.Entities.newspaper;
+using Wolf.Lagash.Entities.reports;
 using Wolf.Lagash.Entities.thesis;
 
 namespace LagashServer.helper
@@ -44,13 +45,15 @@ namespace LagashServer.helper
         public DbSet<Booking> booking { get; set; }
         public DbSet<AuthorMap> author_map { get; set; }
         public DbSet<EditorialMap> editorial_map { get; set; }
-        //public DbSet<Ejemplar> ejemplar { get; set; }
-       // public DbSet<Search> search { get; set; }
+
+        // Report
+        public DbSet<LoanReports> loan_report { get; set; }
+        public DbSet<SearchReports> search_report { get; set; }
 
         public LagashContext() : base("LagashContext")
         {
             // IMPORTANT: comment this line if you migrate the database or add new columns in models
-            Database.SetInitializer<LagashContext>(null);
+            // Database.SetInitializer<LagashContext>(null);
         }
 
         public static LagashContext Create()

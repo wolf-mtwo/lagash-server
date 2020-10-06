@@ -143,7 +143,7 @@ namespace LagashServer.Controllers.v4
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {
-                return o.name.ToLower().Contains(search.ToLower()) || o.code.Contains(search.ToLower());
+                return o.reader_id.ToLower().Contains(search.ToLower()) || o.code.Contains(search.ToLower());
             }, o => o.created);
         }
 
@@ -161,7 +161,7 @@ namespace LagashServer.Controllers.v4
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {
-                return o.name.ToLower().Contains(search.ToLower()) && o.state.Equals("BOOKED");
+                return o.reader_id.ToLower().Contains(search.ToLower()) && o.state.Equals("BOOKED");
             }, o => o.created);
         }
         
@@ -170,7 +170,7 @@ namespace LagashServer.Controllers.v4
         {
             if (search == null) search = "";
             return service.Where(page, limit, (o) => {
-                return o.name.ToLower().Contains(search.ToLower()) && o.state.Equals("BORROWED");
+                return o.reader_id.ToLower().Contains(search.ToLower()) && o.state.Equals("BORROWED");
             }, o => o.created);
         }
 

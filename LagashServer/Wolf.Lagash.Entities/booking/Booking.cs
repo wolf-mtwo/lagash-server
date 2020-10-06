@@ -21,18 +21,12 @@ namespace Wolf.Lagash.Entities.booking
         public string ejemplar_id { get; set; }
 
         [StringLength(36)]
-        public string user_id { get; set; }
-
-        [StringLength(36)]
         public string third_system { get; set; }
 
-        [StringLength(200)]
-        public string name { get; set; }
+        [StringLength(36)]
+        public string reader_id { get; set; }
 
         [StringLength(200)]
         public string state { get; set; }
-
-        [StringLength(36)]
-        public string information { get; set; }
     }
 }

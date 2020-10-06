@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="booking\Booking.cs" />
     <Compile Include="helper\reader\Reader.cs" />
+    <Compile Include="reports\SearchReports.cs" />
     <Compile Include="reports\LoanReports.cs" />
     <Compile Include="search\Search.cs" />
     <Compile Include="helper\Material.cs" />
