@@ -12,7 +12,9 @@ namespace Wolf.Lagash.Entities.booking
         public string code { get; set; }
 
         [StringLength(36)]
-        public string type { get; set; }
+        public string material_type { get; set; }
+
+        public bool is_home { get; set; }
 
         [StringLength(36)]
         public string material_id { get; set; }

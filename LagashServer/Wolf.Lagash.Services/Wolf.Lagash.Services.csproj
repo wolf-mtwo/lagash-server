@@ -52,6 +52,7 @@
     <Compile Include="booking\BookingService.cs" />
     <Compile Include="helpers\reader\ReaderService.cs" />
     <Compile Include="magazine\MagazineEjemplarService.cs" />
+    <Compile Include="reports\SearchReportsService.cs" />
     <Compile Include="reports\LoanReportsService.cs" />
     <Compile Include="search\SearchService.cs" />
     <Compile Include="helpers\editorial\EditorialMapService.cs" />

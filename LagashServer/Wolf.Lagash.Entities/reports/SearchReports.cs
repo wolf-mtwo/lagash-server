@@ -13,12 +13,9 @@ namespace Wolf.Lagash.Entities.reports
         public string reader_id { get; set; }
 
         [StringLength(200)]
-        public string text { get; set; }
+        public string search { get; set; }
 
-        [StringLength(150)]
+        [StringLength(200)]
         public string options { get; set; }
-
-
-        public DateTime date { get; set; }
     }
 }

@@ -19,6 +19,13 @@ using Wolf.Lagash.Interfaces.books;
 using Wolf.Lagash.Interfaces.thesis;
 using Wolf.Lagash.Interfaces.newspaper;
 using Wolf.Lagash.Interfaces.magazine;
+using Wolf.Lagash.Services.helpers.reader;
+using Wolf.Lagash.Interfaces.helpers.reader;
+using Wolf.Lagash.Entities.helper.reader;
+using System.Linq;
+using Wolf.Lagash.Services.reports;
+using Wolf.Lagash.Interfaces.reports;
+using Wolf.Lagash.Entities.reports;
 
 namespace LagashServer.Controllers.v4
 {
@@ -26,10 +33,13 @@ namespace LagashServer.Controllers.v4
     public class V4BookingController : ApiController
     {
         private IBookingService service = new BookingService(new LagashContext());
+        private IReaderService service_readers = new ReaderService(new LagashContext());
         private IBookEjemplarService service_books = new BookEjemplarService(new LagashContext());
         private IThesisEjemplarService service_thesis = new ThesisEjemplarService(new LagashContext());
         private IMagazineEjemplarService service_magazines = new MagazineEjemplarService(new LagashContext());
         private INewspaperEjemplarService service_newpapes = new NewspaperEjemplarService(new LagashContext());
+
+        private ILoanReportsService service_loans = new LoanReportsService(new LagashContext());
 
         [Route("")]
         public IEnumerable<Booking> Get()
@@ -51,7 +61,7 @@ namespace LagashServer.Controllers.v4
                     material_id = item.material_id,
                     state = item.state,
                     ejemplar_id = item.ejemplar_id,
-                    type = item.type
+                    material_type = item.material_type
                 };
                 this.loan_material(loan);
                 service.Create(item);
@@ -88,7 +98,7 @@ namespace LagashServer.Controllers.v4
                 material_id = item.material_id,
                 state = "STORED",
                 ejemplar_id = item.ejemplar_id,
-                type = item.type
+                material_type = item.material_type
             };
             this.loan_material(loan);
             service.Delete(item);
@@ -142,8 +152,11 @@ namespace LagashServer.Controllers.v4
         public IEnumerable<Booking> GetFind(int page, int limit, string search)
         {
             if (search == null) search = "";
+            IEnumerable<Reader> readers = service_readers.get_desc((o) => {
+                return (o.first_name + o.last_name).ToLower().Contains(search.ToLower());
+            }, o => o.created);
             return service.Where(page, limit, (o) => {
-                return o.reader_id.ToLower().Contains(search.ToLower()) || o.code.Contains(search.ToLower());
+                return ValidateReader(o.reader_id, readers) || o.code.Contains(search.ToLower());
             }, o => o.created);
         }
 
@@ -160,17 +173,24 @@ namespace LagashServer.Controllers.v4
         public IEnumerable<Booking> GetLoans(int page, int limit, string search)
         {
             if (search == null) search = "";
+            IEnumerable<Reader> readers = service_readers.get_desc((o) => {
+                return (o.first_name + o.last_name).ToLower().Contains(search.ToLower());
+            }, o => o.created);
             return service.Where(page, limit, (o) => {
-                return o.reader_id.ToLower().Contains(search.ToLower()) && o.state.Equals("BOOKED");
+                return ValidateReader(o.reader_id, readers) && o.state.Equals("BOOKED");
             }, o => o.created);
         }
-        
+
         [Route("page/{page}/limit/{limit}/returns")]
         public IEnumerable<Booking> GetReturns(int page, int limit, string search)
         {
             if (search == null) search = "";
+            IEnumerable<Reader> readers = service_readers.get_desc((o) => {
+                return (o.first_name + o.last_name).ToLower().Contains(search.ToLower());
+            }, o => o.created);
+            
             return service.Where(page, limit, (o) => {
-                return o.reader_id.ToLower().Contains(search.ToLower()) && o.state.Equals("BORROWED");
+                return ValidateReader(o.reader_id, readers) && o.state.Equals("BORROWED");
             }, o => o.created);
         }
 
@@ -178,11 +198,15 @@ namespace LagashServer.Controllers.v4
         public IHttpActionResult PostBorrow(Loan loan)
         {
             try
-            {                
-                loan_material(loan);
+            {
                 Booking booking = service.FindById(loan._id);
                 booking.state = loan.state;
-                booking.created = DateTime.Now;
+                booking.is_home = loan.is_home;
+                if (loan.state.Equals("RESTORED")) {
+                    loan.state = "STORED";
+                    CreateLoanReport(booking);
+                }
+                loan_material(loan);
                 service.Update(booking);
                 service.Commit();
             }
@@ -196,10 +220,7 @@ namespace LagashServer.Controllers.v4
         void loan_material(Loan loan)
         {
             string state = loan.state;
-            if (loan.state.Equals("RESTORED")) {
-                state = "STORED";
-            }
-            switch (loan.type)
+            switch (loan.material_type)
             {
                 case "BOOK":
                     BookEjemplar book_ejemplar = service_books.FindById(loan.ejemplar_id);
@@ -230,6 +251,32 @@ namespace LagashServer.Controllers.v4
                     Console.WriteLine("default case");
                     break;
             }
+        }
+        private bool ValidateReader(string reader_id, IEnumerable<Reader> readers)
+        {
+            return readers.Any((o) => {
+                return o._id.Equals(reader_id);
+            });
+        }
+
+        private void CreateLoanReport(Booking booking)
+        {
+            Reader reader = service_readers.FindById(booking.reader_id);
+            LoanReports loan = new LoanReports()
+            {
+                _id = booking._id,
+                reader_id = booking.reader_id,
+                material_id = booking.material_id,
+                material_type = booking.material_type,
+                ejemplar_id = booking.ejemplar_id,
+                facultad_id = reader.faculty_id,
+                career_id = reader.career_id,
+                is_home = booking.is_home,
+                start_date = booking.created,
+                end_date = DateTime.Now
+            };
+            service_loans.Create(loan);
+            service_loans.Commit();
         }
     }
 }

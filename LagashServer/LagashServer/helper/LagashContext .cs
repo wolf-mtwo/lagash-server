@@ -53,7 +53,7 @@ namespace LagashServer.helper
         public LagashContext() : base("LagashContext")
         {
             // IMPORTANT: comment this line if you migrate the database or add new columns in models
-            // Database.SetInitializer<LagashContext>(null);
+            Database.SetInitializer<LagashContext>(null);
         }
 
         public static LagashContext Create()
