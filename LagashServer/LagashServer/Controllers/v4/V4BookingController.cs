@@ -269,7 +269,7 @@ namespace LagashServer.Controllers.v4
                 material_id = booking.material_id,
                 material_type = booking.material_type,
                 ejemplar_id = booking.ejemplar_id,
-                facultad_id = reader.faculty_id,
+                faculty_id = reader.faculty_id,
                 career_id = reader.career_id,
                 is_home = booking.is_home,
                 start_date = booking.created,

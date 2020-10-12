@@ -22,7 +22,7 @@ namespace Wolf.Lagash.Entities.reports
         public string ejemplar_id { get; set; }
 
         [StringLength(36)]
-        public string facultad_id { get; set; }
+        public string faculty_id { get; set; }
 
         [StringLength(36)]
         public string career_id { get; set; }
