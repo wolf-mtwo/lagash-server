@@ -224,24 +224,28 @@ namespace LagashServer.Controllers.v4
             {
                 case "BOOK":
                     BookEjemplar book_ejemplar = service_books.FindById(loan.ejemplar_id);
+                    if (book_ejemplar == null) return;
                     book_ejemplar.state = state;
                     service_books.Update(book_ejemplar);
                     service_books.Commit();
                     break;
                 case "THESIS":
                     ThesisEjemplar thesis_ejemplar = service_thesis.FindById(loan.ejemplar_id);
+                    if (thesis_ejemplar == null) return;
                     thesis_ejemplar.state = state;
                     service_thesis.Update(thesis_ejemplar);
                     service_thesis.Commit();
                     break;
                 case "MAGAZINE":
                     MagazineEjemplar magazine_ejemplar = service_magazines.FindById(loan.ejemplar_id);
+                    if (magazine_ejemplar == null) return;
                     magazine_ejemplar.state = state;
                     service_magazines.Update(magazine_ejemplar);
                     service_magazines.Commit();
                     break;
                 case "NEWSPAPER":
                     NewspaperEjemplar newspaper_ejemplar = service_newpapes.FindById(loan.ejemplar_id);
+                    if (newspaper_ejemplar == null) return;
                     newspaper_ejemplar.state = state;
                     service_newpapes.Update(newspaper_ejemplar);
                     service_newpapes.Commit();

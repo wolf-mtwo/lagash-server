@@ -36,6 +36,7 @@ namespace LagashServer.Controllers.v5
         [Route("total")]
         public IEnumerable<SearchReports> GetTotals(DateTime start_date, DateTime end_date, string search)
         {
+            if (search == null) search = "";
             return service.get_desc((o) => {
                 return o.created > start_date && o.created < end_date && o.search.Contains(search);
             }, o => o.created);
